@@ -1,0 +1,28 @@
+{
+  "label_name": "Le Label Records",
+  "baseline": "Label indépendant — Nîmes, France",
+  "description": "Le Label Records est un label indépendant basé à Nîmes, co-dirigé par Christophe et Roxane. Notre doctrine : 100 % des royalties nettes de distribution vont aux groupes ; le label ne retient que 20 % sur les subventions. Distribution via WiseBand, catalogue en direct sur Bandcamp. On produit aussi l'émission radio Le Label² — un label indépendant, une heure, les morceaux qui le définissent.",
+  "email": "le.label.contact@gmail.com",
+  "demo_submission_email": "lelabel@le-label.org",
+  "address": "8 rue Nationale, 30000 Nîmes, France",
+  "social": {
+    "bandcamp": "https://lelabelrecords.bandcamp.com/",
+    "linktree": "https://linktr.ee/le.label",
+    "youtube": "https://www.youtube.com/watch?v=Mn_pscQeAzg",
+    "kaardinal_publishing": "https://kaardinal.com/"
+  },
+  "radio": {
+    "name": "Le Label²",
+    "tagline": "Un label indépendant, une heure, les morceaux qui le définissent. Une production du Label avec Roxanne et Christophe.",
+    "slots": [
+      { "label": "Rayvox", "detail": "un lundi par mois, 20h, en direct", "link": "https://www.rayvox.org/podcastFilter?e=70&t=&l=1" },
+      { "label": "Raje Radio", "detail": "mardi 20h · 102.5 FM Nîmes / 90.3 FM Avignon", "link": "https://raje.fr/programmes/le-label2" },
+      { "label": "Radio Alliance +", "detail": "jeudi 19h · 103.2 FM Nîmes + DAB+", "link": "https://radioallianceplus.fr/show/le-label-au-carre/" }
+    ],
+    "episodes": [
+      { "n": 1, "label": "PNKSLM Recordings", "place": "Stockholm" },
+      { "n": 2, "label": "Sounds of Subterrania", "place": "Hambourg — fondé en 1998 à Cassel" },
+      { "n": 3, "label": "Chrüsümïsi Records", "place": "Suisse alémanique — « méli-mélo »" }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "brawn",
+    "title": "Brawn",
+    "artist": "Montevideo",
+    "date": "2026-09-26",
+    "type": "Single",
+    "note": "Extrait de l'EP « Vision ». « Brawn » s'attaque à l'obsession contemporaine de la performance — bras, abds, cuisses — et la désosse avec un sourire.",
+    "cover": "red",
+    "links": {
+      "listen": "https://share.bridge.audio/kaardinal-publishing/montevideo--brawn--new-single-260922?id=72d93fb9-0b81-4076-b1b2-4f6ba8a38dd3",
+      "clip": "https://www.youtube.com/watch?v=Mn_pscQeAzg",
+      "bandcamp": "https://lelabelrecords.bandcamp.com/"
+    }
+  },
+  {
+    "id": "vision",
+    "title": "Vision",
+    "artist": "Montevideo",
+    "date": "2026-10-16",
+    "type": "EP",
+    "note": "EP « Vision » — post-punk de Nîmes, sorti sur Le Label.",
+    "cover": "black",
+    "links": {
+      "listen": "https://share.bridge.audio/kaardinal-publishing/montevideo-vision-ep-2026?id=24a504db-19b4-4113-a5e1-551b4d366375e",
+      "bandcamp": "https://lelabelrecords.bandcamp.com/"
+    }
+  },
+  {
+    "id": "k0rrobor-ep1",
+    "title": "EP1",
+    "artist": "K0RROBOR",
+    "date": "2026-12-18",
+    "type": "EP — 7 titres",
+    "note": "Premier EP (7 titres) via WiseBand, précédé d'une résidence scénique (Paloma) et d'une release party à Nîmes, puis un tour de 4-5 dates en Occitanie.",
+    "cover": "red",
+    "links": {
+      "bandcamp": "https://korrobor.bandcamp.com"
+    }
+  },
+  {
+    "id": "teknotrokids-lp",
+    "title": "Bêtes Rave Party",
+    "artist": "Teknotrokids",
+    "date": null,
+    "type": "LP",
+    "note": "LP en préparation — release party à venir.",
+    "cover": "black",
+    "links": {
+      "bandcamp": "https://lelabelrecords.bandcamp.com/"
+    }
+  },
+  {
+    "id": "unsort-ep",
+    "title": "Un cœur gravé",
+    "artist": "Unsort",
+    "date": "2027-01-15",
+    "type": "EP",
+    "note": "1er EP d'Unsort (Iso, ex-Radical Kitten) — co-production Hidden Bay, Araki, Numavi. Tournée release hiver/printemps 2027.",
+    "cover": "red",
+    "links": {
+      "bandcamp": "https://lelabelrecords.bandcamp.com/"
+    }
+  }
+]
