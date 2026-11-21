@@ -6,17 +6,18 @@ Site vitrine du **Le Label Records** (label indépendant, Nîmes). React + Vite 
 
 ```
 GitHub  lelabelrecords-stack/website   (code source, branche main)
-   ↓ push sur main → GitHub Actions (.github/workflows/deploy.yml)
-GitLab  le-label-records-group/website (miroir)
-   ↓ pipeline (.gitlab-ci.yml)
-Cloudflare Pages (hébergement, déploiement via wrangler)
+   ↓ push sur main → GitHub Actions (.github/workflows/deploy.yml) — miroir
+GitLab  le-label-records-group/website (miroir + déclencheur)
+   ↓ push sur main → pipeline GitLab (.gitlab-ci.yml : build + validate)
+   ↓ push sur main → build natif Cloudflare Pages (projet "website" connecté au repo GitLab)
+Cloudflare Pages  https://website.pages.dev
 ```
 
 Dès qu'un commit est poussé sur `main` sur GitHub :
 
-1. GitHub Actions pousse le code sur GitLab (`le-label-records-group/website`).
-2. La CI GitLab build le site (`npm ci && npm run build` → `dist/`) avec `node:20-alpine`.
-3. La CI déploie `dist/` sur Cloudflare Pages avec `wrangler pages deploy`.
+1. GitHub Actions pousse le code sur GitLab (`le-label-records-group/website`) — secret `GITLAB_TOKEN`.
+2. La pipeline GitLab build le site (`npm ci && npm run build` → `dist/`, job `build`) puis valide le `dist/` (job `validate`).
+3. Le projet Cloudflare Pages `website` (connecté à ce repo GitLab, branche `main`) lance son **build natif** : `npm run build` puis `npx wrangler deploy` — la config `wrangler.jsonc` (assets = `./dist`) fait déployer les fichiers statiques sans détection de framework → déploiement sur https://website.pages.dev.
 
 Vérification : [Actions GitHub](https://github.com/lelabelrecords-stack/website/actions) · [Pipelines GitLab](https://gitlab.com/le-label-records-group/website/-/pipelines).
 
@@ -26,11 +27,7 @@ Vérification : [Actions GitHub](https://github.com/lelabelrecords-stack/website
 
 - `GITLAB_TOKEN` : personal access token GitLab (scopes `api` + `write_repository`), créé sur [gitlab.com/-/profile/personal_access_tokens](https://gitlab.com/-/profile/personal_access_tokens).
 
-**Sur GitLab** — [Settings → CI/CD → Variables](https://gitlab.com/le-label-records-group/website/-/settings/ci_cd) (masked, protected) :
-
-- `CLOUDFLARE_API_TOKEN` : token Cloudflare (droit Pages:Edit), créé sur [dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens).
-- `CLOUDFLARE_ACCOUNT_ID` : Account ID Cloudflare (profil → API).
-- `CF_PAGES_PROJECT_NAME` : nom du projet Cloudflare Pages (défaut `website`) — à adapter si le projet Pages porte un autre nom.
+**Sur GitLab** — [Settings → CI/CD → Variables](https://gitlab.com/le-label-records-group/website/-/settings/ci_cd) : plus besoin de variables Cloudflare depuis le passage au build natif (elles utilisent le « build token » Cloudflare du projet). `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` et `CF_PAGES_PROJECT_NAME` peuvent être supprimées. (La CI les utilisait auparavant pour un déploiement via `wrangler pages deploy` — chemin conservé en secours, voir « Pièges connus ».)
 
 **Sur GitLab** — [Settings → Repository](https://gitlab.com/le-label-records-group/website/-/settings/repository) : retirer la protection de la branche `main` (ou autoriser le force push) sinon le miroir échoue.
 
@@ -66,13 +63,14 @@ npm run build   # build de production dans dist/
 │   ├── components/              # Header, Footer, ReleaseCard, NewsletterForm
 │   ├── pages/                   # Accueil, Artistes, Sorties, Événements, À propos, Contact
 │   └── styles/main.scss         # port du design utrecht.jp (SCSS)
+├── wrangler.jsonc                 # config Worker/assets pour `npx wrangler deploy` (build natif Cloudflare)
 ├── .github/workflows/deploy.yml # miroir GitHub → GitLab
-└── .gitlab-ci.yml               # build + déploiement Cloudflare Pages
+└── .gitlab-ci.yml               # build + validate (le déploiement est fait par Cloudflare)
 ```
 
 ## Pièges connus
 
-- Projet Pages connecté au repo GitLab dans le dashboard (build natif Cloudflare) : le « Deploy command » `npx wrangler deploy` échoue avec « The version of Vite used in the project (...) cannot be automatically configured. Please update the Vite version to at least 6.0.0 » car wrangler traite le projet en Worker. Deux options : (1) recommandée — déconnecter l'intégration Git du projet Pages (projet → Settings → Builds → disconnect) et laisser la CI GitLab déployer via `wrangler pages deploy dist` (le projet doit exister : le créer dans le dashboard, nom = `CF_PAGES_PROJECT_NAME`) ; (2) alternative — garder le build natif Cloudflare et ajouter un `wrangler.jsonc` `{ "name": "website", "compatibility_date": "2026-11-21", "assets": { "directory": "./dist" } }` à la racine (le `npx wrangler deploy` déploiera alors les assets statiques sans détection Vite), puis réduire le job `deploy` GitLab au rôle de validation.
+- Projet Pages connecté au repo GitLab dans le dashboard (build natif Cloudflare) : le « Deploy command » `npx wrangler deploy` échoue avec « The version of Vite used in the project (...) cannot be automatically configured. Please update the Vite version to at least 6.0.0 » car wrangler traite le projet en Worker. Deux options : (1) déconnecter l'intégration Git du projet Pages (projet → Settings → Builds → disconnect) et laisser la CI GitLab déployer via `wrangler pages deploy dist` (nécessite alors les variables `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`, non protégées si `main` ne l'est pas) ; (2) **option retenue** — garder le build natif Cloudflare avec `wrangler.jsonc` à la racine (`assets.directory = ./dist`), le job GitLab ne fait plus que build + validate.
 
 - Erreur wrangler dans le job `deploy` : « it's necessary to set a CLOUDFLARE_API_TOKEN environment variable » → la variable n'est pas injectée. Causes possibles : clé mal nommée, variable créée sur un autre projet/groupe, ou variable cochée **Protected** alors que la branche `main` ne l'est pas (GitLab n'injecte les variables protégées que sur les branches protégées). Correctif : décocher « Protected » (garder « Masked »), ou protéger `main` avec « Allowed to push : Maintainers » + « Allow force push » (le miroir GitHub pousse en `--force`).
 - Erreur wrangler `GET /memberships ... Authentication failed (status: 400) [code: 9106]` → `CLOUDFLARE_ACCOUNT_ID` absent du job (mêmes causes : Protected sur branche non protégée, mauvaise clé, mauvais projet). Sans Account ID, wrangler tente de résoudre le compte via `/memberships`, interdit à un token limité à Pages. Correctif : définir `CLOUDFLARE_ACCOUNT_ID` (32 caractères hex, non protégé). Test local : `CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=... npx wrangler whoami`.

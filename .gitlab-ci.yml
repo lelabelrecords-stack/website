@@ -1,6 +1,6 @@
 stages:
   - build
-  - deploy
+  - validate
 
 variables:
   CF_PAGES_PROJECT_NAME: "website"
@@ -15,25 +15,15 @@ build:
     paths:
       - dist/
 
-deploy:
-  stage: deploy
+validate:
+  stage: validate
   image: node:20-alpine
   needs:
     - build
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
   script:
-    - |
-      if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
-        echo "ERREUR: CLOUDFLARE_API_TOKEN ou CLOUDFLARE_ACCOUNT_ID absent du job."
-        echo "Cause probable: variable cochee 'Protected' alors que la branche main n'est pas protegee,"
-        echo "ou variable creee sur un autre projet/groupe, ou cle mal orthographiee."
-        echo "Correctif: Settings > CI/CD > Variables > decocher 'Protected' (garder 'Masked')."
-        exit 1
-      fi
-    - npm install --no-save wrangler
-    - npx wrangler pages project create "$CF_PAGES_PROJECT_NAME" --production-branch=main || echo "project create a echoue (projet existe deja ?) - on tente le deploy quand meme"
-    - npx wrangler pages deploy dist --project-name="$CF_PAGES_PROJECT_NAME" --branch=main
-  environment:
-    name: production
-    url: https://$CF_PAGES_PROJECT_NAME.pages.dev
+    - test -f dist/index.html
+    - test -f dist/favicon.svg
+    - test -f dist/_redirects
+    - echo "dist/ OK. Déploiement réel assuré par le build natif Cloudflare Pages du projet '$CF_PAGES_PROJECT_NAME' (connecté à ce repo GitLab, deploy: npx wrangler deploy + wrangler.jsonc)."
