@@ -69,3 +69,10 @@ npm run build   # build de production dans dist/
 ├── .github/workflows/deploy.yml # miroir GitHub → GitLab
 └── .gitlab-ci.yml               # build + déploiement Cloudflare Pages
 ```
+
+## Pièges connus
+
+- Erreur wrangler dans le job `deploy` : « it's necessary to set a CLOUDFLARE_API_TOKEN environment variable » → la variable n'est pas injectée. Causes possibles : clé mal nommée, variable créée sur un autre projet/groupe, ou variable cochée **Protected** alors que la branche `main` ne l'est pas (GitLab n'injecte les variables protégées que sur les branches protégées). Correctif : décocher « Protected » (garder « Masked »), ou protéger `main` avec « Allowed to push : Maintainers » + « Allow force push » (le miroir GitHub pousse en `--force`).
+- Après correction des variables, relancer sans nouveau commit : bouton **Retry** sur le job `deploy` de la pipeline en échec, ou `git commit --allow-empty && git push`.
+- Erreur « protected branch » au miroir GitHub → GitLab : `main` est protégée sans force-push autorisé → la déprotéger, ou appliquer le réglage ci-dessus.
+

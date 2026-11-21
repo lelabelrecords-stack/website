@@ -23,6 +23,14 @@ deploy:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
   script:
+    - |
+      if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+        echo "ERREUR: CLOUDFLARE_API_TOKEN ou CLOUDFLARE_ACCOUNT_ID absent du job."
+        echo "Cause probable: variable cochee 'Protected' alors que la branche main n'est pas protegee,"
+        echo "ou variable creee sur un autre projet/groupe, ou cle mal orthographiee."
+        echo "Correctif: Settings > CI/CD > Variables > decocher 'Protected' (garder 'Masked')."
+        exit 1
+      fi
     - npm install --no-save wrangler
     - npx wrangler pages deploy dist --project-name="$CF_PAGES_PROJECT_NAME" --branch=main
   environment:
