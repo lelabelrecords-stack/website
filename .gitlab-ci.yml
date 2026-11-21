@@ -32,7 +32,7 @@ deploy:
         exit 1
       fi
     - npm install --no-save wrangler
-    - npx wrangler pages project create "$CF_PAGES_PROJECT_NAME" || echo "Projet deja existant, on continue."
+    - npx wrangler pages project create "$CF_PAGES_PROJECT_NAME" --production-branch=main || echo "project create a echoue (projet existe deja ?) - on tente le deploy quand meme"
     - npx wrangler pages deploy dist --project-name="$CF_PAGES_PROJECT_NAME" --branch=main
   environment:
     name: production
