@@ -1,3 +1,4 @@
+import Label from '../components/ui/Label.jsx'
 import { usePageMeta } from '../seo.js'
 import { evenements, formatDate } from '../data.js'
 
@@ -23,7 +24,7 @@ export default function Evenements() {
             </p>
             <h3 className="__row">{e.title}</h3>
             <p className="__row textsize-regular-lh-small">
-              {e.lieu}, {e.ville} — <span className="label">{e.type}</span>
+              {e.lieu}, {e.ville} — <Label>{e.type}</Label>
             </p>
             {e.link && (
               <p className="__row textsize-small">

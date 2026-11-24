@@ -1,3 +1,4 @@
+import Label from '../components/ui/Label.jsx'
 import { usePageMeta } from '../seo.js'
 import { artistes, sorties } from '../data.js'
 
@@ -21,8 +22,8 @@ export default function Artistes() {
               <div className="col-33 col-50-tablet col-100-sp">
                 <h3 id={`artiste-${a.id}`}>{a.name}</h3>
                 <p className="__row">
-                  <span className="label">{a.genre}</span>{' '}
-                  <span className="label">{a.ville}</span>
+                  <Label>{a.genre}</Label>{' '}
+                  <Label>{a.ville}</Label>
                 </p>
               </div>
               <div className="col-66 col-50-tablet col-100-sp">
