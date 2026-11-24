@@ -7,7 +7,7 @@ function releasesOf(artist) {
 export default function Artistes() {
   return (
     <>
-      <h2>Artistes</h2>
+      <h1>Artistes</h1>
       <p className="_row lead">Le roster du label.</p>
 
       {artistes.map((a) => {

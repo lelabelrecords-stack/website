@@ -5,7 +5,7 @@ export default function Radio() {
 
   return (
     <>
-      <h2>{radio.name}</h2>
+      <h1>{radio.name}</h1>
       <p className="_row lead">{radio.tagline}</p>
 
       <hr className="_row" />

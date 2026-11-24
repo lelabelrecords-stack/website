@@ -3,7 +3,7 @@ import { config } from '../data.js'
 export default function APropos() {
   return (
     <>
-      <h2>À propos</h2>
+      <h1>À propos</h1>
 
       <section aria-labelledby="apropos-label" className="_row">
         <h3 id="apropos-label" className="visually-hidden">Le label</h3>

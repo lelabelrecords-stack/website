@@ -6,7 +6,7 @@ export default function News() {
 
   return (
     <>
-      <h2>News</h2>
+      <h1>News</h1>
       <ul className="_row">
         {sorted.map((n) => (
           <li className="list-item" key={n.title}>

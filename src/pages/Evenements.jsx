@@ -10,7 +10,7 @@ export default function Evenements() {
 
   return (
     <>
-      <h2>Événements</h2>
+      <h1>Événements</h1>
       <p className="_row lead">Concerts, release parties, festivals.</p>
       <ul className="_row">
         {sorted.map((e) => (

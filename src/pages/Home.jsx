@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <section aria-labelledby="home-news">
-        <h2 id="home-news">News / Actualités</h2>
+        <h1 id="home-news">News / Actualités</h1>
         <ul className="_row">
           {latestNews.map((n) => (
             <li className="list-item" key={n.title}>

@@ -3,7 +3,7 @@ import { config } from '../data.js'
 export default function Contact() {
   return (
     <>
-      <h2>Contact</h2>
+      <h1>Contact</h1>
 
       <section aria-labelledby="contact-general" className="_row">
         <h3 id="contact-general">Contact général</h3>

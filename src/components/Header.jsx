@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const LINKS = [
   { to: '/', label: 'Accueil', end: true },
@@ -17,9 +17,6 @@ export default function Header() {
 
   return (
     <header id="header">
-      <h1 id="site-identity">
-        <Link to="/" onClick={() => setOpen(false)}>Le Label Records</Link>
-      </h1>
       <nav className={`site-nav${open ? ' is-open' : ''}`} aria-label="Navigation principale">
         <button
           type="button"
