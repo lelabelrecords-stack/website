@@ -29,8 +29,11 @@ export default function DesignSystem() {
           <ListItem>1 seul <code>h1.hero-title</code> par page, rendu par la primitive <code>&lt;Hero&gt;</code>.</ListItem>
           <ListItem>Couleurs 100 % via <code>var(--accent/--bg/--on-accent)</code> — jamais de hexadécimal en dur dans un composant (sauf swatches du DS).</ListItem>
           <ListItem><code>border-radius: 0</code> partout (<code>$radius</code>), filet unique <code>$bw: 1px</code>.</ListItem>
-          <ListItem>États interactifs uniquement via ARIA (<code>aria-current</code>, <code>aria-selected</code>, <code>aria-pressed</code>, <code>aria-expanded</code>).</ListItem>
-          <ListItem><code>:focus-visible</code> obligatoire, <code>prefers-reduced-motion</code> respecté, contraste AA.</ListItem>
+          <ListItem>États interactifs uniquement via ARIA (<code>aria-current</code>, <code>aria-selected</code>, <code>aria-pressed</code>, <code>aria-expanded</code>, <code>aria-modal</code>).</ListItem>
+          <ListItem><code>:focus-visible</code> obligatoire, <code>prefers-reduced-motion</code> respecté, contraste AA (rouge #DB0000 sur blanc = 5.23:1, mono #343434 = 12.45:1).</ListItem>
+          <ListItem>Skip-link : la cible <code>#main</code> a <code>tabIndex={-1}</code> (focus clavier effectif).</ListItem>
+          <ListItem>Menu plein écran = dialog modal : <code>role="dialog" aria-modal="true"</code>, contenu derrière en <code>inert</code>, focus sur le 1<sup>er</sup> lien, Échap ferme, focus rendu au bouton Menu.</ListItem>
+          <ListItem>Onglets : roving tabindex (<code>tabIndex</code> 0/-1) + flèches ←→↑↓ avec activation automatique (dans la primitive <code>&lt;Tab&gt;</code>).</ListItem>
           <ListItem>Tout lien d'action passe par <code>&lt;Button&gt;</code> — jamais d'ancre <code>className="button"</code> brute.</ListItem>
           <ListItem>Structure : <code>tokens.scss</code> → partial <code>components/*.scss</code> → primitive <code>ui/*.jsx</code> → documenté ici → testé en SSR.</ListItem>
         </ul>
@@ -139,7 +142,7 @@ export default function DesignSystem() {
           <Tab selected={tab === 'events'} controls="ds-panel" onClick={() => setTab('events')}>Événements</Tab>
         </div>
         <p className="__row textsize-small" id="ds-panel" role="tabpanel">
-          Onglet actif : <strong>{tab}</strong>
+          Onglet actif : <strong>{tab}</strong> — naviguez au clavier avec les flèches ← →.
         </p>
 
         <h3 className="_row">ListItem</h3>
@@ -167,7 +170,9 @@ export default function DesignSystem() {
         <p className="__row textsize-small">
           Sticky, <strong>aucune nav en ligne</strong> : navigation uniquement via le bouton
           <code>Menu</code> (<code>.button.nav-toggle</code>, visible à toutes les tailles) qui ouvre le menu
-          plein écran (<code>.site-nav.is-open</code>, Échap ferme, focus sur le 1<sup>er</sup> lien).
+          plein écran (<code>.site-nav.is-open</code>) en dialog modal
+          (<code>role="dialog" aria-modal="true"</code>, page et footer <code>inert</code>,
+          Échap ferme, focus sur le 1<sup>er</sup> lien puis rendu au bouton Menu).
           Au scroll, le header affiche la marque (<code>.header-brand</code> = logo + « Le Label Records »,
           classe <code>is-scrolled</code> posée par <code>Header.jsx</code> ; nom masqué ≤767px).
           Bouton thème « Appliquer le #… » à droite.

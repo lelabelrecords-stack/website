@@ -19,6 +19,7 @@ export default function Header() {
     typeof document !== 'undefined' && document.documentElement.dataset.theme === 'mono' ? 'mono' : 'rouge'
   )
   const navRef = useRef(null)
+  const toggleRef = useRef(null)
 
   const target = theme === 'rouge' ? { name: 'mono', hex: '#343434' } : { name: 'rouge', hex: '#DB0000' }
 
@@ -51,9 +52,16 @@ export default function Header() {
     }
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
+    const main = document.getElementById('main-container')
+    const footer = document.getElementById('footer')
+    main?.setAttribute('inert', '')
+    footer?.setAttribute('inert', '')
     return () => {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
+      main?.removeAttribute('inert')
+      footer?.removeAttribute('inert')
+      toggleRef.current?.focus()
     }
   }, [open])
 
@@ -78,7 +86,12 @@ export default function Header() {
           <span className="header-brand-name">Le Label Records</span>
         </Link>
       )}
-      <nav ref={navRef} className={`site-nav${open ? ' is-open' : ''}`} aria-label="Navigation principale">
+      <nav
+        ref={navRef}
+        className={`site-nav${open ? ' is-open' : ''}`}
+        aria-label="Menu de navigation"
+        {...(open ? { role: 'dialog', 'aria-modal': 'true' } : {})}
+      >
         <ul id="site-nav-list">
           {LINKS.map((l) => (
             <li key={l.to}>
@@ -107,6 +120,7 @@ export default function Header() {
           {`Appliquer le ${target.hex}`}
         </button>
         <button
+          ref={toggleRef}
           type="button"
           className="button nav-toggle"
           aria-expanded={open}

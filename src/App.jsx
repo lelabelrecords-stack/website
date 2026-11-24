@@ -44,7 +44,7 @@ export default function App() {
             <a href={`mailto:${config.email}`}>{config.email}</a>
           </p>
         </aside>
-        <main id="main">
+        <main id="main" tabIndex={-1}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/artistes" element={<Artistes />} />

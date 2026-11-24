@@ -118,6 +118,11 @@ a:hover {
   text-decoration: none;
 }
 
+// Cible du skip-link : focus programmatique, pas de contour géant sur <main>
+#main:focus {
+  outline: none;
+}
+
 // Typographie de base
 
 h1,
