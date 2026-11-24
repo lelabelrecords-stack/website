@@ -14,7 +14,7 @@ export default function Artistes() {
         const rel = releasesOf(a)
         return (
           <section key={a.id} aria-labelledby={`artiste-${a.id}`}>
-            <hr className="row" />
+            <hr className="_row" />
             <div className="flex-container">
               <div className="col-33 col-50-tablet col-100-sp">
                 <h3 id={`artiste-${a.id}`}>{a.name}</h3>

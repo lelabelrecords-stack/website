@@ -11,69 +11,48 @@ export default function Home() {
   return (
     <>
       {bannerEvent && (
-        <section aria-label="Prochain événement" className="flex-container is-flex-wrap-nowrap is-break-tablet">
-          <div className="col-50 col-100-tablet">
-            <div className="image-container">
-              <div className="cover cover--white">
-                <img src="/assets/logo-contour-rouge.svg" alt="Logo contour rouge du Le Label Records" />
-              </div>
-            </div>
-          </div>
-          <div className="col-50 col-100-tablet">
-            <div className="__row">
-              <p className="textsize-small">Coming Soon / À venir</p>
-              <h2 className="___row">{bannerEvent.title}</h2>
-              <p className="___row">
-                <strong>
-                  {formatDate(bannerEvent.date) || 'Date à confirmer'}
-                  {bannerEvent.dateEnd ? ` — ${formatDate(bannerEvent.dateEnd)}` : ''}
-                </strong>
-              </p>
-              <p className="___row textsize-regular-lh-small">
-                {bannerEvent.lieu}, {bannerEvent.ville} — <span className="label">{bannerEvent.type}</span>
-              </p>
-              {bannerEvent.link && (
-                <p className="___row textsize-small">
-                  <a href={bannerEvent.link} target="_blank" rel="noopener noreferrer">Lien</a>
-                </p>
-              )}
-              <p className="___row textsize-small">
-                <Link to="/evenements">Tous les événements</Link>
-              </p>
-            </div>
-          </div>
+        <section aria-label="Prochain événement">
+          <p className="textsize-small">Coming Soon / À venir</p>
+          <h2 className="___row">{bannerEvent.title}</h2>
+          <p className="___row">
+            <strong>
+              {formatDate(bannerEvent.date) || 'Date à confirmer'}
+              {bannerEvent.dateEnd ? ` — ${formatDate(bannerEvent.dateEnd)}` : ''}
+            </strong>
+          </p>
+          <p className="___row textsize-regular-lh-small">
+            {bannerEvent.lieu}, {bannerEvent.ville} — <span className="label">{bannerEvent.type}</span>
+          </p>
+          <p className="___row textsize-small">
+            {bannerEvent.link && (
+              <>
+                <a href={bannerEvent.link} target="_blank" rel="noopener noreferrer">Lien</a>
+                {' · '}
+              </>
+            )}
+            <Link to="/evenements">Tous les événements</Link>
+          </p>
         </section>
       )}
 
       {bannerNews && (
-        <section aria-label="News" className="row flex-container is-flex-wrap-nowrap is-break-tablet">
-          <div className="col-50 col-100-tablet">
-            <div className="image-container">
-              <div className="cover cover--red">
-                <img src="/assets/logo-contour-rouge-blanc.svg" alt="" aria-hidden="true" />
-              </div>
-            </div>
-          </div>
-          <div className="col-50 col-100-tablet">
-            <div className="__row">
-              <p className="textsize-small">News / Actualités</p>
-              <h2 className="___row">{bannerNews.title}</h2>
-              <p className="___row textsize-regular-lh-small">{bannerNews.text}</p>
-              <p className="___row textsize-small">
-                {bannerNews.link ? (
-                  <a href={bannerNews.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
-                ) : (
-                  <Link to="/news">Toutes les news</Link>
-                )}
+        <section aria-label="Dernière news" className="_row">
+          <p className="textsize-small">News / Actualités</p>
+          <h2 className="___row">{bannerNews.title}</h2>
+          <p className="___row textsize-regular-lh-small">{bannerNews.text}</p>
+          <p className="___row textsize-small">
+            {bannerNews.link && (
+              <>
+                <a href={bannerNews.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
                 {' · '}
-                <Link to="/news">Toutes les news</Link>
-              </p>
-            </div>
-          </div>
+              </>
+            )}
+            <Link to="/news">Toutes les news</Link>
+          </p>
         </section>
       )}
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-label="Sorties">
         <div className="flex-container _row">
@@ -84,7 +63,7 @@ export default function Home() {
         <p className="_row textsize-small"><Link to="/sorties">Toutes les sorties</Link></p>
       </section>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="home-events">
         <h2 id="home-events">Événements</h2>
@@ -104,7 +83,7 @@ export default function Home() {
         </ul>
       </section>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="home-radio">
         <h2 id="home-radio">{config.radio.name} — à la radio</h2>

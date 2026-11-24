@@ -13,7 +13,7 @@ export default function Contact() {
         <p className="__row textsize-small">{config.email}</p>
       </section>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="contact-demos">
         <h3 id="contact-demos">Envoyer une démo</h3>
@@ -32,14 +32,14 @@ export default function Contact() {
         </p>
       </section>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="contact-adresse">
         <h3 id="contact-adresse">Adresse</h3>
         <p className="_row">{config.address}</p>
       </section>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="contact-reseaux">
         <h3 id="contact-reseaux">Réseaux</h3>

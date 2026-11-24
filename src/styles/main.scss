@@ -176,6 +176,23 @@ p + p {
     font-size: 0.66667rem;
     line-height: 1.08333rem;
   }
+
+  // Responsive mobile : gouttières réduites, pastilles et titres plus petits
+  .flex-container {
+    margin: 0 -12.5px;
+  }
+
+  [class*='col-'] {
+    padding: 0 12.5px;
+  }
+
+  .image-label {
+    font-size: 0.66667rem;
+    padding: 0.25rem 0.75rem 0.33333rem;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 // ---------- Rythme vertical (spacers, du plus grand au plus petit) ----------
@@ -343,6 +360,10 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
     margin: 2.08333rem 0 0 2.08333rem;
   }
 
+  #site-identity {
+    width: 4.16667rem;
+  }
+
   .nav-toggle {
     display: inline-block;
   }
@@ -463,20 +484,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   padding-bottom: 150%;
 }
 
-// Visuel (aucune image raster : fond rouge/noir + logo vectoriel)
-.cover {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  text-align: center;
-  line-height: 1.25;
-}
-
+// Visuel uni rouge/noir (aucune image raster, aucun gros logo : juste la pastille)
 .cover--red {
   background-color: $red;
   color: $white;
@@ -485,26 +493,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 .cover--black {
   background-color: $ink;
   color: $white;
-}
-
-.cover--white {
-  background-color: $white;
-  color: $red;
-}
-
-.cover img {
-  width: 40%;
-}
-
-.image-container.is-product .cover img {
-  width: 45%;
-}
-
-.cover-title {
-  font-family: $font-black;
-  font-size: 1.25rem;
-  line-height: 1.1;
-  overflow-wrap: anywhere;
 }
 
 // Pastille centrée sur le visuel (prix chez utrecht.jp, type de sortie ici)
@@ -533,12 +521,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 .hover-image:hover .cover--black,
 .hover-image:focus-visible .cover--black {
   background-color: $red;
-}
-
-.hover-image:hover .cover--white,
-.hover-image:focus-visible .cover--white {
-  background-color: $red;
-  color: $white;
 }
 
 .release-links {

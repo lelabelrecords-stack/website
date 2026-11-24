@@ -15,18 +15,12 @@ export default function ReleaseCard({ release }) {
           rel="noopener noreferrer"
           aria-label={`${artist} — ${title} : écouter`}
         >
-          <div className="image-container is-product">
-            <div className={`cover ${coverClass}`}>
-              <img src="/assets/logo-contour-rouge-blanc.svg" alt="" aria-hidden="true" />
-            </div>
+          <div className={`image-container is-product ${coverClass}`}>
             <span className="image-label">{type}</span>
           </div>
         </a>
       ) : (
-        <div className="image-container is-product">
-          <div className={`cover ${coverClass}`}>
-            <img src="/assets/logo-contour-rouge-blanc.svg" alt="" aria-hidden="true" />
-          </div>
+        <div className={`image-container is-product ${coverClass}`}>
           <span className="image-label">{type}</span>
         </div>
       )}

@@ -8,7 +8,7 @@ export default function Sorties() {
     <>
       <h2>Sorties</h2>
       <p className="_row lead">Le catalogue du label, aussi sur Bandcamp.</p>
-      <div className="flex-container row">
+      <div className="flex-container _row">
         {sorted.map((s) => (
           <ReleaseCard key={s.id} release={s} />
         ))}

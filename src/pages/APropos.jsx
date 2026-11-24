@@ -11,7 +11,7 @@ export default function APropos() {
         <p className="_row">{config.description}</p>
       </section>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="apropos-doctrine">
         <h3 id="apropos-doctrine">Doctrine</h3>
@@ -22,7 +22,7 @@ export default function APropos() {
         </ul>
       </section>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="apropos-adresse">
         <h3 id="apropos-adresse">Adresse</h3>

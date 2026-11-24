@@ -7,7 +7,7 @@ export default function News() {
   return (
     <>
       <h2>News</h2>
-      <ul className="row">
+      <ul className="_row">
         {sorted.map((n) => (
           <li className="list-item" key={n.title}>
             <p className="list-date">{formatDate(n.date) || 'À venir'}</p>

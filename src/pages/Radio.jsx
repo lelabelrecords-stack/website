@@ -8,7 +8,7 @@ export default function Radio() {
       <h2>{radio.name}</h2>
       <p className="_row lead">{radio.tagline}</p>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="radio-slots">
         <h3 id="radio-slots">À l'antenne</h3>
@@ -25,7 +25,7 @@ export default function Radio() {
         </ul>
       </section>
 
-      <hr className="row" />
+      <hr className="_row" />
 
       <section aria-labelledby="radio-episodes">
         <h3 id="radio-episodes">Épisodes</h3>

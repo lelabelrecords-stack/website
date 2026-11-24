@@ -12,7 +12,7 @@ export default function Evenements() {
     <>
       <h2>Événements</h2>
       <p className="_row lead">Concerts, release parties, festivals.</p>
-      <ul className="row">
+      <ul className="_row">
         {sorted.map((e) => (
           <li className="list-item" key={`${e.title}-${e.date || 'tba'}`}>
             <p className="list-date">
