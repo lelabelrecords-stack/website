@@ -9,8 +9,6 @@ env:
   GITLAB_HOST: "gitlab.com"
   GITLAB_REPO: "le-label-records-group/website"
   TARGET_BRANCH: "main"
-  CHECKOUT_ACTION: "actions/checkout@v4"
-  RUNNER_IMAGE: "ubuntu-latest"
   FETCH_DEPTH: "0"
 
 permissions:
@@ -18,10 +16,10 @@ permissions:
 
 jobs:
   mirror:
-    runs-on: ${{ env.RUNNER_IMAGE }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout GitHub repo
-        uses: ${{ env.CHECKOUT_ACTION }}
+        uses: actions/checkout@v4
         with:
           fetch-depth: ${{ env.FETCH_DEPTH }}
       - name: Push to GitLab
