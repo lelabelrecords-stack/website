@@ -38,7 +38,8 @@ export default function App() {
         <aside id="main-side" aria-label="Coordonnées du label">
           <Logo />
           <p className="is-writing-mode-vertical is-writing-mode-break-tablet">
-            {config.label_name} — {config.address} —{' '}
+            {config.label_name} — {config.address}
+            <br />
             <a href={`mailto:${config.email}`}>{config.email}</a>
           </p>
         </aside>
