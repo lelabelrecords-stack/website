@@ -1,15 +1,17 @@
 import { usePageMeta } from '../seo.js'
 import { config } from '../data.js'
+import Hero from '../components/ui/Hero.jsx'
+import Lead from '../components/ui/Lead.jsx'
 
 export default function APropos() {
   usePageMeta('À propos — Le Label Records', 'Le Label Records, label indépendant à Nîmes : accompagnement des artistes, de près et avec des humains.')
   return (
     <>
-      <h1 className="hero-title">À propos</h1>
+      <Hero title="À propos" />
 
       <section aria-labelledby="apropos-label" className="_row">
         <h3 id="apropos-label" className="visually-hidden">Le label</h3>
-        <p className="lead">{config.baseline}</p>
+        <Lead>{config.baseline}</Lead>
         <p className="_row">{config.description}</p>
       </section>
 

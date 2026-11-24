@@ -1,0 +1,144 @@
+@use 'tokens' as *;
+
+// Rythme vertical (spacers) — classes générées depuis l'échelle $spaces
+
+@each $name, $size in $spaces {
+  .#{$name} { padding-top: $size; }
+}
+
+hr {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  background: none;
+}
+
+.display-block {
+  display: block;
+}
+
+// Grille
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 (-$gut);
+}
+
+.flex-container.is-flex-wrap-nowrap {
+  flex-wrap: nowrap;
+}
+
+@each $c in $cols {
+  .col-#{$c} {
+    width: #{$c} + '%';
+    padding: 0 $gut;
+  }
+}
+
+@media (max-width: $pc-small) {
+  @each $c in $cols {
+    .col-#{$c}-pc-small { width: #{$c} + '%'; padding: 0 $gut; }
+  }
+}
+
+@media (max-width: $tablet) {
+  @each $c in $cols {
+    .col-#{$c}-tablet { width: #{$c} + '%'; padding: 0 $gut; }
+  }
+  .is-break-tablet { display: block; }
+}
+
+@media (max-width: $sp) {
+  @each $c in $cols {
+    .col-#{$c}-sp { width: #{$c} + '%'; padding: 0 $gut; }
+  }
+
+  .flex-container {
+    margin: 0 -12.5px;
+  }
+
+  [class*='col-'] {
+    padding: 0 12.5px;
+  }
+}
+
+@media (min-width: $pc-large) {
+  @each $c in $cols {
+    .col-#{$c}-pc-large { width: #{$c} + '%'; padding: 0 $gut; }
+  }
+}
+
+// Colonne latérale verticale + zone principale
+
+#main-container {
+  margin: 3.33333rem 4.16667rem 0 3.33333rem;
+}
+
+#main-side {
+  position: relative;
+  z-index: 12;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 8.33333rem;
+  white-space: nowrap;
+}
+
+#main {
+  margin-left: 4.16667rem;
+  width: calc(100% - 12.5rem);
+}
+
+.is-writing-mode-vertical {
+  writing-mode: vertical-rl;
+  display: inline-block;
+}
+
+@media (max-width: $pc-small) {
+  #main-container {
+    margin: 3.33333rem 4.16667rem 0 2.5rem;
+  }
+
+  #main-side {
+    width: 5.83333rem;
+  }
+
+  #main {
+    margin-left: 2.91667rem;
+    width: calc(100% - 8.75rem);
+  }
+}
+
+@media (max-width: $tablet) {
+  #main-container {
+    margin: 2.5rem 2.5rem 0;
+  }
+
+  #main-side {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    white-space: normal;
+    padding-bottom: 1.5rem;
+  }
+
+  .is-writing-mode-vertical.is-writing-mode-break-tablet {
+    writing-mode: horizontal-tb;
+  }
+
+  #main {
+    width: auto;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: $sp) {
+  #main-container {
+    margin: 2.08333rem 2.08333rem 0;
+  }
+}

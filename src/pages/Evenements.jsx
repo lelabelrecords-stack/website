@@ -1,4 +1,8 @@
 import Label from '../components/ui/Label.jsx'
+import Hero from '../components/ui/Hero.jsx'
+import Lead from '../components/ui/Lead.jsx'
+import ListItem from '../components/ui/ListItem.jsx'
+import Button from '../components/ui/Button.jsx'
 import { usePageMeta } from '../seo.js'
 import { evenements, formatDate } from '../data.js'
 
@@ -13,11 +17,11 @@ export default function Evenements() {
 
   return (
     <>
-      <h1 className="hero-title">Événements</h1>
-      <p className="_row lead">Concerts, release parties, festivals.</p>
+      <Hero title="Événements" />
+      <Lead className="_row">Concerts, release parties, festivals.</Lead>
       <ul className="_row">
         {sorted.map((e) => (
-          <li className="list-item" key={`${e.title}-${e.date || 'tba'}`}>
+          <ListItem key={`${e.title}-${e.date || 'tba'}`}>
             <p className="list-date">
               {formatDate(e.date) || 'Date à confirmer'}
               {e.dateEnd ? ` — ${formatDate(e.dateEnd)}` : ''}
@@ -28,10 +32,10 @@ export default function Evenements() {
             </p>
             {e.link && (
               <p className="__row textsize-small">
-                <a className="button" href={e.link} target="_blank" rel="noopener noreferrer">Lien</a>
+                <Button href={e.link} target="_blank" rel="noopener noreferrer">Lien</Button>
               </p>
             )}
-          </li>
+          </ListItem>
         ))}
       </ul>
     </>

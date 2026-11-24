@@ -1,13 +1,15 @@
 import { usePageMeta } from '../seo.js'
-import { Link } from 'react-router-dom'
+import Hero from '../components/ui/Hero.jsx'
+import Lead from '../components/ui/Lead.jsx'
+import Button from '../components/ui/Button.jsx'
 
 export default function NotFound() {
   usePageMeta('Page introuvable — Le Label Records', "Cette page n'existe pas. Retour à l'accueil du Le Label Records.")
   return (
     <>
-      <h1 className="hero-title">Page introuvable</h1>
-      <p className="_row lead">Cette page n'existe pas (ou plus).</p>
-      <p className="_row"><Link to="/">Retour à l'accueil</Link></p>
+      <Hero title="Page introuvable" />
+      <Lead className="_row">Cette page n'existe pas (ou plus).</Lead>
+      <p className="_row"><Button to="/">Retour à l'accueil</Button></p>
     </>
   )
 }

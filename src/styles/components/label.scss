@@ -1,0 +1,12 @@
+@use '../tokens' as *;
+
+.label {
+  display: inline-block;
+  padding: 0.25rem 0.83333rem;
+  border: solid $bw var(--accent);
+}
+
+.label--filled {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}

@@ -1,4 +1,7 @@
 import Label from '../components/ui/Label.jsx'
+import Hero from '../components/ui/Hero.jsx'
+import Lead from '../components/ui/Lead.jsx'
+import Button from '../components/ui/Button.jsx'
 import { usePageMeta } from '../seo.js'
 import { artistes, sorties } from '../data.js'
 
@@ -10,8 +13,8 @@ export default function Artistes() {
   usePageMeta('Artistes — Le Label Records', 'Le roster du Le Label Records : Montevideo (post-punk, Nîmes), K0RROBOR (trio instrumental, Nîmes), Teknotrokids.')
   return (
     <>
-      <h1 className="hero-title">Artistes</h1>
-      <p className="_row lead">Le roster du label.</p>
+      <Hero title="Artistes" />
+      <Lead className="_row">Le roster du label.</Lead>
 
       {artistes.map((a) => {
         const rel = releasesOf(a)
@@ -36,9 +39,9 @@ export default function Artistes() {
                 <ul className="__row release-links">
                   {Object.entries(a.links).map(([key, url]) => (
                     <li key={key}>
-                      <a className="button" href={url} target="_blank" rel="noopener noreferrer">
+                      <Button href={url} target="_blank" rel="noopener noreferrer">
                         {key === 'artiste' ? 'Page artiste' : key.charAt(0).toUpperCase() + key.slice(1)}
-                      </a>
+                      </Button>
                     </li>
                   ))}
                 </ul>

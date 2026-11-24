@@ -1,0 +1,21 @@
+@use '../tokens' as *;
+
+// Logo SVG en masque CSS : la couleur suit --accent (thème rouge/gris)
+.logo-svg {
+  display: block;
+  background-color: var(--accent);
+  -webkit-mask: url('/assets/logo-contour-rouge.svg') center / contain no-repeat;
+  mask: url('/assets/logo-contour-rouge.svg') center / contain no-repeat;
+}
+
+#main-side .logo-svg {
+  width: 100%;
+  aspect-ratio: 571.799 / 763.875;
+}
+
+@media (max-width: $tablet) {
+  #main-side .logo-svg {
+    width: 4.16667rem;
+    flex: none;
+  }
+}

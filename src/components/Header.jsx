@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 const LINKS = [
@@ -18,6 +18,9 @@ export default function Header() {
   const [theme, setTheme] = useState(() =>
     typeof document !== 'undefined' && document.documentElement.dataset.theme === 'mono' ? 'mono' : 'rouge'
   )
+  const navRef = useRef(null)
+
+  const target = theme === 'rouge' ? { name: 'mono', hex: '#343434' } : { name: 'rouge', hex: '#DB0000' }
 
   useEffect(() => {
     let ticking = false
@@ -40,7 +43,19 @@ export default function Header() {
     }
   }, [])
 
-  const target = theme === 'rouge' ? { name: 'mono', hex: '#343434' } : { name: 'rouge', hex: '#DB0000' }
+  useEffect(() => {
+    if (!open) return
+    navRef.current?.querySelector('a')?.focus()
+    const onKey = (e) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [open])
 
   const toggleTheme = () => {
     const next = target.name
@@ -63,7 +78,7 @@ export default function Header() {
           <span className="header-brand-name">Le Label Records</span>
         </Link>
       )}
-      <nav className={`site-nav${open ? ' is-open' : ''}`} aria-label="Navigation principale">
+      <nav ref={navRef} className={`site-nav${open ? ' is-open' : ''}`} aria-label="Navigation principale">
         <ul id="site-nav-list">
           {LINKS.map((l) => (
             <li key={l.to}>

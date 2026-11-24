@@ -1,0 +1,120 @@
+@use '../tokens' as *;
+
+#header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  display: flex;
+  align-items: center;
+  gap: $gut;
+  margin: 0;
+  padding: 1.5rem 3.33333rem;
+  background-color: var(--bg);
+  border-bottom: $bw solid var(--accent);
+}
+
+// Navigation : aucun lien en ligne, uniquement le menu plein écran (bouton Menu, toutes tailles)
+.site-nav {
+  flex: 1 1 auto;
+  font-size: $fs-small;
+  line-height: $lh-small;
+}
+
+.site-nav ul {
+  display: none;
+}
+
+.site-nav.is-open ul {
+  position: fixed;
+  inset: 0;
+  z-index: $z-menu;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2rem;
+  background-color: var(--bg);
+  font-family: $font-black;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.site-nav a[aria-current='page'] {
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.header-actions {
+  position: relative;
+  z-index: $z-actions;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.theme-toggle .swatch {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 0.4em;
+  background-color: var(--accent);
+  border: $bw solid var(--accent);
+  vertical-align: baseline;
+}
+
+.button.nav-toggle {
+  display: inline-block;
+}
+
+// Marque affichée dans le header sticky quand le logo principal est hors champ
+.header-brand {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  flex: none;
+}
+
+#header.is-scrolled .header-brand {
+  display: inline-flex;
+}
+
+.header-brand:hover {
+  text-decoration: none;
+}
+
+.header-logo {
+  width: 2.08333rem;
+  aspect-ratio: 571.799 / 763.875;
+  flex: none;
+}
+
+.header-brand-name {
+  font-family: $font-black;
+  font-weight: 900;
+  font-size: $fs-small;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@media (max-width: $tablet) {
+  #header {
+    padding: 1.25rem 2.5rem;
+  }
+}
+
+@media (max-width: $sp) {
+  #header {
+    padding: 1rem 2.08333rem;
+  }
+
+  .header-brand-name {
+    display: none;
+  }
+}

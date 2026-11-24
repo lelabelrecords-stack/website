@@ -1,16 +1,18 @@
 import { usePageMeta } from '../seo.js'
 import { config } from '../data.js'
+import Hero from '../components/ui/Hero.jsx'
+import Button from '../components/ui/Button.jsx'
 
 export default function Contact() {
   usePageMeta('Contact — Le Label Records', 'Contacter le Le Label Records (Nîmes) : presse à le.label.contact@gmail.com, démos à lelabel@le-label.org, 8 rue Nationale 30000 Nîmes.')
   return (
     <>
-      <h1 className="hero-title">Contact</h1>
+      <Hero title="Contact" />
 
       <section aria-labelledby="contact-general" className="_row">
         <h3 id="contact-general">Contact général</h3>
         <p className="_row">
-          <a className="button" href={`mailto:${config.email}`}>Écrire au label</a>
+          <Button href={`mailto:${config.email}`}>Écrire au label</Button>
         </p>
         <p className="__row textsize-small">{config.email}</p>
       </section>
@@ -20,12 +22,11 @@ export default function Contact() {
       <section aria-labelledby="contact-demos">
         <h3 id="contact-demos">Envoyer une démo</h3>
         <p className="_row">
-          <a
-            className="button"
+          <Button
             href={`mailto:${config.demo_submission_email}?subject=${encodeURIComponent('Démo — Le Label Records')}`}
           >
             Envoyer une démo
-          </a>
+          </Button>
         </p>
         <p className="__row textsize-small">{config.demo_submission_email}</p>
         <p className="__row textsize-regular-lh-small">

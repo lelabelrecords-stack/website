@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { config, artistes, news, sorties, evenements, formatDate } from '../data.js'
 import ReleaseCard from '../components/ReleaseCard.jsx'
+import Hero from '../components/ui/Hero.jsx'
+import Marquee from '../components/ui/Marquee.jsx'
 import Tab from '../components/ui/Tab.jsx'
 import Label from '../components/ui/Label.jsx'
 import Button from '../components/ui/Button.jsx'
+import ListItem from '../components/ui/ListItem.jsx'
 
 const TAB_LABELS = {
   toutes: 'Toutes',
@@ -39,17 +41,9 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero" aria-label="Le Label Records">
-        <h1 className="hero-title">Le Label<br />Records</h1>
-        <p className="hero-sub">{config.baseline}</p>
-      </section>
+      <Hero title={<>Le Label<br />Records</>} sub={config.baseline} />
 
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          <span>{marqueeText}&nbsp;·&nbsp;</span>
-          <span>{marqueeText}&nbsp;·&nbsp;</span>
-        </div>
-      </div>
+      <Marquee text={marqueeText} />
 
       <section aria-labelledby="home-news" className="_row">
         <h2 id="home-news">News / Actualités</h2>
@@ -62,7 +56,7 @@ export default function Home() {
         </div>
         <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-label="Actualités filtrées">
           {filtered.map(({ kind, date, item }) => (
-            <li className="list-item col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
+            <ListItem className="col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">
                 {formatDate(date) || 'À venir'} — <Label>{kind === 'news' ? 'Actu' : item.type}</Label>{' '}
                 {kind === 'news' ? (
@@ -81,7 +75,7 @@ export default function Home() {
               <p className="___row textsize-regular-lh-small">
                 {kind === 'news' ? item.text : `${item.lieu}, ${item.ville}`}
               </p>
-            </li>
+            </ListItem>
           ))}
         </ul>
       </section>
@@ -107,13 +101,13 @@ export default function Home() {
         <p className="_row textsize-regular-lh-small">{config.radio.tagline}</p>
         <ul className="_row">
           {config.radio.slots.map((slot) => (
-            <li className="list-item" key={slot.label}>
+            <ListItem key={slot.label}>
               <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
               <p className="__row">
                 <Button href={slot.link} target="_blank" rel="noopener noreferrer">Écouter</Button>
               </p>
-            </li>
+            </ListItem>
           ))}
         </ul>
         <p className="_row"><Button to="/radio">Tous les épisodes</Button></p>

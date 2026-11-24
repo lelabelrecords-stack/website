@@ -1,0 +1,37 @@
+@use '../tokens' as *;
+
+// Listes (news, événements) — compactes pour remonter vite aux cartes
+.list-item {
+  padding: 0.52083rem 0;
+  border-top: $bw solid var(--accent);
+}
+
+.list-item:last-child {
+  border-bottom: $bw solid var(--accent);
+}
+
+.list-date {
+  font-size: $fs-small;
+  line-height: $lh-small;
+}
+
+// Bouton inline à côté de l'étiquette dans une ligne de date
+.list-date .button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  vertical-align: middle;
+}
+
+// Citations presse
+.presse blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  font-size: $fs-small;
+  line-height: $lh-small;
+}
+
+.presse cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+}

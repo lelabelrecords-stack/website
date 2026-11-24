@@ -1,0 +1,65 @@
+@use '../tokens' as *;
+
+// Bloc visuel 3:2 (bannières) et 2:3 (cartes produit)
+.image-container {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.666%;
+  line-height: 0;
+}
+
+.image-container.is-product {
+  padding-bottom: 150%;
+}
+
+// Visuel en contour uniquement (bordure 1px, pas de fond) + pastille centrée
+.cover--red {
+  background-color: var(--bg);
+  border: solid $bw var(--accent);
+  color: var(--accent);
+}
+
+// Au survol, le contour se remplit (équivalent du swap base/over d'utrecht.jp)
+.hover-image:hover .cover--red,
+.hover-image:focus-visible .cover--red {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+// Pastille centrée sur le visuel (type de sortie)
+.image-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  display: inline;
+  background-color: var(--bg);
+  color: var(--accent);
+  padding: 0.5rem 1.25rem 0.58333rem;
+  border: solid $bw var(--accent);
+  border-radius: $radius;
+  white-space: nowrap;
+  font-size: $fs-small;
+  line-height: 1;
+}
+
+.release-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 15px;
+  font-size: $fs-small;
+  line-height: $lh-small;
+}
+
+@media (max-width: $sp) {
+  .image-label {
+    font-size: 0.66667rem;
+    padding: 0.25rem 0.75rem 0.33333rem;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

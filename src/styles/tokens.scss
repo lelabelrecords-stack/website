@@ -1,5 +1,6 @@
 // Design tokens — Le Label Records
-// Source unique des couleurs (thémables), typographies, breakpoints et gouttières.
+// Source unique : couleurs (thèmes), typographie, espacements, grille, z-index, traits communs.
+// Toute règle UI doit consommer ces tokens (via var(--*) pour les couleurs runtime).
 
 :root {
   --accent: #db0000;
@@ -10,7 +11,6 @@
 html[data-theme='mono'] {
   --accent: #343434;
 }
-
 
 @font-face {
   font-family: 'Archivo Variable';
@@ -24,9 +24,41 @@ html[data-theme='mono'] {
 $font: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-black: 'Archivo Variable', 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+// Breakpoints
 $sp: 767px;
 $tablet: 1023px;
 $pc-small: 1280px;
 $pc-large: 1700px;
 
+// Grille
 $gut: 25px;
+$cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
+
+// Échelle d'espacement vertical (rem, base 12px) — génère les classes .row … ._____row
+$spaces: (
+  'row': 4.16667rem,
+  '_row': 2.08333rem,
+  '__row': 1.04167rem,
+  '___row': 0.69444rem,
+  '____row': 0.52083rem,
+  '_____row': 0.41667rem
+);
+
+// Échelle typographique
+$fs-small: 0.83333rem;
+$fs-regular: 1rem;
+$fs-lead: clamp(1.5rem, 3.2vw, 2.5rem);
+$fs-hero: clamp(3.5rem, 14vw, 12rem);
+$fs-marquee: 1.25rem;
+
+$lh-regular: 1.66667rem;
+$lh-small: 1.25rem;
+
+// Traits communs
+$bw: 1px;
+$radius: 0;
+$z-header: 40;
+$z-menu: 50;
+$z-actions: 60;
+$z-skip: 100;
+$dur: 0.2s;

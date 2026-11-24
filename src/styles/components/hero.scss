@@ -1,0 +1,64 @@
+@use '../tokens' as *;
+
+// Hero façon RCA : typographie géante
+.hero {
+  padding-top: 2.08333rem;
+}
+
+#main > h1.hero-title {
+  padding-top: 2.08333rem;
+}
+
+.hero-title {
+  font-family: $font-black;
+  font-size: $fs-hero;
+  line-height: 0.85;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+}
+
+.hero-sub {
+  margin-top: 1.5rem;
+  font-size: $fs-regular;
+  line-height: 1.5;
+}
+
+// Marquee façon RCA : noms d'artistes et sorties en boucle (CSS pur)
+.marquee {
+  overflow: hidden;
+  border-top: $bw solid var(--accent);
+  border-bottom: $bw solid var(--accent);
+  margin-top: 2.08333rem;
+}
+
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track span {
+  padding: 0.5rem 0;
+  font-family: $font-black;
+  font-size: $fs-marquee;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { config } from '../data.js'
 import { usePageMeta } from '../seo.js'
+import Hero from '../components/ui/Hero.jsx'
+import ListItem from '../components/ui/ListItem.jsx'
 
 export default function MentionsLegales() {
   usePageMeta(
@@ -10,7 +12,7 @@ export default function MentionsLegales() {
 
   return (
     <>
-      <h1 className="hero-title">Mentions légales</h1>
+      <Hero title="Mentions légales" />
 
       <section aria-labelledby="ml-editeur" className="_row">
         <h2 id="ml-editeur">Éditeur du site</h2>
@@ -52,19 +54,19 @@ export default function MentionsLegales() {
       <section aria-labelledby="ml-donnees">
         <h2 id="ml-donnees">Données personnelles &amp; confidentialité</h2>
         <ul className="_row">
-          <li className="list-item">Aucun cookie, aucun traceur, aucune mesure d'audience.</li>
-          <li className="list-item">
+          <ListItem>Aucun cookie, aucun traceur, aucune mesure d'audience.</ListItem>
+          <ListItem>
             Le choix de couleur du site (rouge/gris) est stocké uniquement dans le
             <code>localStorage</code> de votre navigateur, jamais transmis.
-          </li>
-          <li className="list-item">
+          </ListItem>
+          <ListItem>
             Les emails envoyés via les liens « mailto » partent de votre propre client mail ;
             aucune donnée n'est collectée par le site.
-          </li>
-          <li className="list-item">
+          </ListItem>
+          <ListItem>
             Pour exercer vos droits (accès, rectification, suppression), écrivez à{' '}
             <a href={`mailto:${config.email}`}>{config.email}</a>.
-          </li>
+          </ListItem>
         </ul>
       </section>
 

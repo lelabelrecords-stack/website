@@ -1,0 +1,13 @@
+@use '../tokens' as *;
+
+// Onglets de catégories (actus)
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button[aria-selected='true'] {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
