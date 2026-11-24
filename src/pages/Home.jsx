@@ -68,7 +68,10 @@ export default function Home() {
         <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-label="Actualités filtrées">
           {filtered.map(({ kind, date, item }) => (
             <li className="list-item col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
-              <p className="list-date">{formatDate(date) || 'À venir'}</p>
+              <p className="list-date">
+                {formatDate(date) || 'À venir'} —{' '}
+                <span className="label">{kind === 'news' ? 'Actu' : item.type}</span>
+              </p>
               <h3 className="___row">{item.title}</h3>
               {kind === 'news' ? (
                 <>
@@ -84,7 +87,7 @@ export default function Home() {
               ) : (
                 <>
                   <p className="___row textsize-regular-lh-small">
-                    {item.lieu}, {item.ville} — <span className="label">{item.type}</span>
+                    {item.lieu}, {item.ville}
                   </p>
                   {item.link && (
                     <p className="____row textsize-small">
@@ -98,9 +101,7 @@ export default function Home() {
         </ul>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-label="Sorties">
+      <section aria-label="Sorties" className="_row">
         <div className="flex-container _row">
           {[...sorties].sort((a, b) => {
             if (!a.date && !b.date) return 0
