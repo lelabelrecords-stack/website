@@ -308,13 +308,10 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 }
 
 #site-identity {
-  width: 8.33333rem;
-  line-height: 0;
+  font-family: $font-black;
+  font-size: 1.25rem;
+  line-height: 1.1;
   white-space: nowrap;
-}
-
-#site-identity img {
-  width: 100%;
 }
 
 .site-nav {
@@ -350,19 +347,11 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   #header {
     margin: 2.5rem 0 0 2.5rem;
   }
-
-  #site-identity {
-    width: 5.83333rem;
-  }
 }
 
 @media (max-width: $sp) {
   #header {
     margin: 2.08333rem 0 0 2.08333rem;
-  }
-
-  #site-identity {
-    width: 4.16667rem;
   }
 
   .site-nav {

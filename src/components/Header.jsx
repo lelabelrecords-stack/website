@@ -18,10 +18,7 @@ export default function Header() {
   return (
     <header id="header">
       <h1 id="site-identity">
-        <Link to="/" onClick={() => setOpen(false)}>
-          <img src="/assets/logo-contour-rouge.svg" alt="" width="100" height="134" />
-          <span className="visually-hidden">Le Label Records — accueil</span>
-        </Link>
+        <Link to="/" onClick={() => setOpen(false)}>Le Label Records</Link>
       </h1>
       <nav className={`site-nav${open ? ' is-open' : ''}`} aria-label="Navigation principale">
         <button
