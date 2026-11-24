@@ -18,8 +18,10 @@ export default function Header() {
     typeof document !== 'undefined' && document.documentElement.dataset.theme === 'mono' ? 'mono' : 'rouge'
   )
 
+  const target = theme === 'rouge' ? { name: 'mono', hex: '#343434' } : { name: 'rouge', hex: '#DB0000' }
+
   const toggleTheme = () => {
-    const next = theme === 'mono' ? 'rouge' : 'mono'
+    const next = target.name
     setTheme(next)
     if (next === 'mono') {
       document.documentElement.dataset.theme = 'mono'
@@ -50,11 +52,15 @@ export default function Header() {
           className="theme-toggle"
           onClick={toggleTheme}
           aria-pressed={theme === 'mono'}
-          aria-label={`Changer la couleur du site (actuellement ${theme === 'mono' ? 'gris #343434' : 'rouge #db0000'})`}
-          title="Changer de couleur"
+          aria-label={`Appliquer la couleur ${target.hex} au site`}
+          title={`Appliquer ${target.hex}`}
         >
-          <span className="swatch" aria-hidden="true"></span>
-          {theme === 'mono' ? 'Gris' : 'Rouge'}
+          <span
+            className="swatch"
+            style={{ backgroundColor: target.hex, borderColor: target.hex }}
+            aria-hidden="true"
+          ></span>
+          {target.hex}
         </button>
         <button
           type="button"

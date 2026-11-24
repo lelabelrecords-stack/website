@@ -632,9 +632,9 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   line-height: 1.25rem;
 }
 
-// Listes (news, événements)
+// Listes (news, événements) — compactes pour remonter vite aux cartes
 .list-item {
-  padding: 1.04167rem 0;
+  padding: 0.52083rem 0;
   border-top: 1px solid var(--accent);
 }
 

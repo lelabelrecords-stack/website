@@ -22,7 +22,7 @@ export default function Home() {
     <>
       <section className="hero" aria-label="Le Label Records">
         <h1 className="hero-title">Le Label<br />Records</h1>
-        <p className="hero-sub">{config.baseline} — {config.description}</p>
+        <p className="hero-sub">{config.baseline}</p>
       </section>
 
       <div className="marquee" aria-hidden="true">
@@ -38,11 +38,11 @@ export default function Home() {
           {feed.map(({ kind, date, item }) => (
             <li className="list-item col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">{formatDate(date) || 'À venir'}</p>
-              <h3 className="__row">{item.title}</h3>
+              <h3 className="___row">{item.title}</h3>
               {kind === 'news' ? (
                 <>
-                  <p className="__row textsize-regular-lh-small">{item.text}</p>
-                  <p className="__row textsize-small">
+                  <p className="___row textsize-regular-lh-small">{item.text}</p>
+                  <p className="____row textsize-small">
                     {item.link ? (
                       <a href={item.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
                     ) : (
@@ -52,11 +52,11 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                  <p className="__row textsize-regular-lh-small">
+                  <p className="___row textsize-regular-lh-small">
                     {item.lieu}, {item.ville} — <span className="label">{item.type}</span>
                   </p>
                   {item.link && (
-                    <p className="__row textsize-small">
+                    <p className="____row textsize-small">
                       <a href={item.link} target="_blank" rel="noopener noreferrer">Lien</a>
                     </p>
                   )}
