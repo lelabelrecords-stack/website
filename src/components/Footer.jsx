@@ -1,42 +1,47 @@
 import { Link } from 'react-router-dom'
-import config from '../../data/config.json'
+import { config } from '../data.js'
 
 export default function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="footer">
-      <div className="row footer__grid">
-        <div className="footer__col">
-          <p className="footer__brand">LE LABEL</p>
-          <p className="footer__line">{config.address}</p>
-          <p className="footer__line">
+    <footer id="footer">
+      <div className="flex-container">
+        <div className="col-50 col-100-sp footer-nav">
+          <nav aria-label="Navigation pied de page">
+            <ul>
+              <li><Link to="/">Accueil</Link></li>
+              <li><Link to="/artistes">Artistes</Link></li>
+              <li><Link to="/sorties">Sorties</Link></li>
+              <li><Link to="/evenements">Événements</Link></li>
+              <li><Link to="/news">News</Link></li>
+              <li><Link to="/radio">Le Label²</Link></li>
+              <li><Link to="/a-propos">À propos</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+            </ul>
+          </nav>
+        </div>
+        <div className="col-50 col-100-sp">
+          <p><strong>{config.label_name}</strong></p>
+          <p className="textsize-small">{config.baseline}</p>
+          <p className="textsize-small">{config.address}</p>
+          <p className="textsize-small">
             <a href={`mailto:${config.email}`}>{config.email}</a>
           </p>
-          <p className="footer__line">
-            <a href={config.social.linktree} target="_blank" rel="noreferrer">linktr.ee/le.label</a>
+          <p className="textsize-small">
+            <a href={config.social.bandcamp} rel="noopener noreferrer">Bandcamp</a>
+            {' · '}
+            <a href={config.social.linktree} rel="noopener noreferrer">Linktree</a>
+            {' · '}
+            <a href={config.social.youtube} rel="noopener noreferrer">YouTube</a>
           </p>
-        </div>
-        <div className="footer__col">
-          <p className="footer__title">Suivre</p>
-          <p className="footer__line">
-            <a href={config.social.bandcamp} target="_blank" rel="noreferrer">Bandcamp — tout le catalogue</a>
-          </p>
-          {config.radio.slots.map((s) => (
-            <p className="footer__line" key={s.label}>
-              <a href={s.link} target="_blank" rel="noreferrer">{s.label}</a> — Le Label²
-            </p>
-          ))}
-        </div>
-        <div className="footer__col">
-          <p className="footer__title">Le site</p>
-          <p className="footer__line"><Link to="/artistes">Artistes</Link></p>
-          <p className="footer__line"><Link to="/sorties">Sorties</Link></p>
-          <p className="footer__line"><Link to="/evenements">Événements</Link></p>
-          <p className="footer__line"><Link to="/a-propos">À propos</Link></p>
-          <p className="footer__line"><Link to="/contact">Contact</Link></p>
         </div>
       </div>
-      <div className="row footer__bottom">
-        <p>© {new Date().getFullYear()} {config.label_name} — Nîmes · Design brutaliste inspiré d'utrecht.jp</p>
+      <div className="row footer-bottom">
+        <p>
+          © {year} {config.label_name} — Site écoconçu : aucun traceur, aucune image lourde,
+          polices auto-hébergées.
+        </p>
       </div>
     </footer>
   )

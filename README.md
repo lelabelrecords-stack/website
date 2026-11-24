@@ -1,6 +1,6 @@
 # Le Label Records — site web
 
-Site vitrine du **Le Label Records** (label indépendant, Nîmes). React + Vite + SCSS, design brutaliste inspiré d'[utrecht.jp](https://utrecht.jp/) (grille stricte, rouge `#db0000`, noir/blanc, typographie Archivo).
+Site vitrine du **Le Label Records** (label indépendant, Nîmes). React + Vite + SCSS, design brutaliste inspiré d'[utrecht.jp](https://utrecht.jp/) (grille stricte `.col-*`, rouge `#db0000`, noir/blanc, typographie Archivo auto-hébergée, logo contour-rouge). Le site est pensé **écoconception** (aucune image raster, aucun traceur, polices woff2 auto-hébergées, ~100 Ko au total) et **accessible** (landmarks sémantiques, lien « Aller au contenu », `aria-current` sur la nav, focus visible, `prefers-reduced-motion` respecté, contrastes AA).
 
 ## Process de déploiement automatique
 
@@ -58,15 +58,21 @@ npm run build   # build de production dans dist/
 
 ```
 ├── data/                        # contenu éditable (JSON)
-├── public/                      # favicon, _redirects (SPA Cloudflare Pages)
+├── public/
+│   ├─ assets/                  # logo contour-rouge.svg (+ variante blanche) : seul visuel du site
+│   ├─ favicon.svg
+│   └─ _redirects               # SPA Cloudflare Pages
 ├── src/
-│   ├── components/              # Header, Footer, ReleaseCard, NewsletterForm
-│   ├── pages/                   # Accueil, Artistes, Sorties, Événements, À propos, Contact
-│   └── styles/main.scss         # port du design utrecht.jp (SCSS)
+│   ├─ components/              # Header (nav responsive), Footer, ReleaseCard
+│   ├─ pages/                   # Accueil, Artistes, Sorties, Événements, News, Radio (Le Label²), À propos, Contact, 404
+│   ├─ data.js                  # chargement des JSON + formatage des dates (fr-FR)
+│   └─ styles/main.scss         # design system inspiré d'utrecht.jp (tokens, grille, spacers, a11y)
 ├── wrangler.jsonc                 # config Worker/assets pour `npx wrangler deploy` (build natif Cloudflare)
 ├── .github/workflows/deploy.yml # miroir GitHub → GitLab
 └── .gitlab-ci.yml               # build + validate (le déploiement est fait par Cloudflare)
 ```
+
+Pages : `/`, `/artistes`, `/sorties`, `/evenements`, `/news`, `/radio`, `/a-propos`, `/contact`.
 
 ## Pièges connus
 

@@ -1,39 +1,59 @@
-import artistes from '../../data/artistes.json'
+import { artistes, sorties } from '../data.js'
+
+function releasesOf(artist) {
+  return sorties.filter((s) => artist.sorties.includes(s.id))
+}
 
 export default function Artistes() {
   return (
-    <section className="section">
-      <div className="row">
-        <div className="section__head">
-          <h2 className="section__title">Artistes <span>//</span> roster</h2>
-        </div>
-        {artistes.map((a) => (
-          <article className="artist" key={a.id}>
-            <div className="artist__head">
-              <h3 className="artist__name">{a.name}</h3>
-              <span className="artist__tag">{a.genre} — {a.ville}</span>
+    <>
+      <h2>Artistes</h2>
+      <p className="_row lead">Le roster du label.</p>
+
+      {artistes.map((a) => {
+        const rel = releasesOf(a)
+        return (
+          <section key={a.id} aria-labelledby={`artiste-${a.id}`}>
+            <hr className="row" />
+            <div className="flex-container">
+              <div className="col-33 col-50-tablet col-100-sp">
+                <h3 id={`artiste-${a.id}`}>{a.name}</h3>
+                <p className="__row">
+                  <span className="label">{a.genre}</span>{' '}
+                  <span className="label">{a.ville}</span>
+                </p>
+              </div>
+              <div className="col-66 col-50-tablet col-100-sp">
+                <p>{a.bio}</p>
+                {rel.length > 0 && (
+                  <p className="__row textsize-small">
+                    Sorties : {rel.map((r) => r.title).join(', ')}
+                  </p>
+                )}
+                <ul className="__row release-links">
+                  {Object.entries(a.links).map(([key, url]) => (
+                    <li key={key}>
+                      <a href={url} target="_blank" rel="noopener noreferrer">
+                        {key === 'artiste' ? 'Page artiste' : key.charAt(0).toUpperCase() + key.slice(1)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <p className="artist__bio">{a.bio}</p>
-            <div className="artist__links">
-              {Object.entries(a.links || {}).map(([key, url]) => (
-                <a key={key} href={url} target="_blank" rel="noreferrer">
-                  {key} ↗
-                </a>
-              ))}
-            </div>
-            {a.presse && (
-              <div className="presse">
-                {a.presse.map((p, i) => (
-                  <blockquote key={i}>
+            {a.presse && a.presse.length > 0 && (
+              <div className="flex-container _row presse">
+                {a.presse.map((p) => (
+                  <blockquote className="col-50 col-100-sp" key={p.source}>
                     <p>« {p.quote} »</p>
-                    <cite>{p.source}</cite>
+                    <cite>— {p.source}</cite>
                   </blockquote>
                 ))}
               </div>
             )}
-          </article>
-        ))}
-      </div>
-    </section>
+          </section>
+        )
+      })}
+    </>
   )
 }

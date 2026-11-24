@@ -6,16 +6,20 @@ import Home from './pages/Home.jsx'
 import Artistes from './pages/Artistes.jsx'
 import Sorties from './pages/Sorties.jsx'
 import Evenements from './pages/Evenements.jsx'
+import News from './pages/News.jsx'
+import Radio from './pages/Radio.jsx'
 import APropos from './pages/APropos.jsx'
 import Contact from './pages/Contact.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (hash) {
-      document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+      document.querySelector(hash)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })
     } else {
-      window.scrollTo(0, 0)
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })
     }
   }, [pathname, hash])
   return null
@@ -23,21 +27,24 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <div className="site">
+    <>
+      <a className="skip-link" href="#main">Aller au contenu</a>
       <ScrollToTop />
       <Header />
-      <main className="content">
+      <main id="main" className="content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/artistes" element={<Artistes />} />
           <Route path="/sorties" element={<Sorties />} />
           <Route path="/evenements" element={<Evenements />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/radio" element={<Radio />} />
           <Route path="/a-propos" element={<APropos />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
