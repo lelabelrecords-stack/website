@@ -54,13 +54,14 @@ export default function Header() {
           aria-pressed={theme === 'mono'}
           aria-label={`Appliquer la couleur ${target.hex} au site`}
           title={`Appliquer ${target.hex}`}
+          style={{ borderColor: target.hex, color: target.hex }}
         >
           <span
             className="swatch"
             style={{ backgroundColor: target.hex, borderColor: target.hex }}
             aria-hidden="true"
           ></span>
-          {`appliquer le ${target.hex}`}
+          {`Appliquer le ${target.hex}`}
         </button>
         <button
           type="button"

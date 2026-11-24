@@ -13,8 +13,8 @@ const TAB_LABELS = {
 }
 
 export default function Home() {
-  const [tab, setTab] = useState('toutes')
-  const tabs = ['toutes', 'actus', ...[...new Set(evenements.map((e) => e.type))]]
+  const [tab, setTab] = useState('actus')
+  const tabs = ['actus', ...[...new Set(evenements.map((e) => e.type))], 'toutes']
   const feed = [
     ...news.map((n) => ({ kind: 'news', date: n.date, item: n })),
     ...evenements.map((e) => ({ kind: 'event', date: e.date, item: e }))
