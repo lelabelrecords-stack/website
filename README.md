@@ -10,14 +10,14 @@ GitHub  lelabelrecords-stack/website   (code source, branche main)
 GitLab  le-label-records-group/website (miroir + déclencheur)
    ↓ push sur main → pipeline GitLab (.gitlab-ci.yml : build + validate)
    ↓ push sur main → build natif Cloudflare Pages (projet "website" connecté au repo GitLab)
-Cloudflare Pages  https://website.pages.dev
+Cloudflare Pages  https://le-label.org  (domaine perso ; URL par défaut du projet : https://website.pages.dev)
 ```
 
 Dès qu'un commit est poussé sur `main` sur GitHub :
 
 1. GitHub Actions pousse le code sur GitLab (`le-label-records-group/website`) — secret `GITLAB_TOKEN`.
 2. La pipeline GitLab build le site (`npm ci && npm run build` → `dist/`, job `build`) puis valide le `dist/` (job `validate`).
-3. Le projet Cloudflare Pages `website` (connecté à ce repo GitLab, branche `main`) lance son **build natif** : `npm run build`, puis Pages déploie automatiquement le **build output directory** (`dist`) → déploiement sur https://website.pages.dev. **Ne pas mettre de « Deploy command » wrangler** dans les réglages de build (voir pièges) ; `wrangler.jsonc` contient `pages_build_output_dir: "dist"` pour les déploiements wrangler manuels.
+3. Le projet Cloudflare Pages `website` (connecté à ce repo GitLab, branche `main`) lance son **build natif** : `npm run build`, puis Pages déploie automatiquement le **build output directory** (`dist`) → déploiement sur https://le-label.org (domaine perso configuré sur le projet Pages ; https://website.pages.dev reste l'URL par défaut). **Ne pas mettre de « Deploy command » wrangler** dans les réglages de build (voir pièges) ; `wrangler.jsonc` contient `pages_build_output_dir: "dist"` pour les déploiements wrangler manuels.
 
 Vérification : [Actions GitHub](https://github.com/lelabelrecords-stack/website/actions) · [Pipelines GitLab](https://gitlab.com/le-label-records-group/website/-/pipelines).
 
