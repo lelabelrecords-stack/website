@@ -16,9 +16,9 @@ export default function APropos() {
       <section aria-labelledby="apropos-doctrine">
         <h3 id="apropos-doctrine">Doctrine</h3>
         <ul className="_row">
-          <li className="list-item">100 % des royalties nettes de distribution vont aux groupes.</li>
-          <li className="list-item">Le label ne retient que 20 % sur les subventions.</li>
-          <li className="list-item">Distribution via WiseBand, catalogue en direct sur Bandcamp.</li>
+          <li className="list-item">100 % des royalties nettes de distribution vont aux groupes — le label ne prélève rien sur les ventes.</li>
+          <li className="list-item">Sur les subventions publiques, le label retient 20 % ; les 80 % restants financent la production et la promotion des artistes.</li>
+          <li className="list-item">Distribution digitale via WiseBand, catalogue en direct sur Bandcamp.</li>
         </ul>
       </section>
 
