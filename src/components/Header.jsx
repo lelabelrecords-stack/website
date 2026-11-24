@@ -60,7 +60,7 @@ export default function Header() {
             style={{ backgroundColor: target.hex, borderColor: target.hex }}
             aria-hidden="true"
           ></span>
-          {target.hex}
+          {`appliquer le ${target.hex}`}
         </button>
         <button
           type="button"

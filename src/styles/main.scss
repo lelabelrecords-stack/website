@@ -632,6 +632,28 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   line-height: 1.25rem;
 }
 
+// Onglets de catégories (actus)
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tab {
+  border: 1px solid var(--accent);
+  border-radius: 0.5em;
+  background-color: var(--bg);
+  color: var(--accent);
+  padding: 3px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tab[aria-selected='true'] {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
 // Listes (news, événements) — compactes pour remonter vite aux cartes
 .list-item {
   padding: 0.52083rem 0;

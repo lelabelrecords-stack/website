@@ -1,8 +1,20 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { config, artistes, news, sorties, evenements, formatDate } from '../data.js'
 import ReleaseCard from '../components/ReleaseCard.jsx'
 
+const TAB_LABELS = {
+  toutes: 'Toutes',
+  actus: 'Actus',
+  concert: 'Concerts',
+  release: 'Releases',
+  tournee: 'Tournées',
+  festival: 'Festivals'
+}
+
 export default function Home() {
+  const [tab, setTab] = useState('toutes')
+  const tabs = ['toutes', 'actus', ...[...new Set(evenements.map((e) => e.type))]]
   const feed = [
     ...news.map((n) => ({ kind: 'news', date: n.date, item: n })),
     ...evenements.map((e) => ({ kind: 'event', date: e.date, item: e }))
@@ -12,6 +24,10 @@ export default function Home() {
     if (!b.date) return -1
     return b.date.localeCompare(a.date)
   })
+
+  const filtered = feed.filter((f) =>
+    tab === 'toutes' ? true : tab === 'actus' ? f.kind === 'news' : f.kind === 'event' && f.item.type === tab
+  )
 
   const marqueeText = [
     ...artistes.map((a) => a.name),
@@ -34,8 +50,23 @@ export default function Home() {
 
       <section aria-labelledby="home-news" className="_row">
         <h2 id="home-news">News / Actualités</h2>
-        <ul className="flex-container _row">
-          {feed.map(({ kind, date, item }) => (
+        <div className="tabs _row" role="tablist" aria-label="Catégories d'actualités">
+          {tabs.map((t) => (
+            <button
+              key={t}
+              type="button"
+              role="tab"
+              aria-selected={tab === t}
+              aria-controls="news-feed"
+              className={`tab${tab === t ? ' is-active' : ''}`}
+              onClick={() => setTab(t)}
+            >
+              {TAB_LABELS[t] || t}
+            </button>
+          ))}
+        </div>
+        <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-label="Actualités filtrées">
+          {filtered.map(({ kind, date, item }) => (
             <li className="list-item col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">{formatDate(date) || 'À venir'}</p>
               <h3 className="___row">{item.title}</h3>
