@@ -96,9 +96,6 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <p className="_row textsize-small">
-          <Link to="/news">Toutes les news</Link> · <Link to="/evenements">Tous les événements</Link>
-        </p>
       </section>
 
       <hr className="_row" />
