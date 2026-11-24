@@ -1,11 +1,10 @@
 // Le Label Records — design system inspiré du site d'utrecht.jp
 // Tokens issus de site.scss.css : rouge #db0000, blanc, base 12px,
-// grille .col-*, espacements .row / ._row / .__row, bordures 1px.
+// grille .col-*, espacements .row (50px) à ._____row (5px), bordures 1px.
 
 $red: #db0000;
 $white: #ffffff;
 $ink: #111111;
-$grey-bg: #f5f5f5;
 
 $font: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-black: 'Archivo Black', 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -15,7 +14,7 @@ $tablet: 1023px;
 $pc-small: 1280px;
 $pc-large: 1700px;
 
-$gut: 12.5px;
+$gut: 25px;
 
 *,
 *::before,
@@ -46,8 +45,6 @@ body {
   font-size: 1rem;
   line-height: 1.66667rem;
   overflow-wrap: break-word;
-  -webkit-font-feature-settings: 'palt';
-  font-feature-settings: 'palt';
 }
 
 h1,
@@ -148,7 +145,7 @@ h4 {
 }
 
 h2 {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 h3 {
@@ -181,7 +178,7 @@ p + p {
   }
 }
 
-// ---------- Rythme vertical (spacers) ----------
+// ---------- Rythme vertical (spacers, du plus grand au plus petit) ----------
 
 .row {
   padding-top: 4.16667rem;
@@ -195,6 +192,18 @@ p + p {
   padding-top: 1.04167rem;
 }
 
+.___row {
+  padding-top: 0.69444rem;
+}
+
+.____row {
+  padding-top: 0.52083rem;
+}
+
+._____row {
+  padding-top: 0.41667rem;
+}
+
 hr {
   border: 0;
   margin: 0;
@@ -203,12 +212,20 @@ hr {
   background-color: $red;
 }
 
+.display-block {
+  display: block;
+}
+
 // ---------- Grille ----------
 
 .flex-container {
   display: flex;
   flex-flow: row wrap;
   margin: 0 (-$gut);
+}
+
+.flex-container.is-flex-wrap-nowrap {
+  flex-wrap: nowrap;
 }
 
 $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
@@ -235,6 +252,13 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
       width: #{$c} + '%';
       padding: 0 $gut;
     }
+  }
+  .is-break-tablet {
+    display: block;
+  }
+  .is-break-tablet .flex-container,
+  .flex-container.is-break-tablet {
+    flex-wrap: wrap;
   }
 }
 
@@ -425,6 +449,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   text-decoration: underline;
 }
 
+// Bloc visuel 3:2 (bannières) et 2:3 (cartes produit), façon image-container
 .image-container {
   position: relative;
   z-index: 0;
@@ -434,18 +459,22 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   line-height: 0;
 }
 
-// Pochettes typographiques (aucune image : écoconception)
+.image-container.is-product {
+  padding-bottom: 150%;
+}
+
+// Visuel (aucune image raster : fond rouge/noir + logo vectoriel)
 .cover {
-  position: relative;
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  padding: 2rem;
+  gap: 0.5rem;
+  padding: 1rem;
   text-align: center;
+  line-height: 1.25;
 }
 
 .cover--red {
@@ -458,20 +487,58 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   color: $white;
 }
 
+.cover--white {
+  background-color: $white;
+  color: $red;
+}
+
 .cover img {
   width: 40%;
 }
 
+.image-container.is-product .cover img {
+  width: 45%;
+}
+
 .cover-title {
   font-family: $font-black;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.1;
   overflow-wrap: anywhere;
 }
 
-.cover-artist {
+// Pastille centrée sur le visuel (prix chez utrecht.jp, type de sortie ici)
+.image-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  display: inline;
+  background-color: $white;
+  color: $red;
+  padding: 0.5rem 1.25rem 0.58333rem;
+  border: solid 1px $red;
+  white-space: nowrap;
   font-size: 0.83333rem;
-  line-height: 1.25rem;
+  line-height: 1;
+}
+
+// Au survol, le visuel de base est remplacé (inversion rouge/noir, sans image)
+.hover-image:hover .cover--red,
+.hover-image:focus-visible .cover--red {
+  background-color: $ink;
+}
+
+.hover-image:hover .cover--black,
+.hover-image:focus-visible .cover--black {
+  background-color: $red;
+}
+
+.hover-image:hover .cover--white,
+.hover-image:focus-visible .cover--white {
+  background-color: $red;
+  color: $white;
 }
 
 .release-links {
@@ -509,16 +576,4 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   display: block;
   margin-top: 0.5rem;
   font-style: normal;
-}
-
-// Hero accueil
-.hero-logo img {
-  width: 100%;
-  max-width: 16.66667rem;
-}
-
-@media (max-width: $sp) {
-  .hero-logo img {
-    max-width: 10rem;
-  }
 }
