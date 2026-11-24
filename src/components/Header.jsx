@@ -39,7 +39,7 @@ export default function Header() {
         <ul id="site-nav-list">
           {LINKS.map((l) => (
             <li key={l.to}>
-              <NavLink to={l.to} end={l.end} onClick={() => setOpen(false)}>
+              <NavLink to={l.to} end={l.end} onClick={() => setOpen(false)} className="button">
                 {l.label}
               </NavLink>
             </li>
@@ -49,7 +49,7 @@ export default function Header() {
       <div className="header-actions">
         <button
           type="button"
-          className="theme-toggle"
+          className="button theme-toggle"
           onClick={toggleTheme}
           aria-pressed={theme === 'mono'}
           aria-label={`Appliquer la couleur ${target.hex} au site`}
@@ -65,7 +65,7 @@ export default function Header() {
         </button>
         <button
           type="button"
-          className="nav-toggle"
+          className="button nav-toggle"
           aria-expanded={open}
           aria-controls="site-nav-list"
           onClick={() => setOpen((v) => !v)}

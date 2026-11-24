@@ -273,12 +273,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   gap: 5px 20px;
 }
 
-.site-nav a {
-  display: inline-block;
-  border: 1px solid var(--accent);
-  padding: 3px 10px;
-}
-
 .site-nav a[aria-current='page'] {
   background-color: var(--accent);
   color: var(--on-accent);
@@ -293,15 +287,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   flex: none;
 }
 
-.nav-toggle,
-.theme-toggle {
-  border: 1px solid var(--accent);
-  background-color: var(--bg);
-  color: var(--accent);
-  padding: 3px 10px;
-  font: inherit;
-  cursor: pointer;
-}
+
 
 .theme-toggle .swatch {
   display: inline-block;
@@ -639,16 +625,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   gap: 8px;
 }
 
-.tab {
-  border: 1px solid var(--accent);
-  background-color: var(--bg);
-  color: var(--accent);
-  padding: 3px 10px;
-  font: inherit;
-  cursor: pointer;
-}
-
-.tab[aria-selected='true'] {
+.button[aria-selected='true'] {
   background-color: var(--accent);
   color: var(--on-accent);
 }
