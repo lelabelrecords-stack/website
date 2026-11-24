@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
 const LINKS = [
   { to: '/', label: 'Accueil', end: true },
@@ -14,9 +14,31 @@ const LINKS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const [theme, setTheme] = useState(() =>
     typeof document !== 'undefined' && document.documentElement.dataset.theme === 'mono' ? 'mono' : 'rouge'
   )
+
+  useEffect(() => {
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const logo = document.querySelector('#main-side .logo-svg')
+        const limit = logo ? logo.getBoundingClientRect().bottom + window.scrollY : 200
+        setScrolled(window.scrollY > limit)
+        ticking = false
+      })
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
 
   const target = theme === 'rouge' ? { name: 'mono', hex: '#343434' } : { name: 'rouge', hex: '#DB0000' }
 
@@ -34,7 +56,13 @@ export default function Header() {
   }
 
   return (
-    <header id="header">
+    <header id="header" className={scrolled ? 'is-scrolled' : undefined}>
+      {scrolled && (
+        <Link to="/" className="header-brand" aria-label="Le Label Records — retour à l'accueil">
+          <span className="logo-svg header-logo" aria-hidden="true"></span>
+          <span className="header-brand-name">Le Label Records</span>
+        </Link>
+      )}
       <nav className={`site-nav${open ? ' is-open' : ''}`} aria-label="Navigation principale">
         <ul id="site-nav-list">
           {LINKS.map((l) => (

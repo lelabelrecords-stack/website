@@ -55,6 +55,7 @@ export default function DesignSystem() {
         <h2 className="__row">h2 — titre de section</h2>
         <h3 className="__row">h3 — sous-section</h3>
         <p className="__row">Paragraphe standard (Archivo 400, 1rem / 1.667).</p>
+        <p className="__row lead">Exemple de lead — graisse 900, taille fluide clamp(1.5rem, 3.2vw, 2.5rem), interligne 1.15.</p>
         <p className="__row textsize-regular-lh-small">textsize-regular-lh-small (1rem / 1.25).</p>
         <p className="__row textsize-small">textsize-small (0.833rem / 1.25, 0.667rem sur mobile).</p>
       </section>
@@ -74,7 +75,8 @@ export default function DesignSystem() {
           Colonnes <code>.col-10…100</code> + suffixes <code>-pc-small</code> (≤1280), <code>-tablet</code> (≤1023),
           <code>-sp</code> (≤767), <code>-pc-large</code> (≥1700). Gouttière 25px (12.5px sur mobile).
           Spacers : <code>.row</code> 50px, <code>._row</code> 25px, <code>.__row</code> 12.5px,
-          <code>.___row</code> 8.3px, <code>.____row</code> 6.25px, <code>._____row</code> 5px. Filet : <code>&lt;hr&gt;</code> 1px.
+          <code>.___row</code> 8.3px, <code>.____row</code> 6.25px, <code>._____row</code> 5px.
+          <code>&lt;hr&gt;</code> = espaceur invisible (aucun filet, aucun fond).
         </p>
       </section>
 
@@ -139,6 +141,16 @@ export default function DesignSystem() {
         <h3 className="_row">Logo</h3>
         <p className="__row"><Logo /></p>
         <p className="__row textsize-small">Masque CSS sur var(--accent) — suit le thème.</p>
+
+        <h3 className="_row">Header</h3>
+        <p className="__row textsize-small">
+          Sticky : au scroll (logo principal hors champ), le header affiche la marque
+          (<code>.header-brand</code> = logo <code>.header-logo</code> + « Le Label Records », classe
+          <code>is-scrolled</code> posée par <code>Header.jsx</code> ; nom masqué ≤767px).
+          Le bouton <code>Menu</code> (<code>.button.nav-toggle</code>) n'est visible qu'en ≤767px —
+          spécificité <code>.button.nav-toggle</code> pour l'emporter sur <code>.button</code>.
+          Toggle thème « Appliquer le #… » à droite.
+        </p>
       </section>
     </>
   )

@@ -154,6 +154,15 @@ p + p {
   line-height: 1.25rem;
 }
 
+.lead {
+  font-family: $font-black;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 40ch;
+}
+
 @media (max-width: $sp) {
   .textsize-small {
     font-size: 0.66667rem;
@@ -172,7 +181,6 @@ p + p {
 
 hr {
   border: 0;
-  border-top: 1px solid var(--accent);
   margin: 0;
   padding: 0;
   height: 0;
@@ -299,8 +307,39 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   vertical-align: baseline;
 }
 
-.nav-toggle {
+.button.nav-toggle {
   display: none;
+}
+
+.header-brand {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  flex: none;
+}
+
+#header.is-scrolled .header-brand {
+  display: inline-flex;
+}
+
+.header-brand:hover {
+  text-decoration: none;
+}
+
+.header-logo {
+  width: 2.08333rem;
+  aspect-ratio: 571.799 / 763.875;
+  flex: none;
+}
+
+.header-brand-name {
+  font-family: $font-black;
+  font-weight: 900;
+  font-size: 0.83333rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 @media (max-width: $tablet) {
@@ -319,8 +358,12 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
     z-index: 60;
   }
 
-  .nav-toggle {
+  .button.nav-toggle {
     display: inline-block;
+  }
+
+  .header-brand-name {
+    display: none;
   }
 
   .site-nav ul {

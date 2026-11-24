@@ -22,10 +22,6 @@ a {
   text-decoration: none !important;
 }
 
-hr {
-  border-top: 1px solid #000 !important;
-}
-
 .label,
 .image-label {
   border: 1px solid #000 !important;
