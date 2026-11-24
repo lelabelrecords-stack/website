@@ -1,9 +1,15 @@
-// Le Label Records — design system inspiré du site d'utrecht.jp
-// Tokens issus de site.scss.css : rouge #db0000, blanc, base 12px,
-// grille .col-*, espacements .row (50px) à ._____row (5px), bordures 1px.
+// Le Label Records — design system inspiré d'utrecht.jp + RCA Records (awwwards)
+// Thème par variable CSS : --accent = #db0000 (rouge) ou #343434 (gris), fond #FFFFFF.
 
-$red: #db0000;
-$white: #ffffff;
+:root {
+  --accent: #db0000;
+  --bg: #ffffff;
+  --on-accent: #ffffff;
+}
+
+html[data-theme='mono'] {
+  --accent: #343434;
+}
 
 $font: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-black: 'Archivo Black', 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -38,8 +44,8 @@ html {
 
 body {
   margin: 0;
-  background-color: $white;
-  color: $red;
+  background-color: var(--bg);
+  color: var(--accent);
   font-family: $font;
   font-size: 1rem;
   line-height: 1.66667rem;
@@ -80,17 +86,17 @@ a:hover {
 }
 
 ::selection {
-  background-color: $red;
-  color: $white;
+  background-color: var(--accent);
+  color: var(--on-accent);
 }
 
 :focus-visible {
-  outline: 2px solid $red;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 #footer :focus-visible {
-  outline-color: $white;
+  outline-color: var(--on-accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -122,8 +128,8 @@ a:hover {
   left: 10px;
   top: -100px;
   z-index: 100;
-  background-color: $red;
-  color: $white;
+  background-color: var(--accent);
+  color: var(--on-accent);
   padding: 10px 15px;
   transition: top 0.2s;
 }
@@ -159,11 +165,6 @@ p + p {
   margin-top: 1rem;
 }
 
-.lead {
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
 .textsize-small {
   font-size: 0.83333rem;
   line-height: 1.25rem;
@@ -179,54 +180,20 @@ p + p {
     font-size: 0.66667rem;
     line-height: 1.08333rem;
   }
-
-  // Responsive mobile : gouttières réduites, pastilles et titres plus petits
-  .flex-container {
-    margin: 0 -12.5px;
-  }
-
-  [class*='col-'] {
-    padding: 0 12.5px;
-  }
-
-  .image-label {
-    font-size: 0.66667rem;
-    padding: 0.25rem 0.75rem 0.33333rem;
-    max-width: 90%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 
-// ---------- Rythme vertical (spacers, du plus grand au plus petit) ----------
+// ---------- Rythme vertical (spacers) ----------
 
-.row {
-  padding-top: 4.16667rem;
-}
-
-._row {
-  padding-top: 2.08333rem;
-}
-
-.__row {
-  padding-top: 1.04167rem;
-}
-
-.___row {
-  padding-top: 0.69444rem;
-}
-
-.____row {
-  padding-top: 0.52083rem;
-}
-
-._____row {
-  padding-top: 0.41667rem;
-}
+.row { padding-top: 4.16667rem; }
+._row { padding-top: 2.08333rem; }
+.__row { padding-top: 1.04167rem; }
+.___row { padding-top: 0.69444rem; }
+.____row { padding-top: 0.52083rem; }
+._____row { padding-top: 0.41667rem; }
 
 hr {
   border: 0;
-  border-top: 1px solid $red;
+  border-top: 1px solid var(--accent);
   margin: 0;
   padding: 0;
   height: 0;
@@ -260,44 +227,42 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 
 @media (max-width: $pc-small) {
   @each $c in $cols {
-    .col-#{$c}-pc-small {
-      width: #{$c} + '%';
-      padding: 0 $gut;
-    }
+    .col-#{$c}-pc-small { width: #{$c} + '%'; padding: 0 $gut; }
   }
 }
 
 @media (max-width: $tablet) {
   @each $c in $cols {
-    .col-#{$c}-tablet {
-      width: #{$c} + '%';
-      padding: 0 $gut;
-    }
+    .col-#{$c}-tablet { width: #{$c} + '%'; padding: 0 $gut; }
   }
-  .is-break-tablet {
-    display: block;
-  }
-  .is-break-tablet .flex-container,
-  .flex-container.is-break-tablet {
-    flex-wrap: wrap;
-  }
+  .is-break-tablet { display: block; }
 }
 
 @media (max-width: $sp) {
   @each $c in $cols {
-    .col-#{$c}-sp {
-      width: #{$c} + '%';
-      padding: 0 $gut;
-    }
+    .col-#{$c}-sp { width: #{$c} + '%'; padding: 0 $gut; }
+  }
+
+  .flex-container {
+    margin: 0 -12.5px;
+  }
+
+  [class*='col-'] {
+    padding: 0 12.5px;
+  }
+
+  .image-label {
+    font-size: 0.66667rem;
+    padding: 0.25rem 0.75rem 0.33333rem;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 @media (min-width: $pc-large) {
   @each $c in $cols {
-    .col-#{$c}-pc-large {
-      width: #{$c} + '%';
-      padding: 0 $gut;
-    }
+    .col-#{$c}-pc-large { width: #{$c} + '%'; padding: 0 $gut; }
   }
 }
 
@@ -305,10 +270,9 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 
 #header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
   gap: 25px;
-  margin: 3.33333rem 0 0 3.33333rem;
+  margin: 3.33333rem 3.33333rem 0;
 }
 
 .site-nav {
@@ -329,31 +293,52 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   text-decoration: underline;
 }
 
-.nav-toggle {
-  display: none;
-  border: 1px solid $red;
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.nav-toggle,
+.theme-toggle {
+  border: 1px solid var(--accent);
   border-radius: 0.5em;
-  background-color: $white;
-  color: $red;
+  background-color: var(--bg);
+  color: var(--accent);
   padding: 3px 10px;
   font: inherit;
   cursor: pointer;
 }
 
+.theme-toggle .swatch {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 0.4em;
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+  vertical-align: baseline;
+}
+
+.nav-toggle {
+  display: none;
+}
+
 @media (max-width: $tablet) {
   #header {
-    margin: 2.5rem 0 0 2.5rem;
+    margin: 2.5rem 2.5rem 0;
   }
 }
 
 @media (max-width: $sp) {
   #header {
-    margin: 2.08333rem 0 0 2.08333rem;
+    margin: 2.08333rem 2.08333rem 0;
   }
 
-  .site-nav {
-    display: flex;
-    justify-content: flex-end;
+  .header-actions {
+    position: relative;
+    z-index: 60;
   }
 
   .nav-toggle {
@@ -362,14 +347,24 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 
   .site-nav ul {
     display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding-top: 10px;
   }
 
+  // Menu plein écran façon RCA (grands liens pleine page)
   .site-nav.is-open ul {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 2rem;
+    background-color: var(--bg);
+    font-family: $font-black;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    text-transform: uppercase;
   }
 }
 
@@ -421,10 +416,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 }
 
 @media (max-width: $tablet) {
-  .is-break-tablet {
-    display: block;
-  }
-
   #main-container {
     margin: 2.5rem 2.5rem 0;
   }
@@ -462,18 +453,18 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 // ---------- Pied de page ----------
 
 #footer {
-  background-color: $red;
-  color: $white;
+  background-color: var(--accent);
+  color: var(--on-accent);
   margin-top: 4.16667rem;
   padding: 4.16667rem 3.33333rem 2.08333rem;
 }
 
 #footer a {
-  color: $white;
+  color: var(--on-accent);
 }
 
 #footer a:hover {
-  color: $white;
+  color: var(--on-accent);
   text-decoration: underline;
 }
 
@@ -499,13 +490,13 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 .label {
   display: inline-block;
   padding: 0.25rem 0.83333rem;
-  border: solid 1px $red;
+  border: solid 1px var(--accent);
   border-radius: 0.5em;
 }
 
 .label--filled {
-  background-color: $red;
-  color: $white;
+  background-color: var(--accent);
+  color: var(--on-accent);
 }
 
 .button {
@@ -513,24 +504,82 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   align-items: center;
   height: 4.16667rem;
   padding: 0 2.08333rem;
-  border: solid 1px $red;
-  background-color: $red;
-  color: $white;
+  border: solid 1px var(--accent);
+  background-color: var(--accent);
+  color: var(--on-accent);
   font: inherit;
   cursor: pointer;
   border-radius: 0;
 }
 
 .button--ghost {
-  background-color: $white;
-  color: $red;
+  background-color: var(--bg);
+  color: var(--accent);
 }
 
 .button:hover {
   text-decoration: underline;
 }
 
-// Bloc visuel 3:2 (bannières) et 2:3 (cartes produit), façon image-container
+// Hero façon RCA : typographie géante
+.hero {
+  padding-top: 2.08333rem;
+}
+
+.hero-title {
+  font-family: $font-black;
+  font-size: clamp(3.5rem, 14vw, 12rem);
+  line-height: 0.85;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.hero-sub {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+// Marquee façon RCA : noms d'artistes et sorties en boucle (CSS pur)
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  margin-top: 2.08333rem;
+}
+
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track span {
+  padding: 0.5rem 0;
+  font-family: $font-black;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+// Bloc visuel 3:2 (bannières) et 2:3 (cartes produit)
 .image-container {
   position: relative;
   z-index: 0;
@@ -546,14 +595,19 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 
 // Visuel en contour uniquement (bordure 1px, pas de fond) + pastille centrée
 .cover--red {
-  background-color: $white;
-  border: solid 1px $red;
-  color: $red;
+  background-color: var(--bg);
+  border: solid 1px var(--accent);
+  color: var(--accent);
 }
 
+// Au survol, le contour se remplit (équivalent du swap base/over d'utrecht.jp)
+.hover-image:hover .cover--red,
+.hover-image:focus-visible .cover--red {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
 
-
-// Pastille centrée sur le visuel (prix chez utrecht.jp, type de sortie ici)
+// Pastille centrée sur le visuel (type de sortie)
 .image-label {
   position: absolute;
   top: 50%;
@@ -561,23 +615,14 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   z-index: 1;
   transform: translate(-50%, -50%);
   display: inline;
-  background-color: $white;
-  color: $red;
+  background-color: var(--bg);
+  color: var(--accent);
   padding: 0.5rem 1.25rem 0.58333rem;
-  border: solid 1px $red;
+  border: solid 1px var(--accent);
   white-space: nowrap;
   font-size: 0.83333rem;
   line-height: 1;
 }
-
-// Au survol, le contour se remplit (équivalent du swap base/over d'utrecht.jp)
-.hover-image:hover .cover--red,
-.hover-image:focus-visible .cover--red {
-  background-color: $red;
-  color: $white;
-}
-
-
 
 .release-links {
   display: flex;
@@ -590,11 +635,11 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 // Listes (news, événements)
 .list-item {
   padding: 1.04167rem 0;
-  border-top: 1px solid $red;
+  border-top: 1px solid var(--accent);
 }
 
 .list-item:last-child {
-  border-bottom: 1px solid $red;
+  border-bottom: 1px solid var(--accent);
 }
 
 .list-date {
@@ -604,7 +649,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 
 // Citations presse
 .presse blockquote {
-  border-left: 2px solid $red;
+  border-left: 2px solid var(--accent);
   padding-left: 1rem;
   font-size: 0.83333rem;
   line-height: 1.25rem;

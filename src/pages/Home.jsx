@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { config, news, sorties, evenements, formatDate } from '../data.js'
+import { config, artistes, news, sorties, evenements, formatDate } from '../data.js'
 import ReleaseCard from '../components/ReleaseCard.jsx'
 
 export default function Home() {
@@ -13,15 +13,32 @@ export default function Home() {
     return b.date.localeCompare(a.date)
   })
 
+  const marqueeText = [
+    ...artistes.map((a) => a.name),
+    ...[...sorties].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map((s) => `${s.artist} — ${s.title}`)
+  ].join(' · ')
+
   return (
     <>
-      <section aria-labelledby="home-news">
-        <h1 id="home-news">News / Actualités</h1>
+      <section className="hero" aria-label="Le Label Records">
+        <h1 className="hero-title">Le Label<br />Records</h1>
+        <p className="hero-sub">{config.baseline} — {config.description}</p>
+      </section>
+
+      <div className="marquee" aria-hidden="true">
+        <div className="marquee-track">
+          <span>{marqueeText}&nbsp;·&nbsp;</span>
+          <span>{marqueeText}&nbsp;·&nbsp;</span>
+        </div>
+      </div>
+
+      <section aria-labelledby="home-news" className="_row">
+        <h2 id="home-news">News / Actualités</h2>
         <ul className="flex-container _row">
           {feed.map(({ kind, date, item }) => (
             <li className="list-item col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">{formatDate(date) || 'À venir'}</p>
-              <h2 className="__row">{item.title}</h2>
+              <h3 className="__row">{item.title}</h3>
               {kind === 'news' ? (
                 <>
                   <p className="__row textsize-regular-lh-small">{item.text}</p>

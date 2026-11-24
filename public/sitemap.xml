@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://le-label.org/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://le-label.org/artistes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://le-label.org/sorties</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://le-label.org/evenements</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://le-label.org/news</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://le-label.org/radio</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://le-label.org/a-propos</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://le-label.org/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>
