@@ -698,3 +698,10 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   padding: 1rem;
   text-align: center;
 }
+
+// Bouton inline à côté de l'étiquette dans une ligne de date
+.list-date .button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  vertical-align: middle;
+}

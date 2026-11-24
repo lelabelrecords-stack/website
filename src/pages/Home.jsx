@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { config, artistes, news, sorties, evenements, formatDate } from '../data.js'
 import ReleaseCard from '../components/ReleaseCard.jsx'
 import Tab from '../components/ui/Tab.jsx'
+import Label from '../components/ui/Label.jsx'
 import Button from '../components/ui/Button.jsx'
 
 const TAB_LABELS = {
@@ -63,33 +64,23 @@ export default function Home() {
           {filtered.map(({ kind, date, item }) => (
             <li className="list-item col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">
-                {formatDate(date) || 'À venir'} —{' '}
-                <span className="label">{kind === 'news' ? 'Actu' : item.type}</span>
+                {formatDate(date) || 'À venir'} — <Label>{kind === 'news' ? 'Actu' : item.type}</Label>{' '}
+                {kind === 'news' ? (
+                  item.link ? (
+                    <Button href={item.link} target="_blank" rel="noopener noreferrer">En savoir plus</Button>
+                  ) : (
+                    <Button to="/contact">Nous contacter</Button>
+                  )
+                ) : (
+                  item.link && (
+                    <Button href={item.link} target="_blank" rel="noopener noreferrer">Lien</Button>
+                  )
+                )}
               </p>
               <h3 className="___row">{item.title}</h3>
-              {kind === 'news' ? (
-                <>
-                  <p className="___row textsize-regular-lh-small">{item.text}</p>
-                  <p className="____row textsize-small">
-                    {item.link ? (
-                      <a className="button" href={item.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
-                    ) : (
-                      <Link className="button" to="/contact">Nous contacter</Link>
-                    )}
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p className="___row textsize-regular-lh-small">
-                    {item.lieu}, {item.ville}
-                  </p>
-                  {item.link && (
-                    <p className="____row textsize-small">
-                      <a className="button" href={item.link} target="_blank" rel="noopener noreferrer">Lien</a>
-                    </p>
-                  )}
-                </>
-              )}
+              <p className="___row textsize-regular-lh-small">
+                {kind === 'news' ? item.text : `${item.lieu}, ${item.ville}`}
+              </p>
             </li>
           ))}
         </ul>
