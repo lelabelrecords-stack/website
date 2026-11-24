@@ -5,21 +5,28 @@ on:
     branches:
       - main
 
+env:
+  GITLAB_HOST: "gitlab.com"
+  GITLAB_REPO: "le-label-records-group/website"
+  TARGET_BRANCH: "main"
+  CHECKOUT_ACTION: "actions/checkout@v4"
+  RUNNER_IMAGE: "ubuntu-latest"
+  FETCH_DEPTH: "0"
+
 permissions:
   contents: read
 
 jobs:
   mirror:
-    runs-on: ubuntu-latest
+    runs-on: ${{ env.RUNNER_IMAGE }}
     steps:
       - name: Checkout GitHub repo
-        uses: actions/checkout@v4
+        uses: ${{ env.CHECKOUT_ACTION }}
         with:
-          fetch-depth: 0
-
+          fetch-depth: ${{ env.FETCH_DEPTH }}
       - name: Push to GitLab
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
-          git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/le-label-records-group/website.git"
-          git push --force gitlab HEAD:main
+          git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@${GITLAB_HOST}/${GITLAB_REPO}.git"
+          git push --force gitlab HEAD:${TARGET_BRANCH}

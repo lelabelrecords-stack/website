@@ -3,27 +3,30 @@ stages:
   - validate
 
 variables:
+  NODE_IMAGE: "node:20-alpine"
+  BUILD_OUTPUT_DIR: "dist"
+  PRODUCTION_BRANCH: "main"
   CF_PAGES_PROJECT_NAME: "website"
 
 build:
   stage: build
-  image: node:20-alpine
+  image: $NODE_IMAGE
   script:
     - npm ci
     - npm run build
   artifacts:
     paths:
-      - dist/
+      - $BUILD_OUTPUT_DIR/
 
 validate:
   stage: validate
-  image: node:20-alpine
+  image: $NODE_IMAGE
   needs:
     - build
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == $PRODUCTION_BRANCH
   script:
-    - test -f dist/index.html
-    - test -f dist/favicon.svg
-    - test -f dist/_redirects
-    - echo "dist/ OK. Déploiement réel assuré par le build natif Cloudflare Pages du projet '$CF_PAGES_PROJECT_NAME' (connecté à ce repo GitLab, deploy: npx wrangler deploy + wrangler.jsonc)."
+    - test -f "$BUILD_OUTPUT_DIR/index.html"
+    - test -f "$BUILD_OUTPUT_DIR/favicon.svg"
+    - test -f "$BUILD_OUTPUT_DIR/_redirects"
+    - 'echo "dist/ OK - deploiement natif Cloudflare Pages (projet $CF_PAGES_PROJECT_NAME, branche $PRODUCTION_BRANCH, output $BUILD_OUTPUT_DIR)."'
