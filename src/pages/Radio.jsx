@@ -1,5 +1,6 @@
 import { usePageMeta } from '../seo.js'
 import { config } from '../data.js'
+import Button from '../components/ui/Button.jsx'
 
 export default function Radio() {
   usePageMeta('Le Label² — Le Label Records', "L'émission radio du Le Label Records : un label indépendant, une heure, les morceaux qui le définissent. Sur Rayvox, Raje et Radio Alliance +.")
@@ -20,7 +21,7 @@ export default function Radio() {
               <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
               <p className="__row">
-                <a className="button" href={slot.link} target="_blank" rel="noopener noreferrer">Accéder aux émissions</a>
+                <Button href={slot.link} target="_blank" rel="noopener noreferrer">Accéder à nos émissions</Button>
               </p>
             </li>
           ))}

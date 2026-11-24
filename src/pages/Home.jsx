@@ -110,8 +110,8 @@ export default function Home() {
             <li className="list-item" key={slot.label}>
               <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
-              <p className="__row textsize-small">
-                <a href={slot.link} target="_blank" rel="noopener noreferrer">Écouter</a>
+              <p className="__row">
+                <Button href={slot.link} target="_blank" rel="noopener noreferrer">Écouter</Button>
               </p>
             </li>
           ))}
