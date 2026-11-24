@@ -518,7 +518,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   line-height: 0.85;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  font-weight: 400;
+  font-weight: 900;
 }
 
 .hero-sub {
@@ -546,6 +546,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   font-family: $font-black;
   font-size: 1.25rem;
   text-transform: uppercase;
+  font-weight: 900;
 }
 
 .marquee:hover .marquee-track,
