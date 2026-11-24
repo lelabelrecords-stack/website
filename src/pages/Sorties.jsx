@@ -8,7 +8,7 @@ export default function Sorties() {
 
   return (
     <>
-      <h1>Sorties</h1>
+      <h1 className="hero-title">Sorties</h1>
       <p className="_row lead">Le catalogue du label, aussi sur Bandcamp.</p>
       <div className="flex-container _row">
         {sorted.map((s) => (

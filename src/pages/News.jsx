@@ -8,7 +8,7 @@ export default function News() {
 
   return (
     <>
-      <h1>News</h1>
+      <h1 className="hero-title">News</h1>
       <ul className="flex-container _row">
         {sorted.map((n) => (
           <li className="list-item col-50 col-100-sp" key={n.title}>

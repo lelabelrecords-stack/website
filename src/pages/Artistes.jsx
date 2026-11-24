@@ -9,7 +9,7 @@ export default function Artistes() {
   usePageMeta('Artistes — Le Label Records', 'Le roster du Le Label Records : Montevideo (post-punk, Nîmes), K0RROBOR (trio instrumental, Nîmes), Teknotrokids.')
   return (
     <>
-      <h1>Artistes</h1>
+      <h1 className="hero-title">Artistes</h1>
       <p className="_row lead">Le roster du label.</p>
 
       {artistes.map((a) => {

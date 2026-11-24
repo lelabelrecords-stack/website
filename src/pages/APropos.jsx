@@ -5,7 +5,7 @@ export default function APropos() {
   usePageMeta('À propos — Le Label Records', 'Le Label Records, label indépendant à Nîmes : accompagnement des artistes, de près et avec des humains.')
   return (
     <>
-      <h1>À propos</h1>
+      <h1 className="hero-title">À propos</h1>
 
       <section aria-labelledby="apropos-label" className="_row">
         <h3 id="apropos-label" className="visually-hidden">Le label</h3>

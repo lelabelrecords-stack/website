@@ -5,7 +5,7 @@ export default function Contact() {
   usePageMeta('Contact — Le Label Records', 'Contacter le Le Label Records (Nîmes) : presse à le.label.contact@gmail.com, démos à lelabel@le-label.org, 8 rue Nationale 30000 Nîmes.')
   return (
     <>
-      <h1>Contact</h1>
+      <h1 className="hero-title">Contact</h1>
 
       <section aria-labelledby="contact-general" className="_row">
         <h3 id="contact-general">Contact général</h3>

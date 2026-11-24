@@ -10,7 +10,7 @@ export default function MentionsLegales() {
 
   return (
     <>
-      <h1>Mentions légales</h1>
+      <h1 className="hero-title">Mentions légales</h1>
 
       <section aria-labelledby="ml-editeur" className="_row">
         <h2 id="ml-editeur">Éditeur du site</h2>
@@ -73,8 +73,7 @@ export default function MentionsLegales() {
       <section aria-labelledby="ml-credits">
         <h2 id="ml-credits">Crédits</h2>
         <p className="_row">
-          Design inspiré d'<a href="https://utrecht.jp/" target="_blank" rel="noopener noreferrer">utrecht.jp</a>.
-          Site écoconçu (aucune image raster, polices auto-hébergées). <Link to="/">Retour à l'accueil</Link>
+          Site écoconçu : aucune image raster, polices auto-hébergées, aucun traceur. <Link to="/">Retour à l'accueil</Link>
         </p>
       </section>
     </>
