@@ -5,24 +5,35 @@
     "genre": "Post-punk",
     "ville": "Nîmes",
     "bio": "Post-punk moderne et nerveux, porté par l'esprit de Gang of Four et d'Art Brut : des guitares qui avancent d'un pas tranquille, de l'auto-dérision et une critique du zeitgeist avec un sourire. Un morceau qui ne demande pas la permission.",
-    "sorties": ["brawn", "vision"],
+    "sorties": [
+      "brawn",
+      "vision"
+    ],
     "links": {
       "artiste": "https://lnk.fanbazz.com/montevideo",
       "clip": "https://www.youtube.com/watch?v=Mn_pscQeAzg",
       "bandcamp": "https://lelabelrecords.bandcamp.com/"
     },
     "presse": [
-      { "quote": "Lean and lairy, serious about music, even as the lyrics indicate that the band know how to skewer their own egos. Brawn will get you hankering for the days when indie music had something to say.", "source": "AnalogueTrash (UK)" },
-      { "quote": "Un post-punk moderne et très dynamique, porté par des influences comme Gang of Four et Art Brut, qui jongle magistralement entre auto-dérision et critique du zeitgeist.", "source": "We Love That Sound (DE)" }
+      {
+        "quote": "Lean and lairy, serious about music, even as the lyrics indicate that the band know how to skewer their own egos. Brawn will get you hankering for the days when indie music had something to say.",
+        "source": "AnalogueTrash (UK)"
+      },
+      {
+        "quote": "Un post-punk moderne et très dynamique, porté par des influences comme Gang of Four et Art Brut, qui jongle magistralement entre auto-dérision et critique du zeitgeist.",
+        "source": "We Love That Sound (DE)"
+      }
     ]
   },
   {
     "id": "k0rrobor",
     "name": "K0RROBOR",
     "genre": "Power trio instrumental",
-    "ville": "Toulouse ↔ Lille",
-    "bio": "Alexandre, Maxime et Nicolas : trois musiciens formés au sein du groupe Gothking, aujourd'hui trio instrumental entre Toulouse et Lille. De l'improvisation, de l'expérimentation et de la spontanéité comme langage à part entière. Sur scène, un set viscéral de 45 à 60 minutes — sans chanteur, mais jamais sans voix : celle des instruments.",
-    "sorties": ["k0rrobor-ep1"],
+    "ville": "Nîmes",
+    "bio": "Alexandre, Maxime et Nicolas : trois musiciens formés au sein du groupe Gothking, aujourd'hui trio instrumental basé à Nîmes. De l'improvisation, de l'expérimentation et de la spontanéité comme langage à part entière. Sur scène, un set viscéral de 45 à 60 minutes — sans chanteur, mais jamais sans voix : celle des instruments.",
+    "sorties": [
+      "k0rrobor-ep1"
+    ],
     "links": {
       "bandcamp": "https://korrobor.bandcamp.com"
     }
@@ -33,7 +44,9 @@
     "genre": "À écouter",
     "ville": "Nîmes",
     "bio": "LP « Bêtes Rave Party » en préparation sur Le Label, avec une release party à venir.",
-    "sorties": ["teknotrokids-lp"],
+    "sorties": [
+      "teknotrokids-lp"
+    ],
     "links": {
       "bandcamp": "https://lelabelrecords.bandcamp.com/"
     }

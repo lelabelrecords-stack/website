@@ -17,8 +17,8 @@ export default function Radio() {
             <li className="list-item" key={slot.label}>
               <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
-              <p className="__row textsize-small">
-                <a href={slot.link} target="_blank" rel="noopener noreferrer">Écouter le replay</a>
+              <p className="__row">
+                <a className="button" href={slot.link} target="_blank" rel="noopener noreferrer">Écouter le replay</a>
               </p>
             </li>
           ))}

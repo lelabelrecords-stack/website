@@ -19,7 +19,7 @@ export default function Contact() {
         <h3 id="contact-demos">Envoyer une démo</h3>
         <p className="_row">
           <a
-            className="button button--ghost"
+            className="button"
             href={`mailto:${config.demo_submission_email}?subject=${encodeURIComponent('Démo — Le Label Records')}`}
           >
             Envoyer une démo

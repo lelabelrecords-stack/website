@@ -78,9 +78,9 @@ export default function Home() {
                   <p className="___row textsize-regular-lh-small">{item.text}</p>
                   <p className="____row textsize-small">
                     {item.link ? (
-                      <a href={item.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
+                      <a className="button" href={item.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
                     ) : (
-                      <Link to="/contact">Nous contacter</Link>
+                      <Link className="button" to="/contact">Nous contacter</Link>
                     )}
                   </p>
                 </>
@@ -91,7 +91,7 @@ export default function Home() {
                   </p>
                   {item.link && (
                     <p className="____row textsize-small">
-                      <a href={item.link} target="_blank" rel="noopener noreferrer">Lien</a>
+                      <a className="button" href={item.link} target="_blank" rel="noopener noreferrer">Lien</a>
                     </p>
                   )}
                 </>

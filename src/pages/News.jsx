@@ -15,10 +15,10 @@ export default function News() {
             <p className="__row textsize-regular-lh-small">{n.text}</p>
             {n.link ? (
               <p className="__row textsize-small">
-                <a href={n.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
+                <a className="button" href={n.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
               </p>
             ) : (
-              <p className="__row textsize-small"><Link to="/contact">Nous contacter</Link></p>
+              <p className="__row textsize-small"><Link className="button" to="/contact">Nous contacter</Link></p>
             )}
           </li>
         ))}
