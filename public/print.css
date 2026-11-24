@@ -1,0 +1,56 @@
+/* Impression : on garde uniquement le contenu, encre noire sur blanc (économie d'encre) */
+#header,
+#footer,
+#main-side,
+.marquee,
+.tabs,
+.nav-toggle,
+.theme-toggle,
+.skip-link,
+.button,
+.hero-title {
+  display: none !important;
+}
+
+body {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+a {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+hr {
+  border-top: 1px solid #000 !important;
+}
+
+.label,
+.image-label {
+  border: 1px solid #000 !important;
+  color: #000 !important;
+  background: #fff !important;
+}
+
+.image-container,
+.cover--red {
+  background: #fff !important;
+  border: 1px solid #000 !important;
+  color: #000 !important;
+}
+
+#main-container {
+  margin: 0 !important;
+  display: block !important;
+}
+
+#main {
+  width: auto !important;
+  margin-left: 0 !important;
+}
+
+.list-item {
+  border-top: 1px solid #000 !important;
+  break-inside: avoid;
+}
