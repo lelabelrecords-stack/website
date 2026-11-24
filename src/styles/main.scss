@@ -395,8 +395,17 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   white-space: nowrap;
 }
 
-#main-side img {
+// Logo SVG en masque CSS : la couleur suit --accent (thème rouge/gris)
+.logo-svg {
+  display: block;
+  background-color: var(--accent);
+  -webkit-mask: url('/assets/logo-contour-rouge.svg') center / contain no-repeat;
+  mask: url('/assets/logo-contour-rouge.svg') center / contain no-repeat;
+}
+
+#main-side .logo-svg {
   width: 100%;
+  aspect-ratio: 571.799 / 763.875;
 }
 
 #main {
@@ -438,7 +447,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
     padding-bottom: 1.5rem;
   }
 
-  #main-side img {
+  #main-side .logo-svg {
     width: 4.16667rem;
     flex: none;
   }

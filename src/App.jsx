@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import Logo from './components/Logo.jsx'
 import Home from './pages/Home.jsx'
 import Artistes from './pages/Artistes.jsx'
 import Sorties from './pages/Sorties.jsx'
@@ -34,7 +35,7 @@ export default function App() {
       <Header />
       <div id="main-container" className="flex-container is-flex-wrap-nowrap is-break-tablet">
         <aside id="main-side" aria-label="Coordonnées du label">
-          <img src="/assets/logo-contour-rouge.svg" alt="Le Label Records" width="100" height="134" />
+          <Logo />
           <p className="is-writing-mode-vertical is-writing-mode-break-tablet">
             {config.label_name} — {config.address} —{' '}
             <a href={`mailto:${config.email}`}>{config.email}</a>
