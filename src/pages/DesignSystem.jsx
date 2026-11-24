@@ -80,6 +80,21 @@ export default function DesignSystem() {
 
       <hr className="_row" />
 
+      <section aria-labelledby="ds-eco">
+        <h2 id="ds-eco">Écoconception &amp; perf</h2>
+        <ul className="_row">
+          <li className="list-item"><strong>Zéro image raster</strong> : logo SVG en masque CSS (suit le thème), pochettes typographiques, SVG minifiés (svgo).</li>
+          <li className="list-item"><strong>1 seule police</strong> : Archivo Variable latin, inlinée en data URI dans le CSS au build (1 requête en moins, rien à compresser en plus).</li>
+          <li className="list-item"><strong>Zéro traceur / cookie / mesure d'audience</strong> ; le choix de thème reste en localStorage côté client.</li>
+          <li className="list-item"><strong>Tout est auto-hébergé</strong> (CSS, JS, police, SVG) : aucune requête externe au runtime.</li>
+          <li className="list-item"><strong>Compression</strong> gzip/brotli automatique au niveau de l'edge Cloudflare Pages ; assets minifiés (Vite) ; <code>print.css</code> dédié (RWEB_0031).</li>
+          <li className="list-item"><strong>Budget de poids</strong> (build prod) : JS ≈ 90 Ko gzip, CSS ≈ 39 Ko gzip (police incluse), HTML ≈ 1 Ko. <code>prefers-reduced-motion</code> respecté (marquee, scroll).</li>
+          <li className="list-item"><strong>Sécurité</strong> : <code>_headers</code> — CSP strict, HSTS, nosniff, frame-ancestors 'none'.</li>
+        </ul>
+      </section>
+
+      <hr className="_row" />
+
       <section aria-labelledby="ds-composants">
         <h2 id="ds-composants">Composants (ui/)</h2>
 
