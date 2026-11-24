@@ -1,0 +1,22 @@
+// Design tokens — Le Label Records
+// Source unique des couleurs (thémables), typographies, breakpoints et gouttières.
+
+:root {
+  --accent: #db0000;
+  --bg: #ffffff;
+  --on-accent: #ffffff;
+}
+
+html[data-theme='mono'] {
+  --accent: #343434;
+}
+
+$font: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-black: 'Archivo Black', 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$sp: 767px;
+$tablet: 1023px;
+$pc-small: 1280px;
+$pc-large: 1700px;
+
+$gut: 25px;

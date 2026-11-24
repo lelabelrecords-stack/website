@@ -1,25 +1,4 @@
-// Le Label Records — design system inspiré d'utrecht.jp + RCA Records (awwwards)
-// Thème par variable CSS : --accent = #db0000 (rouge) ou #343434 (gris), fond #FFFFFF.
-
-:root {
-  --accent: #db0000;
-  --bg: #ffffff;
-  --on-accent: #ffffff;
-}
-
-html[data-theme='mono'] {
-  --accent: #343434;
-}
-
-$font: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-black: 'Archivo Black', 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-$sp: 767px;
-$tablet: 1023px;
-$pc-small: 1280px;
-$pc-large: 1700px;
-
-$gut: 25px;
+@use 'tokens' as *;
 
 *,
 *::before,
@@ -701,4 +680,21 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   display: block;
   margin-top: 0.5rem;
   font-style: normal;
+}
+
+// ---------- Page design system (interne, noindex) ----------
+
+.ds-swatch {
+  height: 4rem;
+  border: 1px solid var(--accent);
+}
+
+.ds-swatch--accent { background-color: #db0000; }
+.ds-swatch--mono { background-color: #343434; }
+.ds-swatch--bg { background-color: #ffffff; }
+
+.ds-box {
+  border: 1px solid var(--accent);
+  padding: 1rem;
+  text-align: center;
 }

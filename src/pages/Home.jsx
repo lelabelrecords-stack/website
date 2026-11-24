@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { config, artistes, news, sorties, evenements, formatDate } from '../data.js'
 import ReleaseCard from '../components/ReleaseCard.jsx'
+import Tab from '../components/ui/Tab.jsx'
+import Button from '../components/ui/Button.jsx'
 
 const TAB_LABELS = {
   toutes: 'Toutes',
@@ -52,17 +54,9 @@ export default function Home() {
         <h2 id="home-news">News / Actualités</h2>
         <div className="tabs _row" role="tablist" aria-label="Catégories d'actualités">
           {tabs.map((t) => (
-            <button
-              key={t}
-              type="button"
-              role="tab"
-              aria-selected={tab === t}
-              aria-controls="news-feed"
-              className={`tab${tab === t ? ' is-active' : ''}`}
-              onClick={() => setTab(t)}
-            >
+            <Tab key={t} selected={tab === t} controls="news-feed" onClick={() => setTab(t)}>
               {TAB_LABELS[t] || t}
-            </button>
+            </Tab>
           ))}
         </div>
         <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-label="Actualités filtrées">
@@ -112,7 +106,7 @@ export default function Home() {
             <ReleaseCard key={s.id} release={s} />
           ))}
         </div>
-        <p className="_row"><Link className="button" to="/sorties">Toutes les sorties</Link></p>
+        <p className="_row"><Button to="/sorties">Toutes les sorties</Button></p>
       </section>
 
       <hr className="_row" />
@@ -131,7 +125,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <p className="_row"><Link className="button" to="/radio">Tous les épisodes</Link></p>
+        <p className="_row"><Button to="/radio">Tous les épisodes</Button></p>
       </section>
     </>
   )

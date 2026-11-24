@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /design-system
 Sitemap: https://le-label.org/sitemap.xml

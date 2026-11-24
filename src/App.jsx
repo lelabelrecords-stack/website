@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
-import Logo from './components/Logo.jsx'
+import Logo from './components/ui/Logo.jsx'
 import Home from './pages/Home.jsx'
 import Artistes from './pages/Artistes.jsx'
 import Sorties from './pages/Sorties.jsx'
@@ -13,6 +13,7 @@ import APropos from './pages/APropos.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 import MentionsLegales from './pages/MentionsLegales.jsx'
+import DesignSystem from './pages/DesignSystem.jsx'
 import { config } from './data.js'
 
 function ScrollToTop() {
@@ -53,7 +54,8 @@ export default function App() {
             <Route path="/radio" element={<Radio />} />
             <Route path="/a-propos" element={<APropos />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/design-system" element={<DesignSystem />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

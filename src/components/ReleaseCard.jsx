@@ -1,29 +1,17 @@
 import { formatDate } from '../data.js'
+import Cover from './ui/Cover.jsx'
 
 export default function ReleaseCard({ release }) {
   const { title, artist, date, type, note, links } = release
   const mainLink = links.listen || links.bandcamp || links.clip
-  const coverClass = 'cover--red'
 
   return (
     <article className="col-25 col-33-pc-small col-50-sp release">
-      {mainLink ? (
-        <a
-          className="hover-image display-block"
-          href={mainLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${artist} — ${title} : écouter`}
-        >
-          <div className={`image-container is-product ${coverClass}`}>
-            <span className="image-label">{type}</span>
-          </div>
-        </a>
-      ) : (
-        <div className={`image-container is-product ${coverClass}`}>
-          <span className="image-label">{type}</span>
-        </div>
-      )}
+      <Cover
+        label={type}
+        href={mainLink}
+        ariaLabel={`${artist} — ${title} : écouter`}
+      />
       <div className="__row textsize-regular-lh-small">
         <p className="____row"><strong>{title}</strong> / {artist}</p>
         <p className="____row textsize-small">{formatDate(date) || 'À venir'}</p>
