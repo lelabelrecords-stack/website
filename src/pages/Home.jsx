@@ -11,9 +11,9 @@ export default function Home() {
     <>
       <section aria-labelledby="home-news">
         <h1 id="home-news">News / Actualités</h1>
-        <ul className="_row">
+        <ul className="flex-container _row">
           {latestNews.map((n) => (
-            <li className="list-item" key={n.title}>
+            <li className="list-item col-50 col-100-sp" key={n.title}>
               <p className="list-date">{formatDate(n.date) || 'À venir'}</p>
               <h3 className="__row">{n.title}</h3>
               <p className="__row textsize-regular-lh-small">{n.text}</p>
