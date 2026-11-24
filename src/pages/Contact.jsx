@@ -44,10 +44,13 @@ export default function Contact() {
       <section aria-labelledby="contact-reseaux">
         <h3 id="contact-reseaux">Réseaux</h3>
         <ul className="_row release-links">
-          <li><a href={config.social.bandcamp} target="_blank" rel="noopener noreferrer">Bandcamp</a></li>
-          <li><a href={config.social.linktree} target="_blank" rel="noopener noreferrer">Linktree</a></li>
-          <li><a href={config.social.youtube} target="_blank" rel="noopener noreferrer">YouTube</a></li>
-          <li><a href={config.social.kaardinal_publishing} target="_blank" rel="noopener noreferrer">Kaardinal Publishing</a></li>
+          {Object.entries(config.social).map(([key, url]) => (
+            <li key={key}>
+              <a href={url} target="_blank" rel="noopener noreferrer">
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </a>
+            </li>
+          ))}
         </ul>
       </section>
     </>

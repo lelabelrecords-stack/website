@@ -1,7 +1,26 @@
 [
-  { "date": "2026-10-16", "title": "EP « Vision » de Montevideo — sorti", "text": "L'EP « Vision » de Montevideo est disponible depuis le 16 octobre sur Le Label et sur Bandcamp.", "link": "https://lelabelrecords.bandcamp.com/" },
-  { "date": "2026-09-26", "title": "Single « Brawn » de Montevideo", "text": "« Brawn » est sorti le 26 septembre — clip officiel sur YouTube, écoute sur Bandcamp.", "link": "https://www.youtube.com/watch?v=Mn_pscQeAzg" },
-  { "date": "2026-12-18", "title": "EP1 de K0RROBOR — le 18 décembre", "text": "7 titres, résidence scénique à la Paloma, release party à Nîmes puis tour en Occitanie.", "link": "https://korrobor.bandcamp.com" },
-  { "date": "2027-01-15", "title": "Unsort — EP « Un cœur gravé » le 15 janvier 2027", "text": "Co-production Hidden Bay, Araki, Numavi. Tournée release hiver/printemps 2027.", "link": null },
-  { "date": null, "title": "Le Label² #3 — Chrüsümïsi Records", "text": "Épisode #3 : cap sur la Suisse alémanique et Chrüsümïsi Records, un label qui assume son chaos dès le nom. Sur Rayvox, Raje et Radio Alliance +.", "link": "https://www.rayvox.org/podcastFilter?e=70&t=&l=1" }
+  {
+    "date": "2026-10-16",
+    "title": "EP « Vision » de Montevideo — sorti",
+    "text": "L'EP « Vision » de Montevideo est disponible depuis le 16 octobre sur Le Label et sur Bandcamp.",
+    "link": "https://lelabelrecords.bandcamp.com/"
+  },
+  {
+    "date": "2026-09-26",
+    "title": "Single « Brawn » de Montevideo",
+    "text": "« Brawn » est sorti le 26 septembre — clip officiel sur YouTube, écoute sur Bandcamp.",
+    "link": "https://www.youtube.com/watch?v=Mn_pscQeAzg"
+  },
+  {
+    "date": "2026-12-18",
+    "title": "EP1 de K0RROBOR — le 18 décembre",
+    "text": "7 titres, résidence scénique à la Paloma, release party à Nîmes puis tour en Occitanie.",
+    "link": "https://korrobor.bandcamp.com"
+  },
+  {
+    "date": null,
+    "title": "Le Label² #3 — Chrüsümïsi Records",
+    "text": "Épisode #3 : cap sur la Suisse alémanique et Chrüsümïsi Records, un label qui assume son chaos dès le nom. Sur Rayvox, Raje et Radio Alliance +.",
+    "link": "https://www.rayvox.org/podcastFilter?e=70&t=&l=1"
+  }
 ]

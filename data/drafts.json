@@ -1,0 +1,43 @@
+{
+  "_note": "Brouillons non signés — non embarqués dans le build (réintégrer dans les fichiers actifs après signature).",
+  "sorties": [
+    {
+      "id": "unsort-ep",
+      "title": "Un cœur gravé",
+      "artist": "Unsort",
+      "date": "2027-01-15",
+      "type": "EP",
+      "note": "1er EP d'Unsort (Iso, ex-Radical Kitten) — co-production Hidden Bay, Araki, Numavi. Tournée release hiver/printemps 2027.",
+      "cover": "red",
+      "links": {
+        "bandcamp": "https://lelabelrecords.bandcamp.com/"
+      }
+    }
+  ],
+  "evenements": [
+    {
+      "date": "2027-01-15",
+      "title": "Unsort — Release « Un cœur gravé »",
+      "lieu": "Bar du Midi (co-plateau Alien Tears, envisagé)",
+      "ville": "Nîmes",
+      "type": "release",
+      "link": null
+    },
+    {
+      "date": "2027-02-04",
+      "title": "Unsort — Tournée release",
+      "lieu": "À confirmer",
+      "ville": "Saint-Girons",
+      "type": "concert",
+      "link": null
+    }
+  ],
+  "news": [
+    {
+      "date": "2027-01-15",
+      "title": "Unsort — EP « Un cœur gravé » le 15 janvier 2027",
+      "text": "Co-production Hidden Bay, Araki, Numavi. Tournée release hiver/printemps 2027.",
+      "link": null
+    }
+  ]
+}

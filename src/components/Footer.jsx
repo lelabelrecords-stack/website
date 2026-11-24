@@ -29,11 +29,14 @@ export default function Footer() {
             <a href={`mailto:${config.email}`}>{config.email}</a>
           </p>
           <p className="textsize-small">
-            <a href={config.social.bandcamp} rel="noopener noreferrer">Bandcamp</a>
-            {' · '}
-            <a href={config.social.linktree} rel="noopener noreferrer">Linktree</a>
-            {' · '}
-            <a href={config.social.youtube} rel="noopener noreferrer">YouTube</a>
+            {Object.entries(config.social).map(([key, url], i) => (
+              <span key={key}>
+                {i > 0 && ' · '}
+                <a href={url} rel="noopener noreferrer">
+                  {key.charAt(0).toUpperCase() + key.slice(1)}
+                </a>
+              </span>
+            ))}
           </p>
         </div>
       </div>

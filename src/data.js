@@ -1,10 +1,16 @@
-import config from '../data/config.json'
-import artistes from '../data/artistes.json'
-import sorties from '../data/sorties.json'
-import evenements from '../data/evenements.json'
-import news from '../data/news.json'
+import rawConfig from '../data/config.json'
+import rawArtistes from '../data/artistes.json'
+import rawSorties from '../data/sorties.json'
+import rawEvenements from '../data/evenements.json'
+import rawNews from '../data/news.json'
 
-export { config, artistes, sorties, evenements, news }
+const visible = (list) => list.filter((x) => !x.hidden)
+
+export const config = rawConfig
+export const artistes = visible(rawArtistes)
+export const sorties = visible(rawSorties)
+export const evenements = visible(rawEvenements)
+export const news = visible(rawNews)
 
 const dateFmt = new Intl.DateTimeFormat('fr-FR', {
   day: 'numeric',

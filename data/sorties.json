@@ -49,17 +49,5 @@
     "links": {
       "bandcamp": "https://lelabelrecords.bandcamp.com/"
     }
-  },
-  {
-    "id": "unsort-ep",
-    "title": "Un cœur gravé",
-    "artist": "Unsort",
-    "date": "2027-01-15",
-    "type": "EP",
-    "note": "1er EP d'Unsort (Iso, ex-Radical Kitten) — co-production Hidden Bay, Araki, Numavi. Tournée release hiver/printemps 2027.",
-    "cover": "red",
-    "links": {
-      "bandcamp": "https://lelabelrecords.bandcamp.com/"
-    }
   }
 ]

@@ -42,6 +42,7 @@ data/
 ├── sorties.json      # sorties (single/EP/LP, dates, liens d'écoute)
 ├── evenements.json   # concerts, release parties, festivals
 └── news.json         # actus de l'accueil
+└── drafts.json                # brouillons non signés (non embarqués dans le build)
 ```
 
 Les images du logo officiel (Drive → `Logo/visuels-officiels`) peuvent être déposées dans `public/assets/` et référencées depuis les composants.
