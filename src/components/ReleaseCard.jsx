@@ -1,9 +1,9 @@
 import { formatDate } from '../data.js'
 
 export default function ReleaseCard({ release }) {
-  const { title, artist, date, type, note, cover, links } = release
+  const { title, artist, date, type, note, links } = release
   const mainLink = links.listen || links.bandcamp || links.clip
-  const coverClass = cover === 'black' ? 'cover--black' : 'cover--red'
+  const coverClass = 'cover--red'
 
   return (
     <article className="col-25 col-33-pc-small col-50-sp release">

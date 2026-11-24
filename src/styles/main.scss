@@ -4,7 +4,6 @@
 
 $red: #db0000;
 $white: #ffffff;
-$ink: #111111;
 
 $font: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-black: 'Archivo Black', 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -498,11 +497,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   color: $red;
 }
 
-.cover--black {
-  background-color: $white;
-  border: solid 1px $ink;
-  color: $ink;
-}
+
 
 // Pastille centrée sur le visuel (prix chez utrecht.jp, type de sortie ici)
 .image-label {
@@ -528,12 +523,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   color: $white;
 }
 
-.hover-image:hover .cover--black,
-.hover-image:focus-visible .cover--black {
-  background-color: $ink;
-  border-color: $ink;
-  color: $white;
-}
+
 
 .release-links {
   display: flex;
