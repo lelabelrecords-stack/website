@@ -6,10 +6,31 @@ export default function Home() {
   const latestNews = [...news].sort(byDateDesc)
   const nextEvents = upcomingEvents(evenements, 4)
   const bannerEvent = nextEvents[0]
-  const bannerNews = latestNews[0]
 
   return (
     <>
+      <section aria-labelledby="home-news">
+        <h2 id="home-news">News / Actualités</h2>
+        <ul className="_row">
+          {latestNews.map((n) => (
+            <li className="list-item" key={n.title}>
+              <p className="list-date">{formatDate(n.date) || 'À venir'}</p>
+              <h3 className="__row">{n.title}</h3>
+              <p className="__row textsize-regular-lh-small">{n.text}</p>
+              <p className="__row textsize-small">
+                {n.link ? (
+                  <a href={n.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
+                ) : (
+                  <Link to="/contact">Nous contacter</Link>
+                )}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <hr className="_row" />
+
       {bannerEvent && (
         <section aria-label="Prochain événement">
           <p className="textsize-small">Coming Soon / À venir</p>
@@ -31,23 +52,6 @@ export default function Home() {
               </>
             )}
             <Link to="/evenements">Tous les événements</Link>
-          </p>
-        </section>
-      )}
-
-      {bannerNews && (
-        <section aria-label="Dernière news" className="_row">
-          <p className="textsize-small">News / Actualités</p>
-          <h2 className="___row">{bannerNews.title}</h2>
-          <p className="___row textsize-regular-lh-small">{bannerNews.text}</p>
-          <p className="___row textsize-small">
-            {bannerNews.link && (
-              <>
-                <a href={bannerNews.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
-                {' · '}
-              </>
-            )}
-            <Link to="/news">Toutes les news</Link>
           </p>
         </section>
       )}

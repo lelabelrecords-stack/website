@@ -11,6 +11,7 @@ import Radio from './pages/Radio.jsx'
 import APropos from './pages/APropos.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
+import { config } from './data.js'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -31,19 +32,28 @@ export default function App() {
       <a className="skip-link" href="#main">Aller au contenu</a>
       <ScrollToTop />
       <Header />
-      <main id="main" className="content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/artistes" element={<Artistes />} />
-          <Route path="/sorties" element={<Sorties />} />
-          <Route path="/evenements" element={<Evenements />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/radio" element={<Radio />} />
-          <Route path="/a-propos" element={<APropos />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
+      <div id="main-container" className="flex-container is-flex-wrap-nowrap is-break-tablet">
+        <aside id="main-side" aria-label="Coordonnées du label">
+          <img src="/assets/logo-contour-rouge.svg" alt="Le Label Records" width="100" height="134" />
+          <p className="is-writing-mode-vertical is-writing-mode-break-tablet">
+            {config.label_name} — {config.address} —{' '}
+            <a href={`mailto:${config.email}`}>{config.email}</a>
+          </p>
+        </aside>
+        <main id="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/artistes" element={<Artistes />} />
+            <Route path="/sorties" element={<Sorties />} />
+            <Route path="/evenements" element={<Evenements />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/radio" element={<Radio />} />
+            <Route path="/a-propos" element={<APropos />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+      </div>
       <Footer />
     </>
   )
