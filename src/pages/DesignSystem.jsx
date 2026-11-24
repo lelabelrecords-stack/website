@@ -47,6 +47,11 @@ export default function DesignSystem() {
 
       <section aria-labelledby="ds-typo">
         <h2 id="ds-typo">Typographie</h2>
+        <p className="__row textsize-small">
+          Une seule police : <strong>Archivo Variable</strong> (graisses 100–900), 1 fichier woff2 latin
+          auto-hébergé (<code>/fonts/archivo-latin-wght-normal.woff2</code>, @font-face dans
+          <code>tokens.scss</code>). Le display (hero, marquee) utilise la graisse 900.
+        </p>
         <p className="hero-title _row">Hero title</p>
         <h2 className="__row">h2 — titre de section</h2>
         <h3 className="__row">h3 — sous-section</h3>
@@ -84,12 +89,17 @@ export default function DesignSystem() {
           <Button href="https://lelabelrecords.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</Button>{' '}
           <Button to="/contact">Contact</Button>
         </p>
-        <p className="__row textsize-small">Contour 1px, rempli au survol/focus — couleurs via var(--accent).</p>
+        <p className="__row textsize-small">
+          Contour 1px, rempli au survol/focus — couleurs via var(--accent). Utilisé PARTOUT :
+          liens d'action (« En savoir plus »…), nav du header, onglets de catégories, boutons thème/menu.
+          Actif = rempli (aria-current / aria-selected).
+        </p>
 
         <h3 className="_row">Label</h3>
         <p className="__row">
           <Label>concert</Label> <Label filled>release</Label>
         </p>
+        <p className="__row textsize-small">Étiquette de catégorie, toujours préfixée d'un # (dans la primitive).</p>
 
         <h3 className="_row">Tab</h3>
         <div className="tabs __row" role="tablist" aria-label="Démo onglets">
