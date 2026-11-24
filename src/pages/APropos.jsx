@@ -1,6 +1,8 @@
+import { usePageMeta } from '../seo.js'
 import { config } from '../data.js'
 
 export default function APropos() {
+  usePageMeta('À propos — Le Label Records', 'Le Label Records, label indépendant à Nîmes : accompagnement des artistes, de près et avec des humains.')
   return (
     <>
       <h1>À propos</h1>

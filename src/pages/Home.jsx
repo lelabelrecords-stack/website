@@ -112,7 +112,7 @@ export default function Home() {
             <ReleaseCard key={s.id} release={s} />
           ))}
         </div>
-        <p className="_row textsize-small"><Link to="/sorties">Toutes les sorties</Link></p>
+        <p className="_row"><Link className="button" to="/sorties">Toutes les sorties</Link></p>
       </section>
 
       <hr className="_row" />
@@ -131,7 +131,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <p className="_row textsize-small"><Link to="/radio">Tous les épisodes</Link></p>
+        <p className="_row"><Link className="button" to="/radio">Tous les épisodes</Link></p>
       </section>
     </>
   )

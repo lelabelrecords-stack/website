@@ -1,6 +1,8 @@
+import { usePageMeta } from '../seo.js'
 import { config } from '../data.js'
 
 export default function Radio() {
+  usePageMeta('Le Label² — Le Label Records', "L'émission radio du Le Label Records : un label indépendant, une heure, les morceaux qui le définissent. Sur Rayvox, Raje et Radio Alliance +.")
   const { radio } = config
 
   return (
@@ -18,7 +20,7 @@ export default function Radio() {
               <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
               <p className="__row">
-                <a className="button" href={slot.link} target="_blank" rel="noopener noreferrer">Écouter le replay</a>
+                <a className="button" href={slot.link} target="_blank" rel="noopener noreferrer">Accéder aux émissions</a>
               </p>
             </li>
           ))}

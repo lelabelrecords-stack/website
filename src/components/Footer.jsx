@@ -18,6 +18,7 @@ export default function Footer() {
               <li><Link to="/radio">Le Label²</Link></li>
               <li><Link to="/a-propos">À propos</Link></li>
               <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/mentions-legales">Mentions légales</Link></li>
             </ul>
           </nav>
         </div>

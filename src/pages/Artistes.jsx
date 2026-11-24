@@ -1,3 +1,4 @@
+import { usePageMeta } from '../seo.js'
 import { artistes, sorties } from '../data.js'
 
 function releasesOf(artist) {
@@ -5,6 +6,7 @@ function releasesOf(artist) {
 }
 
 export default function Artistes() {
+  usePageMeta('Artistes — Le Label Records', 'Le roster du Le Label Records : Montevideo (post-punk, Nîmes), K0RROBOR (trio instrumental, Nîmes), Teknotrokids.')
   return (
     <>
       <h1>Artistes</h1>
@@ -33,7 +35,7 @@ export default function Artistes() {
                 <ul className="__row release-links">
                   {Object.entries(a.links).map(([key, url]) => (
                     <li key={key}>
-                      <a href={url} target="_blank" rel="noopener noreferrer">
+                      <a className="button" href={url} target="_blank" rel="noopener noreferrer">
                         {key === 'artiste' ? 'Page artiste' : key.charAt(0).toUpperCase() + key.slice(1)}
                       </a>
                     </li>

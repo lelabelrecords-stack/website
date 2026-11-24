@@ -291,7 +291,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 .site-nav a {
   display: inline-block;
   border: 1px solid var(--accent);
-  border-radius: 0.5em;
   padding: 3px 10px;
 }
 
@@ -312,7 +311,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 .nav-toggle,
 .theme-toggle {
   border: 1px solid var(--accent);
-  border-radius: 0.5em;
   background-color: var(--bg);
   color: var(--accent);
   padding: 3px 10px;
@@ -509,7 +507,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   display: inline-block;
   padding: 0.25rem 0.83333rem;
   border: solid 1px var(--accent);
-  border-radius: 0.5em;
 }
 
 .label--filled {
@@ -521,7 +518,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 .button {
   display: inline-block;
   border: solid 1px var(--accent);
-  border-radius: 0.5em;
   background-color: var(--bg);
   color: var(--accent);
   padding: 0.5rem 1.25rem;
@@ -656,7 +652,6 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 
 .tab {
   border: 1px solid var(--accent);
-  border-radius: 0.5em;
   background-color: var(--bg);
   color: var(--accent);
   padding: 3px 10px;

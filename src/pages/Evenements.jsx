@@ -1,6 +1,8 @@
+import { usePageMeta } from '../seo.js'
 import { evenements, formatDate } from '../data.js'
 
 export default function Evenements() {
+  usePageMeta('Événements — Le Label Records', 'Concerts, release parties, tournées et festivals organisés par le Le Label Records à Nîmes et en Occitanie.')
   const sorted = [...evenements].sort((a, b) => {
     if (!a.date && !b.date) return 0
     if (!a.date) return 1
@@ -25,7 +27,7 @@ export default function Evenements() {
             </p>
             {e.link && (
               <p className="__row textsize-small">
-                <a href={e.link} target="_blank" rel="noopener noreferrer">Lien</a>
+                <a className="button" href={e.link} target="_blank" rel="noopener noreferrer">Lien</a>
               </p>
             )}
           </li>

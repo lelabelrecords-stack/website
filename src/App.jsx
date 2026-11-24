@@ -12,6 +12,7 @@ import Radio from './pages/Radio.jsx'
 import APropos from './pages/APropos.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
+import MentionsLegales from './pages/MentionsLegales.jsx'
 import { config } from './data.js'
 
 function ScrollToTop() {
@@ -51,7 +52,8 @@ export default function App() {
             <Route path="/radio" element={<Radio />} />
             <Route path="/a-propos" element={<APropos />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </div>

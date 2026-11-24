@@ -1,6 +1,8 @@
+import { usePageMeta } from '../seo.js'
 import { config } from '../data.js'
 
 export default function Contact() {
+  usePageMeta('Contact — Le Label Records', 'Contacter le Le Label Records (Nîmes) : presse à le.label.contact@gmail.com, démos à lelabel@le-label.org, 8 rue Nationale 30000 Nîmes.')
   return (
     <>
       <h1>Contact</h1>

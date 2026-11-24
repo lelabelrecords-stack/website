@@ -8,4 +8,5 @@
   <url><loc>https://le-label.org/radio</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://le-label.org/a-propos</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://le-label.org/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://le-label.org/mentions-legales</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

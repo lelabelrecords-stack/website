@@ -1,7 +1,9 @@
+import { usePageMeta } from '../seo.js'
 import { Link } from 'react-router-dom'
 import { news, byDateDesc, formatDate } from '../data.js'
 
 export default function News() {
+  usePageMeta('News — Le Label Records', 'Actualités du Le Label Records : sorties, concerts, festivals et émission radio Le Label².')
   const sorted = [...news].sort(byDateDesc)
 
   return (
