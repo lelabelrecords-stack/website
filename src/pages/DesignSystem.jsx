@@ -49,8 +49,7 @@ export default function DesignSystem() {
         <h2 id="ds-typo">Typographie</h2>
         <p className="__row textsize-small">
           Une seule police : <strong>Archivo Variable</strong> (graisses 100–900), 1 fichier woff2 latin
-          auto-hébergé (<code>/fonts/archivo-latin-wght-normal.woff2</code>, @font-face dans
-          <code>tokens.scss</code>). Le display (hero, marquee) utilise la graisse 900.
+          auto-hébergé (inlinée en data URI dans le CSS au build). Le display (hero, marquee) utilise la graisse 900.
         </p>
         <p className="hero-title _row">Hero title</p>
         <h2 className="__row">h2 — titre de section</h2>
