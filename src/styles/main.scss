@@ -223,10 +223,11 @@ p + p {
 
 hr {
   border: 0;
+  border-top: 1px solid $red;
   margin: 0;
   padding: 0;
-  height: 1px;
-  background-color: $red;
+  height: 0;
+  background: none;
 }
 
 .display-block {
@@ -318,6 +319,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 }
 
 .site-nav {
+  flex: 1 1 auto;
   font-size: 0.83333rem;
   line-height: 1.25rem;
 }
@@ -325,7 +327,7 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 .site-nav ul {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 5px 20px;
 }
 
@@ -362,6 +364,11 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
 
   #site-identity {
     width: 4.16667rem;
+  }
+
+  .site-nav {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .nav-toggle {
@@ -484,15 +491,17 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   padding-bottom: 150%;
 }
 
-// Visuel uni rouge/noir (aucune image raster, aucun gros logo : juste la pastille)
+// Visuel en contour uniquement (bordure 1px, pas de fond) + pastille centrée
 .cover--red {
-  background-color: $red;
-  color: $white;
+  background-color: $white;
+  border: solid 1px $red;
+  color: $red;
 }
 
 .cover--black {
-  background-color: $ink;
-  color: $white;
+  background-color: $white;
+  border: solid 1px $ink;
+  color: $ink;
 }
 
 // Pastille centrée sur le visuel (prix chez utrecht.jp, type de sortie ici)
@@ -512,15 +521,18 @@ $cols: 10 14 15 16 20 25 30 33 35 40 45 50 55 60 65 66 70 75 80 85 90 95 100;
   line-height: 1;
 }
 
-// Au survol, le visuel de base est remplacé (inversion rouge/noir, sans image)
+// Au survol, le contour se remplit (équivalent du swap base/over d'utrecht.jp)
 .hover-image:hover .cover--red,
 .hover-image:focus-visible .cover--red {
-  background-color: $ink;
+  background-color: $red;
+  color: $white;
 }
 
 .hover-image:hover .cover--black,
 .hover-image:focus-visible .cover--black {
-  background-color: $red;
+  background-color: $ink;
+  border-color: $ink;
+  color: $white;
 }
 
 .release-links {
