@@ -47,3 +47,16 @@ export const Motion = () => (
     <Marquee text="K0RROBOR · Montevideo · Le Label² · Nîmes" />
   </>
 )
+
+export const Ecoconception = () => (
+  <div style={{ maxWidth: '46rem' }}>
+    <p className="__row">Contrat éco du site, audité avec EcoIndex (référentiel RWEB) :</p>
+    <ul className="_row">
+      <li>0 image raster, 0 traceur, 0 cookie — tout est auto-hébergé (CSS, JS, SVG, police).</li>
+      <li><strong>RWEB_0076</strong> (compression) : brotli/gzip automatique à l'edge Cloudflare Pages sur tout le texte ; la seule police (Archivo Variable woff2) est inlinée en <code>data:</code> URI dans le CSS → aucune requête font. Garde-fou CI : <code>scripts/budget.mjs</code> échoue si un fichier <code>.woff2/.woff/.ttf</code> existe dans <code>dist/</code>.</li>
+      <li><strong>RWEB_0031</strong> (impression) : <code>public/print.css</code> lié via <code>&lt;link media="print"&gt;</code> — masque header, footer, barre latérale, menu plein écran, boutons et images ; contenu noir sur blanc.</li>
+      <li>Budgets de poids en CI : JS ≤ 100 Ko gzip, CSS ≤ 45 Ko, HTML ≤ 4 Ko, dist ≤ 512 Ko + Lighthouse (<code>lighthouse-budget.json</code> : 0 font externe, 0 third-party, ≤ 600 Ko au total).</li>
+      <li>Re-scanner EcoIndex avec un paramètre anti-cache (ex. <code>?eco=2</code>) : l'outil met en cache le rapport par URL.</li>
+    </ul>
+  </div>
+)

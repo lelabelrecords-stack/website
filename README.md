@@ -1,6 +1,6 @@
 # Le Label Records — site web
 
-Site vitrine du **Le Label Records** (label indépendant, Nîmes). React + Vite + SCSS, design brutaliste maison (grille stricte `.col-*`, rouge `#db0000`, noir/blanc, typographie Archivo auto-hébergée, logo contour-rouge). Le site est pensé **écoconception** (aucune image raster, aucun traceur, polices woff2 auto-hébergées, ~100 Ko au total) et **accessible** (landmarks sémantiques, lien « Aller au contenu », `aria-current` sur la nav, focus visible, `prefers-reduced-motion` respecté, contrastes AA).
+Site vitrine du **Le Label Records** (label indépendant, Nîmes). React + Vite + SCSS, design brutaliste maison (grille stricte `.col-*`, rouge `#db0000`, noir/blanc, typographie Archivo auto-hébergée, logo contour-rouge). Le site est pensé **écoconception** (aucune image raster, aucun traceur, 1 police woff2 inlinée en data URI, ~100 Ko au total) et **accessible** (landmarks sémantiques, lien « Aller au contenu », `aria-current` sur la nav, focus visible, `prefers-reduced-motion` respecté, contrastes AA).
 
 ## Process de déploiement automatique
 
@@ -72,6 +72,7 @@ Il n'est pas embarqué dans le build de production (ni dans robots.txt/sitemap).
 
 - **GitHub Actions** : `deploy.yml` (miroir GitLab) + `storybook-pages.yml` (DS Storybook → GitHub Pages, noindex).
 - **GitLab CI** (`.gitlab-ci.yml`, branche `main`) : `build` → `audit` (npm audit bloquant, 0 vulnérabilité grâce aux overrides glob/minimatch) → `budget` (`scripts/budget.mjs` : JS ≤ 100 Ko gzip, CSS ≤ 45 Ko, dist ≤ 512 Ko) → `validate` (fichiers attendus dans dist/) → `ds-tests` (Storybook addon-vitest : navigateur playwright headless, inclut le play test de Tab) → `lighthouse` (budgets `lighthouse-budget.json` : 0 font externe, 0 third-party, poids total).
+- **Écoconception auditée (EcoIndex / RWEB)** : RWEB_0031 via `public/print.css` (`<link media="print">` dans `index.html` : chrome et images masqués, noir sur blanc) ; RWEB_0076 via brotli edge Cloudflare sur tout le texte + police inlinée en data URI (0 requête font) avec garde-fou CI « 0 fichier font dans `dist/` » (`scripts/budget.mjs`). Contrat documenté dans le DS (Storybook → Fondations → Écoconception, ou `/design-system` en dev). Note : EcoIndex met en cache son rapport par URL — re-scanner avec un paramètre anti-cache (`?eco=2`).
 - **Sécurité** : `public/.well-known/security.txt` (RFC 9116), CSP/HSTS/nosniff dans `_headers`, `npm audit` en CI, Dependabot (`.github/dependabot.yml`, hebdo).
 - **Protection de `main`** (à activer côté dashboard GitHub : Settings → Branches → Add rule sur `main` : « Do not allow force pushes » + « Require a pull request before merging » si vous passez en PR ; sinon gardez le push direct mais cochez au minimum l'interdiction du force-push). Templates : `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/`.
 - **Rollback** : Cloudflare Pages garde l'historique (projet → Deployments → Revert) ; releases taguées (`v1.0.0`, voir CHANGELOG.md).

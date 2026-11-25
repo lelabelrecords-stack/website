@@ -1,52 +1,58 @@
-/* Impression : on garde uniquement le contenu, encre noire sur blanc (économie d'encre) */
-#header,
-#footer,
-#main-side,
-.marquee,
-.tabs,
-.nav-toggle,
-.theme-toggle,
-.skip-link,
-.button,
-.hero-title {
-  display: none !important;
-}
+/* Impression (RWEB_0031) : lié via <link rel="stylesheet" media="print"> dans index.html.
+   On garde uniquement le contenu, encre noire sur blanc (économie d'encre) :
+   chrome (header, footer, barre latérale, menu, boutons) et images masqués. */
+@media print {
+  #header,
+  #footer,
+  #main-side,
+  .site-nav,
+  .marquee,
+  .tabs,
+  .nav-toggle,
+  .theme-toggle,
+  .skip-link,
+  .button,
+  .hero-title,
+  img {
+    display: none !important;
+  }
 
-body {
-  background: #fff !important;
-  color: #000 !important;
-}
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
 
-a {
-  color: #000 !important;
-  text-decoration: none !important;
-}
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
 
-.label,
-.image-label {
-  border: 1px solid #000 !important;
-  color: #000 !important;
-  background: #fff !important;
-}
+  .label,
+  .image-label {
+    border: 1px solid #000 !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
 
-.image-container,
-.cover--red {
-  background: #fff !important;
-  border: 1px solid #000 !important;
-  color: #000 !important;
-}
+  .image-container,
+  .cover--red {
+    background: #fff !important;
+    border: 1px solid #000 !important;
+    color: #000 !important;
+  }
 
-#main-container {
-  margin: 0 !important;
-  display: block !important;
-}
+  #main-container {
+    margin: 0 !important;
+    display: block !important;
+  }
 
-#main {
-  width: auto !important;
-  margin-left: 0 !important;
-}
+  #main {
+    width: auto !important;
+    margin-left: 0 !important;
+  }
 
-.list-item {
-  border-top: 1px solid #000 !important;
-  break-inside: avoid;
+  .list-item {
+    border-top: 1px solid #000 !important;
+    break-inside: avoid;
+  }
 }

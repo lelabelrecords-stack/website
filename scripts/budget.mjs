@@ -22,7 +22,16 @@ const rows = [
   ['HTML gzip', html, limits.html],
   ['dist total (brut)', total, limits.total]
 ]
+const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]))
+const fontExt = ['.woff2', '.woff', '.ttf', '.otf', '.eot']
+const fonts = walk(dist).filter((f) => fontExt.some((ext) => f.endsWith(ext)))
 let fail = 0
+if (fonts.length) {
+  fail++
+  console.log(`FAIL 0 fichier police dans dist (RWEB_0076) : ${fonts.join(', ')}`)
+} else {
+  console.log('OK  0 fichier police dans dist (RWEB_0076 — police inlinée en data URI)')
+}
 for (const [name, val, max] of rows) {
   const ok = val <= max
   if (!ok) fail++

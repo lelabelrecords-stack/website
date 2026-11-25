@@ -408,10 +408,11 @@ export default function DesignSystem() {
         <h2 id="ds-eco">Écoconception &amp; perf</h2>
         <ul className="_row">
           <ListItem><strong>Zéro image raster</strong> : logo SVG en masque CSS (suit le thème), pochettes typographiques, SVG minifiés (svgo).</ListItem>
-          <ListItem><strong>1 seule police</strong> : Archivo Variable latin, inlinée en data URI dans le CSS au build (1 requête en moins, rien à compresser en plus).</ListItem>
+          <ListItem><strong>1 seule police</strong> : Archivo Variable latin, inlinée en data URI dans le CSS au build (<code>assetsInlineLimit: 64 Ko</code>) — aucune requête font, donc aucune ressource « compressible » à signaler (RWEB_0076). Garde-fou CI : <code>scripts/budget.mjs</code> échoue si un fichier <code>.woff2/.woff/.ttf/.otf/.eot</code> est présent dans <code>dist/</code>.</ListItem>
           <ListItem><strong>Zéro traceur / cookie / mesure d'audience</strong> ; le choix de thème reste en localStorage côté client.</ListItem>
           <ListItem><strong>Tout est auto-hébergé</strong> (CSS, JS, police, SVG) : aucune requête externe au runtime.</ListItem>
-          <ListItem><strong>Compression</strong> gzip/brotli automatique au niveau de l'edge Cloudflare Pages ; assets minifiés (Vite) ; <code>print.css</code> dédié (RWEB_0031).</ListItem>
+          <ListItem><strong>Compression</strong> (RWEB_0076) : gzip/brotli automatique à l'edge Cloudflare Pages sur tout le texte (HTML, CSS, JS, SVG, XML, txt) ; assets minifiés par Vite ; jamais de fichier police servi séparément (data URI).</ListItem>
+          <ListItem><strong>Impression</strong> (RWEB_0031) : <code>public/print.css</code> lié par <code>&lt;link rel="stylesheet" media="print"&gt;</code> dans <code>index.html</code> — masque header, footer, barre latérale, menu plein écran, boutons et images ; contenu en noir sur blanc, sans fond (économie d'encre).</ListItem>
           <ListItem><strong>Budget de poids</strong> (build prod) : JS ≈ 95 Ko gzip, CSS ≈ 39 Ko gzip (police incluse), HTML ≈ 1 Ko ; dist ≈ 460 Ko.</ListItem>
           <ListItem><strong>Sécurité</strong> : <code>_headers</code> — CSP strict, HSTS, nosniff, frame-ancestors 'none' ; <code>security.txt</code> (RFC 9116) ; <code>npm audit</code> bloquant en CI (0 vulnérabilité).</ListItem>
           <ListItem><strong>CI bloquante</strong> : budgets de poids (<code>scripts/budget.mjs</code>), tests Storybook (addon-vitest + play), Lighthouse + budgets (<code>lighthouse-budget.json</code> : 0 font externe, 0 third-party).</ListItem>

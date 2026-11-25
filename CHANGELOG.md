@@ -2,6 +2,15 @@
 
 Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sémantique.
 
+## [Unreleased]
+
+### Ajouté
+- Contrat écoconception documenté dans le DS (page `/design-system` en dev + Storybook → Fondations → « Écoconception ») : RWEB_0031 (`print.css` : chrome et images masqués à l'impression, noir sur blanc) et RWEB_0076 (brotli edge Cloudflare sur tout le texte, police inlinée en data URI → 0 requête font).
+- Garde-fou CI RWEB_0076 : `scripts/budget.mjs` échoue si un fichier police (`.woff2/.woff/.ttf/.otf/.eot`) est présent dans `dist/`.
+
+### Corrigé
+- `public/print.css` : règles encapsulées dans `@media print`, masquage renforcé (menu plein écran `.site-nav`, images `img`).
+
 ## [1.0.0] — 2026-11-25
 
 ### Ajouté
