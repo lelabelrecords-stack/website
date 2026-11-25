@@ -4,8 +4,9 @@ import ListItem from '../components/ui/ListItem.jsx'
 export default { title: 'Le Label Records/Welcome' }
 
 export const Bienvenue = () => (
-  <div style={{ maxWidth: '46rem' }}>
+  <>
     <h1 className="hero-title">Le Label<br />Records</h1>
+    <div style={{ maxWidth: '46rem' }}>
     <p className="lead _row">{config.baseline}</p>
 
     <h2 className="_row">Qui on est</h2>
@@ -40,7 +41,8 @@ export const Bienvenue = () => (
       <li className="list-item"><strong>Composants</strong> — Button · Label · Tab · Cover · Logo · Hero · Lead · ListItem · Marquee (Docs + Contrôles + a11y)</li>
       <li className="list-item"><strong>Patterns</strong> — Page Type · Fil Actus · Carte Produit</li>
     </ul>
-  </div>
+    </div>
+  </>
 )
 
 export const Principes = () => (
