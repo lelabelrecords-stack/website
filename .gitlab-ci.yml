@@ -6,7 +6,7 @@ stages:
 
 variables:
   NODE_IMAGE: "node:20-alpine"
-  NODE_IMAGE_FULL: "node:20-bookworm"
+  NODE_IMAGE_FULL: "node:22-bookworm"  # vitest 5 + navigateur exigent Node >= 22
   BUILD_OUTPUT_DIR: "dist"
   PRODUCTION_BRANCH: "main"
   CF_PAGES_PROJECT_NAME: "website"
