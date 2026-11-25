@@ -16,3 +16,22 @@
   padding: 1rem;
   text-align: center;
 }
+
+// Table de documentation (props, tokens…)
+.ds-table {
+  border-collapse: collapse;
+  font-size: $fs-small;
+  line-height: $lh-small;
+}
+
+.ds-table th,
+.ds-table td {
+  border: $bw solid var(--accent);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.ds-table th {
+  font-weight: 700;
+}

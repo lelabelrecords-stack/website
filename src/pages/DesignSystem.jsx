@@ -10,6 +10,45 @@ import Logo from '../components/ui/Logo.jsx'
 import ListItem from '../components/ui/ListItem.jsx'
 import Marquee from '../components/ui/Marquee.jsx'
 
+function PropsTable({ rows }) {
+  return (
+    <table className="ds-table __row">
+      <thead>
+        <tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Rôle</th></tr>
+      </thead>
+      <tbody>
+        {rows.map(([p, t, r]) => (
+          <tr key={p}><td><code>{p}</code></td><td>{t}</td><td>{r}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  )
+}
+
+function Regles({ faire, eviter }) {
+  return (
+    <div className="__row">
+      <p><Label filled>À faire</Label> {faire}</p>
+      <p className="___row"><Label>À éviter</Label> {eviter}</p>
+    </div>
+  )
+}
+
+const TOC = [
+  ['ds-principes', 'Principes'],
+  ['ds-couleur', 'Couleur'],
+  ['ds-typo', 'Typographie'],
+  ['ds-grille', 'Grille & espacements'],
+  ['ds-visuels', 'Visuels'],
+  ['ds-motion', 'Motion'],
+  ['ds-composants', 'Composants'],
+  ['ds-patterns', 'Patterns'],
+  ['ds-a11y', 'Accessibilité'],
+  ['ds-eco', 'Écoconception & perf'],
+  ['ds-storybook', 'Vitrine Storybook'],
+  ['ds-guide', 'Ajouter un composant']
+]
+
 export default function DesignSystem() {
   usePageMeta('Design system — Le Label Records', 'Design system interne du site Le Label Records.')
   const [tab, setTab] = useState('actus')
@@ -21,63 +60,82 @@ export default function DesignSystem() {
 
   return (
     <>
-      <Hero title="Design system" sub="Contrat interne du site Le Label Records — page noindex." />
+      <Hero title="Design system" sub="Contrat interne du site Le Label Records — v1.0 (page noindex)." />
 
-      <section aria-labelledby="ds-lois" className="_row">
-        <h2 id="ds-lois">Lois du DS</h2>
+      <nav aria-label="Sommaire du design system" className="_row">
+        <ul className="release-links">
+          {TOC.map(([id, label]) => (
+            <li key={id}><a href={`#${id}`}>{label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <hr className="_row" />
+
+      <section aria-labelledby="ds-principes" id="ds-principes">
+        <h2 id="ds-principes">Principes</h2>
         <ul className="_row">
-          <ListItem>1 seul <code>h1.hero-title</code> par page, rendu par la primitive <code>&lt;Hero&gt;</code>.</ListItem>
-          <ListItem>Couleurs 100 % via <code>var(--accent/--bg/--on-accent)</code> — jamais de hexadécimal en dur dans un composant (sauf swatches du DS).</ListItem>
-          <ListItem><code>border-radius: 0</code> partout (<code>$radius</code>), filet unique <code>$bw: 1px</code>.</ListItem>
-          <ListItem>États interactifs uniquement via ARIA (<code>aria-current</code>, <code>aria-selected</code>, <code>aria-pressed</code>, <code>aria-expanded</code>, <code>aria-modal</code>).</ListItem>
-          <ListItem><code>:focus-visible</code> obligatoire, <code>prefers-reduced-motion</code> respecté, contraste AA (rouge #DB0000 sur blanc = 5.23:1, mono #343434 = 12.45:1).</ListItem>
-          <ListItem>Skip-link : la cible <code>#main</code> a <code>tabIndex={-1}</code> (focus clavier effectif).</ListItem>
-          <ListItem>Menu plein écran = dialog modal : <code>role="dialog" aria-modal="true"</code>, contenu derrière en <code>inert</code>, focus sur le 1<sup>er</sup> lien, Échap ferme, focus rendu au bouton Menu.</ListItem>
-          <ListItem>Onglets : roving tabindex (<code>tabIndex</code> 0/-1) + flèches ←→↑↓ avec activation automatique (dans la primitive <code>&lt;Tab&gt;</code>).</ListItem>
-          <ListItem>Tout lien d'action passe par <code>&lt;Button&gt;</code> — jamais d'ancre <code>className="button"</code> brute.</ListItem>
-          <ListItem>Structure : <code>tokens.scss</code> → partial <code>components/*.scss</code> → primitive <code>ui/*.jsx</code> → documenté ici → testé en SSR.</ListItem>
+          <ListItem><strong>Clarté</strong> — un seul <code>h1</code> par page, texte en couleur d'accent sur fond uni, chaque élément a un rôle évident.</ListItem>
+          <ListItem><strong>Cohérence</strong> — tout passe par les tokens et les primitives <code>ui/</code> ; aucune valeur en dur dans une page.</ListItem>
+          <ListItem><strong>Hiérarchie</strong> — la typographie fait le tri : hero 900 géant, lead 900 fluide, corps 400, métadonnées small.</ListItem>
+          <ListItem><strong>Accessibilité</strong> — WCAG AA : contraste mesuré, focus visible, clavier complet, ARIA sémantique, reduced-motion.</ListItem>
+          <ListItem><strong>Écoconception</strong> — 0 image raster, 1 police inlinée, 0 traceur, poids mini, compression edge.</ListItem>
         </ul>
       </section>
 
       <hr className="_row" />
 
-      <section aria-labelledby="ds-tokens">
-        <h2 id="ds-tokens">Tokens</h2>
-        <h3 className="_row">Couleurs</h3>
+      <section aria-labelledby="ds-couleur" id="ds-couleur">
+        <h2 id="ds-couleur">Couleur</h2>
         <div className="flex-container _row">
-          <div className="col-33 col-100-sp">
+          <div className="col-25 col-50-sp">
             <div className="ds-swatch ds-swatch--accent" />
             <p className="____row textsize-small">--accent (défaut) <code>#DB0000</code></p>
           </div>
-          <div className="col-33 col-100-sp">
+          <div className="col-25 col-50-sp">
             <div className="ds-swatch ds-swatch--mono" />
-            <p className="____row textsize-small">--accent thème mono <code>#343434</code></p>
+            <p className="____row textsize-small">--accent thème mono <code>#343434</code> (<code>html[data-theme='mono']</code>)</p>
           </div>
-          <div className="col-33 col-100-sp">
+          <div className="col-25 col-50-sp">
             <div className="ds-swatch ds-swatch--bg" />
             <p className="____row textsize-small">--bg <code>#FFFFFF</code></p>
           </div>
+          <div className="col-25 col-50-sp">
+            <div className="ds-swatch" style={{ backgroundColor: 'var(--accent)', color: 'var(--on-accent)', lineHeight: '4rem', textAlign: 'center' }}>Aa</div>
+            <p className="____row textsize-small">--on-accent <code>#FFFFFF</code> (texte sur fond plein)</p>
+          </div>
         </div>
-        <p className="__row textsize-small">
-          Le thème se change avec le bouton « Appliquer le #… » dans le header (persisté en localStorage).
-        </p>
-        <h3 className="_row">Échelles</h3>
-        <ul className="__row textsize-small">
-          <ListItem>Espacement vertical <code>$spaces</code> → classes <code>.row</code> 50px, <code>._row</code> 25px, <code>.__row</code> 12.5px, <code>.___row</code> 8.3px, <code>.____row</code> 6.25px, <code>._____row</code> 5px.</ListItem>
-          <ListItem>Typo <code>$fs-small/regular/lead/hero/marquee</code> (lead et hero en <code>clamp()</code> fluide), interlignes <code>$lh-regular/$lh-small</code>.</ListItem>
-          <ListItem>Breakpoints <code>$sp</code> 767, <code>$tablet</code> 1023, <code>$pc-small</code> 1280, <code>$pc-large</code> 1700 ; gouttière <code>$gut</code> 25px (12.5px ≤767px).</ListItem>
-          <ListItem>Divers : <code>$bw</code> 1px, <code>$radius</code> 0, <code>$z-header/menu/actions/skip</code>, <code>$dur</code> 0.2s.</ListItem>
-        </ul>
+        <PropsTable
+          rows={[
+            ['Contraste accent/bg', '5.23:1', 'Passe AA texte normal (≥ 4.5:1)'],
+            ['Contraste mono/bg', '12.45:1', 'Passe AAA'],
+            ['Contraste on-accent/accent', '5.23:1 / 12.45:1', 'Texte sur bouton rempli / footer'],
+            ['Thème', 'data-theme + localStorage', 'Bouton « Appliquer le #… » dans le header, anti-FOUC via theme.js']
+          ]}
+        />
+        <Regles
+          faire="utiliser uniquement var(--accent), var(--bg), var(--on-accent) — le thème suit partout, y compris le logo (masque CSS)."
+          eviter="aucun code hex en dur dans un composant ou une page (les swatches de cette page sont la seule exception)."
+        />
       </section>
 
       <hr className="_row" />
 
-      <section aria-labelledby="ds-typo">
+      <section aria-labelledby="ds-typo" id="ds-typo">
         <h2 id="ds-typo">Typographie</h2>
-        <p className="__row textsize-small">
-          Une seule police : <strong>Archivo Variable</strong> (graisses 100–900), 1 fichier woff2 latin
-          auto-hébergé (inliné en data URI dans le CSS au build). Le display (hero, marquee) utilise la graisse 900.
+        <p className="_row textsize-small">
+          Une seule police : <strong>Archivo Variable</strong> (graisses 100–900, 1 woff2 latin inliné en data URI dans le CSS).
+          Base 12px (14px ≥ 1700px). Le display utilise la graisse 900 (<code>$font-black</code>).
         </p>
+        <PropsTable
+          rows={[
+            ['$fs-hero', 'clamp(3.5rem, 14vw, 12rem)', 'h1.hero-title — 1 par page, via <Hero>'],
+            ['$fs-lead', 'clamp(1.5rem, 3.2vw, 2.5rem)', 'chapô, via <Lead> (graisse 900, lh 1.15)'],
+            ['$fs-regular', '1rem', 'corps de texte (lh $lh-regular 1.667)'],
+            ['$fs-marquee', '1.25rem', 'bandeau défilant (graisse 900, capitales)'],
+            ['$fs-small', '0.83333rem', 'métadonnées (0.667rem ≤ 767px), lh $lh-small 1.25']
+          ]}
+        />
         <p className="hero-title _row">Hero title</p>
         <Lead className="__row">Exemple de lead — graisse 900, taille fluide.</Lead>
         <h2 className="__row">h2 — titre de section</h2>
@@ -85,11 +143,15 @@ export default function DesignSystem() {
         <p className="__row">Paragraphe standard (Archivo 400, 1rem / 1.667).</p>
         <p className="__row textsize-regular-lh-small">textsize-regular-lh-small (1rem / 1.25).</p>
         <p className="__row textsize-small">textsize-small (0.833rem / 1.25, 0.667rem sur mobile).</p>
+        <Regles
+          faire="choisir la taille dans l'échelle $fs-* et la graisse selon le rôle (900 = display uniquement)."
+          eviter="aucune taille hors échelle, aucun font-size en dur, aucune deuxième police."
+        />
       </section>
 
       <hr className="_row" />
 
-      <section aria-labelledby="ds-grille">
+      <section aria-labelledby="ds-grille" id="ds-grille">
         <h2 id="ds-grille">Grille &amp; espacements</h2>
         <div className="flex-container _row">
           {[25, 25, 25, 25].map((c, i) => (
@@ -98,43 +160,98 @@ export default function DesignSystem() {
             </div>
           ))}
         </div>
-        <p className="__row textsize-small">
-          Colonnes <code>.col-10…100</code> + suffixes <code>-pc-small</code> (≤1280), <code>-tablet</code> (≤1023),
-          <code>-sp</code> (≤767), <code>-pc-large</code> (≥1700). Gouttière 25px (12.5px sur mobile).
-          <code>&lt;hr&gt;</code> = espaceur invisible (aucun filet, aucun fond).
-        </p>
+        <PropsTable
+          rows={[
+            ['Gouttière $gut', '25px (12.5px ≤ 767px)', 'padding des .col-*, marge négative du .flex-container'],
+            ['Colonnes', '.col-10…100', 'largeur en % + suffixes -pc-small (≤1280), -tablet (≤1023), -sp (≤767), -pc-large (≥1700)'],
+            ['Breakpoints', '$sp 767 · $tablet 1023 · $pc-small 1280 · $pc-large 1700', 'toujours via les tokens, jamais de media query en dur'],
+            ['Spacers $spaces', '.row 50 · ._row 25 · .__row 12.5 · .___row 8.3 · .____row 6.25 · ._____row 5 px', 'rythme vertical unique (padding-top)'],
+            ['<hr>', 'espaceur invisible', 'border 0, height 0 — aucun filet, l\'espacement vient de la classe spacer associée']
+          ]}
+        />
+        <Regles
+          faire="espacer exclusivement avec les classes de $spaces, poser la grille avec .flex-container + .col-*."
+          eviter="aucun margin/padding custom en px, aucun <hr> visible, aucune grille parallèle."
+        />
       </section>
 
       <hr className="_row" />
 
-      <section aria-labelledby="ds-composants">
+      <section aria-labelledby="ds-visuels" id="ds-visuels">
+        <h2 id="ds-visuels">Visuels</h2>
+        <ul className="_row">
+          <ListItem><strong>Zéro image raster</strong> : le logo est un masque CSS (<code>.logo-svg</code>, suit var(--accent)), les pochettes sont des blocs typographiques (<code>Cover</code>).</ListItem>
+          <ListItem><strong>Proportions</strong> : <code>.image-container</code> = 3:2 (bannière), <code>.is-product</code> = 2:3 (carte). Contour 1px <code>.cover--red</code>, rempli au survol/focus (<code>.hover-image</code>).</ListItem>
+          <ListItem><strong>Pastille</strong> : <code>.image-label</code> centrée sur le visuel (type de sortie), ellipsis ≤ 767px.</ListItem>
+          <ListItem><strong>SVG</strong> : minifiés (svgo), auto-hébergés, <code>stroke: currentColor</code> quand ils servent de masque.</ListItem>
+        </ul>
+        <Regles
+          faire="tout visuel est un composant (Cover, Logo) ou un SVG vectoriel auto-hébergé."
+          eviter="aucune photo/JPG/PNG, aucun SVG externe, aucun <img> sans alternative textuelle équivalente."
+        />
+      </section>
+
+      <hr className="_row" />
+
+      <section aria-labelledby="ds-motion" id="ds-motion">
+        <h2 id="ds-motion">Motion</h2>
+        <ul className="_row">
+          <ListItem><strong>$dur = 0.2s</strong> : unique durée de transition (skip-link, hover).</ListItem>
+          <ListItem><strong>Marquee</strong> : 28s linéaire, en pause au survol/focus, arrêtée si <code>prefers-reduced-motion</code>.</ListItem>
+          <ListItem><strong>Scroll</strong> : <code>scroll-behavior: smooth</code>, désactivé si reduced-motion ; règle globale qui neutralise toutes les animations sous reduced-motion.</ListItem>
+        </ul>
+        <Regles
+          faire="toute animation passe par $dur ou une keyframe documentée, et respecte reduced-motion."
+          eviter="aucune transition/animation ad hoc, aucun effet qui ne peut pas être désactivé."
+        />
+      </section>
+
+      <hr className="_row" />
+
+      <section aria-labelledby="ds-composants" id="ds-composants">
         <h2 id="ds-composants">Composants (ui/)</h2>
+        <p className="_row textsize-small">Chaque composant a un partial SCSS dédié (<code>styles/components/*.scss</code>) et une story Storybook.</p>
 
-        <h3 className="_row">Hero &amp; Lead</h3>
-        <p className="__row textsize-small">
-          <code>&lt;Hero title sub /&gt;</code> rend le seul <code>h1.hero-title</code> de la page ;
-          <code>&lt;Lead&gt;</code> le chapô en graisse 900. Exemple vivant en haut de cette page.
-        </p>
+        <h3 className="_row">Hero</h3>
+        <PropsTable rows={[
+          ['title', 'node', 'contenu du seul h1.hero-title de la page'],
+          ['sub', 'node (optionnel)', 'sous-titre hero-sub']
+        ]} />
+        <Regles faire="un <Hero> par page, en premier dans #main." eviter="jamais de deuxième h1, jamais de h1 hors <Hero>." />
 
-        <h3 className="_row">Marquee</h3>
-        <Marquee text="Exemple de marquee · Le Label Records" />
+        <h3 className="_row">Lead</h3>
+        <PropsTable rows={[
+          ['className', 'string', 'souvent un spacer (ex. _row)'],
+          ['children', 'node', 'chapô de la page/section']
+        ]} />
+        <p className="__row"><Lead>Exemple vivant de Lead.</Lead></p>
 
         <h3 className="_row">Button</h3>
         <p className="__row">
           <Button href="https://lelabelrecords.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</Button>{' '}
           <Button to="/contact">Contact</Button>
         </p>
+        <PropsTable rows={[
+          ['to', 'string', 'lien interne (Link)'],
+          ['href', 'string', 'lien externe — avec target="_blank" rel="noopener noreferrer"'],
+          ['className', 'string', 'variante (ex. dans .list-date)']
+        ]} />
         <p className="__row textsize-small">
-          Contour 1px, rempli au survol/focus — couleurs via var(--accent). Utilisé PARTOUT :
-          liens d'action (« En savoir plus »…), liens du menu plein écran, onglets, boutons thème/menu.
-          Actif = rempli (aria-current / aria-selected).
+          États : contour 1px → rempli au survol/focus ; actif = rempli via <code>aria-current</code> / <code>aria-selected</code>.
+          Cible ≈ 32px de haut (≥ 24px WCAG 2.5.8). Couleurs 100 % var(--*).
         </p>
+        <Regles
+          faire="toute action/lien de navigation passe par <Button>."
+          eviter={'aucune ancre <code>className="button"</code> écrite à la main, aucun border-radius.'}
+        />
 
         <h3 className="_row">Label</h3>
-        <p className="__row">
-          <Label>concert</Label> <Label filled>release</Label>
-        </p>
-        <p className="__row textsize-small">Étiquette de catégorie, toujours préfixée d'un # (dans la primitive).</p>
+        <p className="__row"><Label>concert</Label> <Label filled>release</Label></p>
+        <PropsTable rows={[
+          ['filled', 'bool', 'version pleine (fond accent)'],
+          ['children', 'node', 'texte de l\'étiquette — rendu précédé d\'un # automatique']
+        ]} />
+        <Regles faire="pour les catégories/étiquettes." eviter="jamais comme bouton cliquable (pas de onClick sur un Label)." />
 
         <h3 className="_row">Tab</h3>
         <div className="tabs __row" role="tablist" aria-label="Démo onglets">
@@ -142,13 +259,19 @@ export default function DesignSystem() {
           <Tab selected={tab === 'events'} controls="ds-panel" onClick={() => setTab('events')}>Événements</Tab>
         </div>
         <p className="__row textsize-small" id="ds-panel" role="tabpanel">
-          Onglet actif : <strong>{tab}</strong> — naviguez au clavier avec les flèches ← →.
+          Onglet actif : <strong>{tab}</strong> — naviguez au clavier avec les flèches ← → ↑ ↓ (roving tabindex dans la primitive).
         </p>
+        <PropsTable rows={[
+          ['selected', 'bool', 'aria-selected + tabIndex 0 (les autres -1)'],
+          ['onClick', 'fn', 'sélection (activation automatique aussi via les flèches)'],
+          ['controls', 'id', 'aria-controls → id du tabpanel']
+        ]} />
 
         <h3 className="_row">ListItem</h3>
         <ul className="__row">
-          <ListItem>Exemple d'élément de liste (filet 1px haut/bas).</ListItem>
+          <ListItem>Exemple d'élément de liste (filet 1px haut, dernier élément filet bas).</ListItem>
         </ul>
+        <PropsTable rows={[['className', 'string', 'grille ex. col-50 col-100-sp']]} />
 
         <h3 className="_row">Cover (carte produit)</h3>
         <div className="flex-container __row">
@@ -161,27 +284,71 @@ export default function DesignSystem() {
             <p className="____row textsize-small"><strong>Brawn</strong> / Montevideo</p>
           </div>
         </div>
+        <PropsTable rows={[
+          ['label', 'string', 'pastille centrée (type de sortie)'],
+          ['href', 'string (optionnel)', 'rend la carte cliquable (hover fill)'],
+          ['ariaLabel', 'string', 'obligatoire si href (la carte n\'a pas de texte visible)']
+        ]} />
 
         <h3 className="_row">Logo</h3>
         <p className="__row"><Logo /></p>
-        <p className="__row textsize-small">Masque CSS sur var(--accent) — suit le thème.</p>
+        <PropsTable rows={[
+          ['className', 'string', 'taille (ex. header-logo)'],
+          ['label', 'string', 'aria-label (role="img")']
+        ]} />
+
+        <h3 className="_row">Marquee</h3>
+        <Marquee text="Exemple de marquee · Le Label Records" />
+        <PropsTable rows={[['text', 'string', 'contenu répété 2× pour la boucle, aria-hidden="true"']]} />
 
         <h3 className="_row">Header</h3>
         <p className="__row textsize-small">
           Sticky, <strong>aucune nav en ligne</strong> : navigation uniquement via le bouton
-          <code>Menu</code> (<code>.button.nav-toggle</code>, visible à toutes les tailles) qui ouvre le menu
-          plein écran (<code>.site-nav.is-open</code>) en dialog modal
-          (<code>role="dialog" aria-modal="true"</code>, page et footer <code>inert</code>,
-          Échap ferme, focus sur le 1<sup>er</sup> lien puis rendu au bouton Menu).
+          <code>Menu</code> (<code>.button.nav-toggle</code>, toutes tailles) qui ouvre le menu plein écran
+          (<code>.site-nav.is-open</code>) en dialog modal (<code>role="dialog" aria-modal="true"</code>, page et footer
+          <code>inert</code>, Échap ferme, focus sur le 1<sup>er</sup> lien puis rendu au bouton Menu).
           Au scroll, le header affiche la marque (<code>.header-brand</code> = logo + « Le Label Records »,
-          classe <code>is-scrolled</code> posée par <code>Header.jsx</code> ; nom masqué ≤767px).
+          classe <code>is-scrolled</code> posée par <code>Header.jsx</code> ; nom masqué ≤ 767px).
           Bouton thème « Appliquer le #… » à droite.
         </p>
+
+        <h3 className="_row">Footer</h3>
+        <p className="__row textsize-small">Fond plein accent, texte on-accent : nav du site, réseaux (depuis <code>config.social</code>), mention écolo. Focus ring adapté (<code>#footer :focus-visible</code>).</p>
       </section>
 
       <hr className="_row" />
 
-      <section aria-labelledby="ds-eco">
+      <section aria-labelledby="ds-patterns" id="ds-patterns">
+        <h2 id="ds-patterns">Patterns</h2>
+        <ul className="_row">
+          <ListItem><strong>Page type</strong> : <code>&lt;Hero&gt;</code> → <code>&lt;Lead&gt;</code> → sections <code>h2</code> séparées par <code>&lt;hr className="_row" /&gt;</code> (espaceur invisible).</ListItem>
+          <ListItem><strong>Navigation</strong> : bouton Menu → dialog plein écran (voir Header) ; page active = remplie (<code>aria-current="page"</code>).</ListItem>
+          <ListItem><strong>Fil d'actus</strong> : <code>ListItem</code> en 2 colonnes (<code>col-50 col-100-sp</code>), ligne <code>.list-date</code> = date — <code>&lt;Label&gt;</code> — <code>&lt;Button&gt;</code> inline.</ListItem>
+          <ListItem><strong>Carte produit</strong> : <code>Cover</code> 2:3 + métadonnées (titre/artiste/date) + <code>.release-links</code>.</ListItem>
+        </ul>
+      </section>
+
+      <hr className="_row" />
+
+      <section aria-labelledby="ds-a11y" id="ds-a11y">
+        <h2 id="ds-a11y">Accessibilité (checklist WCAG AA)</h2>
+        <ul className="_row">
+          <ListItem>Landmarks : <code>header / nav aria-label / main#main / aside aria-label / footer</code> + skip-link « Aller au contenu » vers <code>#main tabIndex={-1}</code>.</ListItem>
+          <ListItem>1 seul <code>h1.hero-title</code> par page ; sections nommées (<code>aria-labelledby</code>).</ListItem>
+          <ListItem><code>:focus-visible</code> partout (outline 2px, couleur adaptée dans le footer) ; cibles ≥ 24px.</ListItem>
+          <ListItem>Contraste : accent/bg 5.23:1 (AA), mono/bg 12.45:1 (AAA).</ListItem>
+          <ListItem>Clavier complet : menu (focus 1<sup>er</sup> lien, Échap, retour du focus, <code>inert</code> derrière), onglets (roving tabindex + flèches), tous les liens atteignables.</ListItem>
+          <ListItem>États exposés uniquement en ARIA : <code>aria-current / aria-selected / aria-pressed / aria-expanded / aria-modal</code>.</ListItem>
+          <ListItem><code>prefers-reduced-motion</code> respecté globalement (animations, scroll, marquee).</ListItem>
+          <ListItem>Contenus décoratifs masqués : marquee <code>aria-hidden</code>, logo du header <code>aria-hidden</code> (nom visible à côté).</ListItem>
+          <ListItem>0 cookie / 0 traceur ; préférence de thème en localStorage uniquement.</ListItem>
+          <ListItem>Vérification continue : panneau <strong>a11y (axe)</strong> dans Storybook sur chaque story.</ListItem>
+        </ul>
+      </section>
+
+      <hr className="_row" />
+
+      <section aria-labelledby="ds-eco" id="ds-eco">
         <h2 id="ds-eco">Écoconception &amp; perf</h2>
         <ul className="_row">
           <ListItem><strong>Zéro image raster</strong> : logo SVG en masque CSS (suit le thème), pochettes typographiques, SVG minifiés (svgo).</ListItem>
@@ -189,36 +356,36 @@ export default function DesignSystem() {
           <ListItem><strong>Zéro traceur / cookie / mesure d'audience</strong> ; le choix de thème reste en localStorage côté client.</ListItem>
           <ListItem><strong>Tout est auto-hébergé</strong> (CSS, JS, police, SVG) : aucune requête externe au runtime.</ListItem>
           <ListItem><strong>Compression</strong> gzip/brotli automatique au niveau de l'edge Cloudflare Pages ; assets minifiés (Vite) ; <code>print.css</code> dédié (RWEB_0031).</ListItem>
-          <ListItem><strong>Budget de poids</strong> (build prod) : JS ≈ 90 Ko gzip, CSS ≈ 39 Ko gzip (police incluse), HTML ≈ 1 Ko. <code>prefers-reduced-motion</code> respecté (marquee, scroll).</ListItem>
+          <ListItem><strong>Budget de poids</strong> (build prod) : JS ≈ 95 Ko gzip, CSS ≈ 39 Ko gzip (police incluse), HTML ≈ 1 Ko ; dist ≈ 460 Ko.</ListItem>
           <ListItem><strong>Sécurité</strong> : <code>_headers</code> — CSP strict, HSTS, nosniff, frame-ancestors 'none'.</ListItem>
         </ul>
       </section>
 
       <hr className="_row" />
 
-      <section aria-labelledby="ds-guide">
-        <h2 id="ds-guide">Ajouter un composant</h2>
-        <ol className="_row">
-          <ListItem>1. Token dans <code>tokens.scss</code> si valeur réutilisable (couleur, taille, espace, z-index…).</ListItem>
-          <ListItem>2. Partial <code>src/styles/components/x.scss</code> + <code>@use</code> dans <code>main.scss</code>.</ListItem>
-          <ListItem>3. Primitive <code>src/components/ui/X.jsx</code> (props explicites, états ARIA, aucune classe magique).</ListItem>
-          <ListItem>4. Documenter ici + vérifier : <code>npm run build</code> puis rendu SSR des 11 routes (1 <code>h1.hero-title</code> par page).</ListItem>
-          <ListItem>5. Ajouter la story correspondante dans <code>src/components/ui/ui.stories.jsx</code> (Storybook).</ListItem>
-        </ol>
-      </section>
-
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-storybook">
+      <section aria-labelledby="ds-storybook" id="ds-storybook">
         <h2 id="ds-storybook">Vitrine Storybook</h2>
         <p className="_row textsize-regular-lh-small">
-          Les primitives <code>ui/</code> sont servies en stories isolées (Storybook 10 + addon a11y) sur
-          GitHub Pages, hors du domaine principal (noindex) :
+          Les primitives <code>ui/</code> sont servies en stories isolées (Storybook 10 + addon a11y + pages docs auto)
+          sur GitHub Pages, hors du domaine principal (noindex) :
           <a href="https://lelabelrecords-stack.github.io/website/">lelabelrecords-stack.github.io/website</a>.
           Local : <code>npm run storybook</code> → http://localhost:6006 · build :
           <code>npm run build-storybook</code> → <code>storybook-static/</code> (déployé par
           <code>.github/workflows/storybook-pages.yml</code>).
         </p>
+      </section>
+
+      <hr className="_row" />
+
+      <section aria-labelledby="ds-guide" id="ds-guide">
+        <h2 id="ds-guide">Ajouter un composant</h2>
+        <ol className="_row">
+          <ListItem>1. Token dans <code>tokens.scss</code> si valeur réutilisable (couleur, taille, espace, z-index…).</ListItem>
+          <ListItem>2. Partial <code>src/styles/components/x.scss</code> + <code>@use</code> dans <code>main.scss</code>.</ListItem>
+          <ListItem>3. Primitive <code>src/components/ui/X.jsx</code> (props explicites, états ARIA, aucune classe magique).</ListItem>
+          <ListItem>4. Story dans <code>src/components/ui/ui.stories.jsx</code> + documentation dans cette page (rôle, props, états, a11y, règles).</ListItem>
+          <ListItem>5. Vérifier : <code>npm run build</code> + <code>npm run build-storybook</code> + rendu SSR des 11 routes (1 <code>h1.hero-title</code> par page).</ListItem>
+        </ol>
       </section>
     </>
   )
