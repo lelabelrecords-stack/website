@@ -1,11 +1,52 @@
-import { writeFileSync } from 'fs'
-import { chromium } from 'playwright'
+import { spawn } from 'child_process'
+import { existsSync, mkdtempSync, readdirSync, writeFileSync } from 'fs'
+import { tmpdir, homedir } from 'os'
+import { join } from 'path'
 import lighthouse from 'lighthouse'
 
 const url = process.argv[2] || 'http://127.0.0.1:8080/'
 
-const server = await chromium.launchServer({ args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] })
-const port = new URL(server.wsEndpoint()).port
+function findChrome() {
+  if (process.env.CHROME_PATH && existsSync(process.env.CHROME_PATH)) return process.env.CHROME_PATH
+  const root = join(homedir(), '.cache', 'ms-playwright')
+  const builds = readdirSync(root).filter((d) => d.startsWith('chromium-')).sort().reverse()
+  for (const d of builds) {
+    const p = join(root, d, 'chrome-linux64', 'chrome')
+    if (existsSync(p)) return p
+  }
+  throw new Error(`binaire Chromium introuvable dans ${root}`)
+}
+
+const chrome = findChrome()
+console.log('Chromium:', chrome)
+const proc = spawn(chrome, [
+  '--headless',
+  '--no-sandbox',
+  '--disable-dev-shm-usage',
+  '--disable-gpu',
+  '--remote-debugging-port=0',
+  `--user-data-dir=${mkdtempSync(join(tmpdir(), 'lh-chrome-'))}`,
+  'about:blank'
+], { stdio: ['ignore', 'ignore', 'pipe'] })
+
+let stderr = ''
+const port = await new Promise((resolve, reject) => {
+  const timer = setTimeout(() => reject(new Error(`timeout — port CDP non détecté. stderr:\n${stderr}`)), 30000)
+  proc.stderr.on('data', (d) => {
+    stderr += d.toString()
+    const m = stderr.match(/DevTools listening on ws:\/\/127\.0\.0\.1:(\d+)\//)
+    if (m) {
+      clearTimeout(timer)
+      resolve(Number(m[1]))
+    }
+  })
+  proc.on('exit', (c) => {
+    clearTimeout(timer)
+    reject(new Error(`chrome a quitté (code ${c}). stderr:\n${stderr}`))
+  })
+})
+console.log('Port CDP:', port)
+
 let code = 1
 try {
   const runnerResult = await lighthouse(url, {
@@ -32,6 +73,6 @@ try {
 } catch (err) {
   console.error('Lighthouse a échoué:', err.message)
 } finally {
-  await server.close()
+  proc.kill('SIGKILL')
 }
 process.exit(code)
