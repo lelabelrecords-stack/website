@@ -1,6 +1,6 @@
 # Le Label Records — site web
 
-Site vitrine du **Le Label Records** (label indépendant, Nîmes). React + Vite + SCSS, design brutaliste inspiré d'[utrecht.jp](https://utrecht.jp/) (grille stricte `.col-*`, rouge `#db0000`, noir/blanc, typographie Archivo auto-hébergée, logo contour-rouge). Le site est pensé **écoconception** (aucune image raster, aucun traceur, polices woff2 auto-hébergées, ~100 Ko au total) et **accessible** (landmarks sémantiques, lien « Aller au contenu », `aria-current` sur la nav, focus visible, `prefers-reduced-motion` respecté, contrastes AA).
+Site vitrine du **Le Label Records** (label indépendant, Nîmes). React + Vite + SCSS, design brutaliste maison (grille stricte `.col-*`, rouge `#db0000`, noir/blanc, typographie Archivo auto-hébergée, logo contour-rouge). Le site est pensé **écoconception** (aucune image raster, aucun traceur, polices woff2 auto-hébergées, ~100 Ko au total) et **accessible** (landmarks sémantiques, lien « Aller au contenu », `aria-current` sur la nav, focus visible, `prefers-reduced-motion` respecté, contrastes AA).
 
 ## Process de déploiement automatique
 
@@ -10,14 +10,14 @@ GitHub  lelabelrecords-stack/website   (code source, branche main)
 GitLab  le-label-records-group/website (miroir + déclencheur)
    ↓ push sur main → pipeline GitLab (.gitlab-ci.yml : build + validate)
    ↓ push sur main → build natif Cloudflare Pages (projet "website" connecté au repo GitLab)
-Cloudflare Pages  https://le-label.org  (domaine perso ; URL par défaut du projet : https://website.pages.dev)
+Cloudflare Pages  https://le-label.org  (domaine perso ; URL par défaut du projet : https://website-1zw.pages.dev)
 ```
 
 Dès qu'un commit est poussé sur `main` sur GitHub :
 
 1. GitHub Actions pousse le code sur GitLab (`le-label-records-group/website`) — secret `GITLAB_TOKEN`.
 2. La pipeline GitLab build le site (`npm ci && npm run build` → `dist/`, job `build`) puis valide le `dist/` (job `validate`).
-3. Le projet Cloudflare Pages `website` (connecté à ce repo GitLab, branche `main`) lance son **build natif** : `npm run build`, puis Pages déploie automatiquement le **build output directory** (`dist`) → déploiement sur https://le-label.org (domaine perso configuré sur le projet Pages ; https://website.pages.dev reste l'URL par défaut). **Ne pas mettre de « Deploy command » wrangler** dans les réglages de build (voir pièges) ; `wrangler.jsonc` contient `pages_build_output_dir: "dist"` pour les déploiements wrangler manuels.
+3. Le projet Cloudflare Pages `website` (connecté à ce repo GitLab, branche `main`) lance son **build natif** : `npm run build`, puis Pages déploie automatiquement le **build output directory** (`dist`) → déploiement sur https://le-label.org (domaine perso configuré sur le projet Pages ; https://website-1zw.pages.dev reste l'URL par défaut). **Ne pas mettre de « Deploy command » wrangler** dans les réglages de build (voir pièges) ; `wrangler.jsonc` contient `pages_build_output_dir: "dist"` pour les déploiements wrangler manuels.
 
 Vérification : [Actions GitHub](https://github.com/lelabelrecords-stack/website/actions) · [Pipelines GitLab](https://gitlab.com/le-label-records-group/website/-/pipelines).
 
@@ -80,7 +80,7 @@ Il n'est pas embarqué dans le build de production (ni dans robots.txt/sitemap).
 │   ├─ components/              # Header (nav responsive), Footer, ReleaseCard
 │   ├─ pages/                   # Accueil, Artistes, Sorties, Événements, News, Radio (Le Label²), À propos, Contact, 404
 │   ├─ data.js                  # chargement des JSON + formatage des dates (fr-FR)
-│   └─ styles/main.scss         # design system inspiré d'utrecht.jp (tokens, grille, spacers, a11y)
+│   └─ styles/main.scss         # design system (tokens, grille, spacers, a11y)
 ├── wrangler.jsonc                 # config Worker/assets pour `npx wrangler deploy` (build natif Cloudflare)
 ├── .github/workflows/deploy.yml # miroir GitHub → GitLab
 └── .gitlab-ci.yml               # build + validate (le déploiement est fait par Cloudflare)
@@ -90,7 +90,7 @@ Pages : `/`, `/artistes`, `/sorties`, `/evenements`, `/news`, `/radio`, `/a-prop
 
 ## Pièges connus
 
-- **Incident 2026-11-24 (résolu, déploiement vert à 11:52 UTC)** — le build natif Pages échouait en phase « Deploying » : le projet a un « Deploy command » `npx wrangler pages deploy dist --project-name=website --branch=main`, et wrangler renvoie `Authentication error [code: 10000]` sur `/accounts/.../pages/projects/website` même avec un `CLOUDFLARE_API_TOKEN` Super Admin défini en variable d'environnement du projet. **Correctif (dashboard Cloudflare, projet `website` → Settings → Builds)** : vider le « Deploy command », mettre « Build output directory » = `dist`, et supprimer les variables d'environnement `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `CF_PAGES_PROJECT_NAME` du projet (Settings → Environment variables). Pages déploie alors nativement. Relancer ensuite le déploiement (bouton Retry sur le déploiement en échec, ou `git commit --allow-empty && git push`). Résolu le 2026-11-24 : deploy command vidé, output `dist`, root `/` → déploiement vert, le site est servi sur `https://website.pages.dev`. **Vérifier aussi** que le domaine perso `le-label.org` est bien rattaché à CE projet `website` (Settings → Custom domains) : s'il est sur un autre projet sans déploiement, c'est la page par défaut « Hello world » qui s'affiche sur le domaine.
+- **Incident 2026-11-24 (résolu, déploiement vert à 11:52 UTC)** — le build natif Pages échouait en phase « Deploying » : le projet a un « Deploy command » `npx wrangler pages deploy dist --project-name=website --branch=main`, et wrangler renvoie `Authentication error [code: 10000]` sur `/accounts/.../pages/projects/website` même avec un `CLOUDFLARE_API_TOKEN` Super Admin défini en variable d'environnement du projet. **Correctif (dashboard Cloudflare, projet `website` → Settings → Builds)** : vider le « Deploy command », mettre « Build output directory » = `dist`, et supprimer les variables d'environnement `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `CF_PAGES_PROJECT_NAME` du projet (Settings → Environment variables). Pages déploie alors nativement. Relancer ensuite le déploiement (bouton Retry sur le déploiement en échec, ou `git commit --allow-empty && git push`). Résolu le 2026-11-24 : deploy command vidé, output `dist`, root `/` → déploiement vert, le site est servi sur `https://website-1zw.pages.dev`. **Vérifier aussi** que le domaine perso `le-label.org` est bien rattaché à CE projet `website` (Settings → Custom domains) : s'il est sur un autre projet sans déploiement, c'est la page par défaut « Hello world » qui s'affiche sur le domaine.
 - Projet Pages connecté au repo GitLab dans le dashboard (build natif Cloudflare) : le « Deploy command » `npx wrangler deploy` échoue avec « The version of Vite used in the project (...) cannot be automatically configured. Please update the Vite version to at least 6.0.0 » car wrangler traite le projet en Worker. Deux options : (1) déconnecter l'intégration Git du projet Pages (projet → Settings → Builds → disconnect) et laisser la CI GitLab déployer via `wrangler pages deploy dist` (nécessite alors les variables `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`, non protégées si `main` ne l'est pas) ; - Build natif Pages qui échoue en phase « Deploying » avec `Authentication error [code: 10000]` quand la deploy command est un wrangler : dans l'environnement de build Pages, ne **pas** définir soi-même `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` (variables d'environnement de build du projet → à supprimer si présentes) et **laisser le « Deploy command » vide** avec « Build output directory » = `dist` : Pages déploie alors nativement, sans wrangler. `wrangler.jsonc` doit contenir `"pages_build_output_dir": "dist"` (champ exigé par Pages, sinon warning). `npx wrangler deploy` (Worker) est à éviter ici : droit Workers Scripts: Edit requis + auto-config Vite ≥ 6.
 - (2) **option retenue** — build natif Cloudflare, deploy command vide, output dir `dist` ; le job GitLab ne fait plus que build + validate.
 

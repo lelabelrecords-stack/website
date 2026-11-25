@@ -21,7 +21,7 @@
   color: var(--accent);
 }
 
-// Au survol, le contour se remplit (équivalent du swap base/over d'utrecht.jp)
+// Au survol, le contour se remplit
 .hover-image:hover .cover--red,
 .hover-image:focus-visible .cover--red {
   background-color: var(--accent);
