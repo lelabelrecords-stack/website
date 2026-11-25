@@ -10,6 +10,16 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 
 ### Corrigé
 - `public/print.css` : règles encapsulées dans `@media print`, masquage renforcé (menu plein écran `.site-nav`, images `img`).
+
+### Changé (revue UX complète, documentée dans le DS + Storybook)
+- Événements : sections « Prochains » / « Passés » (`upcomingEvents`/`pastEvents` dans `data.js`), plus d'événement passé dans le fil d'actus de l'accueil ; libellés de lien explicites (`eventLinkLabel` : « Billetterie » pour un concert, « Infos » sinon) ; JSON-LD limité aux prochains.
+- Radio : bouton « Écouter sur <diffuseur> » par antenne ; chaque épisode a un `link` (config.json) → bouton « Écouter l'épisode ».
+- Actus sans lien : plus de bouton « Nous contacter » (Home + News).
+- Accueil : CTA dans le hero via la nouvelle prop `actions` de `<Hero>` (« Voir les sorties », « Écouter le dernier épisode »), 3 dernières sorties seulement, bloc radio en 3 colonnes, logo latéral masqué (`.is-home`) pour éviter le doublon avec le h1.
+- `ReleaseCard` : pastille `Cover` = nom de l'artiste (type « EP · date » en métadonnée), liens d'écoute en `<Button>` (cohérence DS).
+- Liens externes : marqueur ↗ automatique (`a[target='_blank']::after` dans base.scss).
+- Bouton thème : « Passer en mono / rouge » (pastille de la couleur cible) au lieu de « Appliquer le #… ».
+- Contact : adresse démo temporairement sur `le.label.contact@gmail.com` tant que `lelabel@le-label.org` n'est pas actif (transfert de domaine en cours — à remettre + Email Routing/SPF/DKIM/DMARC ensuite).
 - CI `ds-tests` (vitest navigateur) : `optimizeDeps.include` de `react/jsx-dev-runtime` / `react/jsx-runtime` dans `vitest.config.mjs` pour éviter le rechargement Vite en cours de run (« Failed to fetch dynamically imported module »).
 - CI `lighthouse` : binaire Chromium (téléchargé par Playwright) lancé en direct avec `--remote-debugging-port=0`, port CDP lu sur stderr, puis Lighthouse connecté via `flags.port` (`scripts/lighthouse-run.mjs`, `npm run test:lh`) — chrome-launcher / `launchServer` ne donnaient pas de vrai port CDP sur le runner k8s.
 - CI jobs navigateur : `npx playwright install-deps chromium` (liste officielle des libs système) + garde-fou `ldd` sur le binaire — `libXfixes.so.3` manquait sur un runner k8s avec la liste apt manuelle.

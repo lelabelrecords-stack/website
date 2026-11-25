@@ -108,8 +108,8 @@ export default function Header() {
           className="button theme-toggle"
           onClick={toggleTheme}
           aria-pressed={theme === 'mono'}
-          aria-label={`Appliquer la couleur ${target.hex} au site`}
-          title={`Appliquer ${target.hex}`}
+          aria-label={`Passer au thème ${target.name} (${target.hex})`}
+          title={`${target.name} ${target.hex}`}
           style={{ borderColor: target.hex, color: target.hex }}
         >
           <span
@@ -117,7 +117,7 @@ export default function Header() {
             style={{ backgroundColor: target.hex, borderColor: target.hex }}
             aria-hidden="true"
           ></span>
-          {`Appliquer le ${target.hex}`}
+          {theme === 'rouge' ? 'Passer en mono' : 'Passer en rouge'}
         </button>
         <button
           ref={toggleRef}

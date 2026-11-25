@@ -4,7 +4,7 @@ import Hero from '../components/ui/Hero.jsx'
 import Button from '../components/ui/Button.jsx'
 
 export default function Contact() {
-  usePageMeta('Contact — Le Label Records', 'Contacter le Le Label Records (Nîmes) : presse à le.label.contact@gmail.com, démos à lelabel@le-label.org, 8 rue Nationale 30000 Nîmes.')
+  usePageMeta('Contact — Le Label Records', `Contacter le Le Label Records (Nîmes) : presse et démos à ${config.demo_submission_email}, 8 rue Nationale 30000 Nîmes.`)
   return (
     <>
       <Hero title="Contact" />

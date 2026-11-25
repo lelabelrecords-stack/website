@@ -43,3 +43,15 @@ export function upcomingEvents(list, count) {
     })
     .slice(0, count)
 }
+
+export function pastEvents(list) {
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  return [...list]
+    .filter((e) => e.date && new Date(`${e.date}T12:00:00`) < today)
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+}
+
+export function eventLinkLabel(e) {
+  return e.linkLabel || (e.type === 'concert' ? 'Billetterie' : 'Infos')
+}

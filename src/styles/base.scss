@@ -64,6 +64,13 @@ a:hover {
   text-decoration: underline;
 }
 
+// Lien externe : marqueur ↗ automatique (règle DS globale, aussi sur .button externe)
+a[target='_blank']::after {
+  content: '\2197';
+  font-size: 0.85em;
+  margin-left: 0.15em;
+}
+
 ::selection {
   background-color: var(--accent);
   color: var(--on-accent);

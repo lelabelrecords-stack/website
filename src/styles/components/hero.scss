@@ -26,6 +26,14 @@
   line-height: 1.5;
 }
 
+// CTA du hero (prop actions de <Hero>) — ex. accueil
+.hero-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 // Marquee façon RCA : noms d'artistes et sorties en boucle (CSS pur)
 .marquee {
   overflow: hidden;

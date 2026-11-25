@@ -121,7 +121,7 @@ export default function DesignSystem() {
             ['Contraste accent/bg', '5.23:1', 'Passe AA texte normal (≥ 4.5:1)'],
             ['Contraste mono/bg', '12.45:1', 'Passe AAA'],
             ['Contraste on-accent/accent', '5.23:1 / 12.45:1', 'Texte sur bouton rempli / footer'],
-            ['Thème', 'data-theme + localStorage', 'Bouton « Appliquer le #… » dans le header, anti-FOUC via theme.js']
+            ['Thème', 'data-theme + localStorage', 'Bouton « Passer en mono / rouge » dans le header (pastille = couleur cible), anti-FOUC via theme.js']
           ]}
         />
         <Regles
@@ -249,10 +249,11 @@ export default function DesignSystem() {
         <h3 className="_row">Hero</h3>
         <PropsTable rows={[
           ['title', 'node', 'contenu du seul h1.hero-title de la page'],
-          ['sub', 'node (optionnel)', 'sous-titre hero-sub']
+          ['sub', 'node (optionnel)', 'sous-titre hero-sub'],
+          ['actions', 'node (optionnel)', 'CTA du hero, rendus dans .hero-actions (ex. accueil : « Voir les sorties », « Écouter le dernier épisode » en <Button>)']
         ]} />
-        <Regles faire="un <Hero> par page, en premier dans #main." eviter="jamais de deuxième h1, jamais de h1 hors <Hero>." />
-        <Code>{'<Hero title="Sorties" />\n<Hero title={<>Le Label<br />Records</>} sub="Label indépendant — Nîmes, France" />'}</Code>
+        <Regles faire="un <Hero> par page, en premier dans #main ; sur l'accueil, des CTA via actions." eviter="jamais de deuxième h1, jamais de h1 hors <Hero>." />
+        <Code>{'<Hero title="Sorties" />\n<Hero title={<>Le Label<br />Records</>} sub="Label indépendant — Nîmes, France" actions={<>\n  <Button to="/sorties">Voir les sorties</Button>\n  <Button href="https://…" target="_blank" rel="noopener noreferrer">Écouter le dernier épisode</Button>\n</>} />'}</Code>
 
         <h3 className="_row">Lead</h3>
         <PropsTable rows={[
@@ -275,9 +276,10 @@ export default function DesignSystem() {
         <p className="__row textsize-small">
           États : contour 1px → rempli au survol/focus ; actif = rempli via <code>aria-current</code> / <code>aria-selected</code>.
           Cible ≈ 32px de haut (≥ 24px WCAG 2.5.8). Couleurs 100 % var(--*).
+          Tout lien externe (<code>target="_blank"</code>) affiche automatiquement <strong>↗</strong> (règle globale <code>a[target='_blank']::after</code> dans base.scss — y compris sur <code>.button</code>).
         </p>
         <Regles
-          faire="toute action/lien de navigation passe par <Button>."
+          faire="toute action/lien de navigation passe par <Button> — y compris dans .release-links des cartes produit."
           eviter={'aucune ancre <code>className="button"</code> écrite à la main, aucun border-radius.'}
         />
         <Code>{'<Button to="/contact">Contact</Button>\n<Button href="https://lelabelrecords.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</Button>'}</Code>
@@ -315,20 +317,22 @@ export default function DesignSystem() {
         <h3 className="_row">Cover (carte produit)</h3>
         <div className="flex-container __row">
           <div className="col-25 col-50-sp">
-            <Cover label="EP" href="https://lelabelrecords.bandcamp.com/" ariaLabel="Exemple EP — écouter" />
+            <Cover label="Montevideo" href="https://lelabelrecords.bandcamp.com/" ariaLabel="Vision / Montevideo — écouter" />
             <p className="____row textsize-small"><strong>Vision</strong> / Montevideo</p>
+            <p className="____row textsize-small">EP · 16 octobre 2026</p>
           </div>
           <div className="col-25 col-50-sp">
-            <Cover label="Single" />
-            <p className="____row textsize-small"><strong>Brawn</strong> / Montevideo</p>
+            <Cover label="K0RROBOR" />
+            <p className="____row textsize-small"><strong>EP1</strong> / K0RROBOR</p>
+            <p className="____row textsize-small">EP · 18 décembre 2026</p>
           </div>
         </div>
         <PropsTable rows={[
-          ['label', 'string', 'pastille centrée (type de sortie)'],
+          ['label', 'string', 'pastille centrée = nom de l\'artiste (regroupe les sorties d\'un même artiste ; le type EP/Single/LP est en métadonnée, ligne « type · date »)'],
           ['href', 'string (optionnel)', 'rend la carte cliquable (hover fill)'],
           ['ariaLabel', 'string', 'obligatoire si href (la carte n\'a pas de texte visible)']
         ]} />
-        <Code>{'<Cover label="EP" href="https://…" ariaLabel="Vision — écouter" />\n<Cover label="Single" />'}</Code>
+        <Code>{'<Cover label="Montevideo" href="https://…" ariaLabel="Vision / Montevideo — écouter" />\n<Cover label="K0RROBOR" />'}</Code>
 
         <h3 className="_row">Logo</h3>
         <div className="__row" style={{ maxWidth: '8.33333rem' }}><Logo /></div>
@@ -351,7 +355,7 @@ export default function DesignSystem() {
           <code>inert</code>, Échap ferme, focus sur le 1<sup>er</sup> lien puis rendu au bouton Menu).
           Au scroll, le header affiche la marque (<code>.header-brand</code> = logo + « Le Label Records »,
           classe <code>is-scrolled</code> posée par <code>Header.jsx</code> ; nom masqué ≤ 767px).
-          Bouton thème « Appliquer le #… » à droite.
+          Bouton thème « Passer en mono / rouge » à droite (pastille de la couleur cible, <code>aria-pressed</code>).
         </p>
 
         <h3 className="_row">Footer</h3>
@@ -365,8 +369,12 @@ export default function DesignSystem() {
         <ul className="_row">
           <ListItem><strong>Page type</strong> : <code>&lt;Hero&gt;</code> → <code>&lt;Lead&gt;</code> → sections <code>h2</code> séparées par <code>&lt;hr className="_row" /&gt;</code> (espaceur invisible).</ListItem>
           <ListItem><strong>Navigation</strong> : bouton Menu → dialog plein écran (voir Header) ; page active = remplie (<code>aria-current="page"</code>).</ListItem>
-          <ListItem><strong>Fil d'actus</strong> : <code>ListItem</code> en 2 colonnes (<code>col-50 col-100-sp</code>), ligne <code>.list-date</code> = date — <code>&lt;Label&gt;</code> — <code>&lt;Button&gt;</code> inline.</ListItem>
-          <ListItem><strong>Carte produit</strong> : <code>Cover</code> 2:3 + métadonnées (titre/artiste/date) + <code>.release-links</code>.</ListItem>
+          <ListItem><strong>Fil d'actus</strong> : <code>ListItem</code> en 2 colonnes (<code>col-50 col-100-sp</code>), ligne <code>.list-date</code> = date — <code>&lt;Label&gt;</code> — <code>&lt;Button&gt;</code> inline. Jamais d'événement passé dans le fil (helper <code>upcomingEvents</code>) et jamais de bouton sans lien (actu sans <code>link</code> = pas de bouton).</ListItem>
+          <ListItem><strong>Carte produit</strong> : <code>Cover</code> 2:3 (pastille = artiste) + métadonnées (titre/artiste, « type · date ») + <code>.release-links</code> en <code>&lt;Button&gt;</code>.</ListItem>
+          <ListItem><strong>Accueil</strong> : <code>&lt;Hero&gt;</code> avec <code>actions</code> (CTA) → marquee → fil d'actus (onglets, <code>flex-wrap</code> donc jamais de débordement mobile) → 3 dernières sorties → bloc radio en 3 colonnes (<code>col-33</code>). Le logo latéral est masqué sur l'accueil (<code>.is-home</code>) : le h1 du hero porte déjà le nom.</ListItem>
+          <ListItem><strong>Événements</strong> : sections « Prochains » / « Passés » (<code>upcomingEvents</code> / <code>pastEvents</code>) ; libellé de lien explicite via <code>eventLinkLabel</code> (« Billetterie » pour un concert, « Infos » sinon, <code>linkLabel</code> pour surcharger).</ListItem>
+          <ListItem><strong>Radio</strong> : bouton « Écouter sur &lt;diffuseur&gt; » par antenne ; épisode avec <code>link</code> → bouton « Écouter l'épisode ».</ListItem>
+          <ListItem><strong>Liens externes</strong> : <code>target="_blank"</code> + <code>rel="noopener noreferrer"</code> + ↗ automatique.</ListItem>
         </ul>
       </section>
 
@@ -376,7 +384,8 @@ export default function DesignSystem() {
         <h2 id="ds-voix">Voix &amp; contenu</h2>
         <ul className="_row">
           <ListItem><strong>Ton</strong> : direct, humain, sans jargon marketing — on parle aux artistes et au public comme en vrai.</ListItem>
-          <ListItem><strong>Intitulés d'action explicites</strong> : « Accéder à nos émissions », « Appliquer le #343434 », « Envoyer une démo » — jamais « cliquez ici ».</ListItem>
+          <ListItem><strong>Intitulés d'action explicites</strong> : « Voir les sorties », « Écouter sur Rayvox », « Billetterie », « Passer en mono », « Envoyer une démo » — jamais « cliquez ici », jamais « Lien ».</ListItem>
+          <ListItem><strong>Jamais de bouton sans destination</strong> : une actu sans lien n'a pas de bouton.</ListItem>
           <ListItem><strong>Catégories</strong> : toujours préfixées d'un # (rendu par <code>&lt;Label&gt;</code>), jamais déguisées en boutons.</ListItem>
           <ListItem><strong>Dates</strong> : format fr-FR, « À venir » sans date ; tri chronologique inverse, les sans-date en dernier.</ListItem>
           <ListItem><strong>Contenu éditable</strong> : tout vient des JSON de <code>data/</code> (filtrés par <code>visible()</code>), jamais en dur dans les pages.</ListItem>
@@ -397,6 +406,7 @@ export default function DesignSystem() {
           <ListItem>États exposés uniquement en ARIA : <code>aria-current / aria-selected / aria-pressed / aria-expanded / aria-modal</code>.</ListItem>
           <ListItem><code>prefers-reduced-motion</code> respecté globalement (animations, scroll, marquee).</ListItem>
           <ListItem>Contenus décoratifs masqués : marquee <code>aria-hidden</code>, logo du header <code>aria-hidden</code> (nom visible à côté).</ListItem>
+          <ListItem>Liens externes signalés visuellement : ↗ automatique sur <code>target="_blank"</code>.</ListItem>
           <ListItem>0 cookie / 0 traceur ; préférence de thème en localStorage uniquement.</ListItem>
           <ListItem>Vérification continue : panneau <strong>a11y (axe)</strong> dans Storybook sur chaque story.</ListItem>
         </ul>

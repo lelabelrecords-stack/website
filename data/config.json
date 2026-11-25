@@ -3,7 +3,7 @@
   "baseline": "Label indépendant — Nîmes, France",
   "description": "ᖇᗴᑕᗝᖇᗪᔕ ᒪᗩᗷᗴᒪ Ꭵᑎ ᑎîᗰᗴᔕ \"ᒪᗩ ᗰᑌᔕᎥɊᑌᗴ ᑎ’ᗴᔕ丅 ᑭᗩᔕ ᔕᎥᗰᑭᒪᗰᗴᑎ丅 ᑌᑎᗴ ᕼᎥᔕ丅ᗝᎥᖇᗴ ᗪᗴ ᔕᗝᑎᔕ, ᑕ’ᗴᔕ丅 ᗩᐯᗩᑎ丅 丅ᗝᑌ丅 ᑌᑎᗴ ᗩᐯᗴᑎᗝᑌᖇᗴ ᑭᖇᗝᖴᗝᑎᗪéᗰᗴᑎ丅 ᕼᑌᗰᗩᎥᑎᗴ.\"",
   "email": "le.label.contact@gmail.com",
-  "demo_submission_email": "lelabel@le-label.org",
+  "demo_submission_email": "le.label.contact@gmail.com",
   "address": "8 rue Nationale, 30000 Nîmes, France",
   "social": {
     "bandcamp": "https://lelabelrecords.bandcamp.com/",
@@ -35,17 +35,20 @@
       {
         "n": 1,
         "label": "PNKSLM Recordings",
-        "place": "Stockholm"
+        "place": "Stockholm",
+        "link": "https://www.rayvox.org/podcastFilter?e=70&t=&l=1"
       },
       {
         "n": 2,
         "label": "Sounds of Subterrania",
-        "place": "Hambourg — fondé en 1998 à Cassel"
+        "place": "Hambourg — fondé en 1998 à Cassel",
+        "link": "https://www.rayvox.org/podcastFilter?e=70&t=&l=1"
       },
       {
         "n": 3,
         "label": "Chrüsümïsi Records",
-        "place": "Suisse alémanique — « méli-mélo »"
+        "place": "Suisse alémanique — « méli-mélo »",
+        "link": "https://www.rayvox.org/podcastFilter?e=70&t=&l=1"
       }
     ]
   }

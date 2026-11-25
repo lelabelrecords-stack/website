@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { config, artistes, news, sorties, evenements, formatDate } from '../data.js'
+import { config, artistes, news, sorties, evenements, formatDate, upcomingEvents, eventLinkLabel } from '../data.js'
 import ReleaseCard from '../components/ReleaseCard.jsx'
 import Hero from '../components/ui/Hero.jsx'
 import Marquee from '../components/ui/Marquee.jsx'
@@ -22,8 +22,13 @@ export default function Home() {
   const tabs = ['actus', ...[...new Set(evenements.map((e) => e.type))], 'toutes']
   const feed = [
     ...news.map((n) => ({ kind: 'news', date: n.date, item: n })),
-    ...evenements.map((e) => ({ kind: 'event', date: e.date, item: e }))
-  ].sort((a, b) => {
+    ...upcomingEvents(evenements).map((e) => ({ kind: 'event', date: e.date, item: e }))
+  ].map((f) => ({
+    ...f,
+    cta: !f.item.link
+      ? null
+      : { href: f.item.link, label: f.kind === 'news' ? 'En savoir plus' : eventLinkLabel(f.item) }
+  })).sort((a, b) => {
     if (!a.date && !b.date) return 0
     if (!a.date) return 1
     if (!b.date) return -1
@@ -39,9 +44,30 @@ export default function Home() {
     ...[...sorties].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map((s) => `${s.artist} — ${s.title}`)
   ].join(' · ')
 
+  const sortedReleases = [...sorties].sort((a, b) => {
+    if (!a.date && !b.date) return 0
+    if (!a.date) return 1
+    if (!b.date) return -1
+    return b.date.localeCompare(a.date)
+  })
+  const lastEpisode = [...config.radio.episodes].sort((a, b) => b.n - a.n)[0]
+
   return (
     <>
-      <Hero title={<>Le Label<br />Records</>} sub={config.baseline} />
+      <Hero
+        title={<>Le Label<br />Records</>}
+        sub={config.baseline}
+        actions={(
+          <>
+            <Button to="/sorties">Voir les sorties</Button>
+            {lastEpisode?.link && (
+              <Button href={lastEpisode.link} target="_blank" rel="noopener noreferrer">
+                Écouter le dernier épisode
+              </Button>
+            )}
+          </>
+        )}
+      />
 
       <Marquee text={marqueeText} />
 
@@ -55,20 +81,12 @@ export default function Home() {
           ))}
         </div>
         <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-label="Actualités filtrées">
-          {filtered.map(({ kind, date, item }) => (
+          {filtered.map(({ kind, date, item, cta }) => (
             <ListItem className="col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">
                 {formatDate(date) || 'À venir'} — <Label>{kind === 'news' ? 'Actu' : item.type}</Label>{' '}
-                {kind === 'news' ? (
-                  item.link ? (
-                    <Button href={item.link} target="_blank" rel="noopener noreferrer">En savoir plus</Button>
-                  ) : (
-                    <Button to="/contact">Nous contacter</Button>
-                  )
-                ) : (
-                  item.link && (
-                    <Button href={item.link} target="_blank" rel="noopener noreferrer">Lien</Button>
-                  )
+                {cta && (
+                  <Button href={cta.href} target="_blank" rel="noopener noreferrer">{cta.label}</Button>
                 )}
               </p>
               <h3 className="___row">{item.title}</h3>
@@ -82,12 +100,7 @@ export default function Home() {
 
       <section aria-label="Sorties" className="_row">
         <div className="flex-container _row">
-          {[...sorties].sort((a, b) => {
-            if (!a.date && !b.date) return 0
-            if (!a.date) return 1
-            if (!b.date) return -1
-            return b.date.localeCompare(a.date)
-          }).map((s) => (
+          {sortedReleases.slice(0, 3).map((s) => (
             <ReleaseCard key={s.id} release={s} />
           ))}
         </div>
@@ -99,9 +112,9 @@ export default function Home() {
       <section aria-labelledby="home-radio">
         <h2 id="home-radio">{config.radio.name} — à la radio</h2>
         <p className="_row textsize-regular-lh-small">{config.radio.tagline}</p>
-        <ul className="_row">
+        <ul className="flex-container _row">
           {config.radio.slots.map((slot) => (
-            <ListItem key={slot.label}>
+            <ListItem key={slot.label} className="col-33 col-100-sp">
               <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
               <p className="__row">

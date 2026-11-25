@@ -17,12 +17,10 @@ export default function News() {
             <p className="list-date">{formatDate(n.date) || 'À venir'}</p>
             <h3 className="__row">{n.title}</h3>
             <p className="__row textsize-regular-lh-small">{n.text}</p>
-            {n.link ? (
+            {n.link && (
               <p className="__row textsize-small">
                 <Button href={n.link} target="_blank" rel="noopener noreferrer">En savoir plus</Button>
               </p>
-            ) : (
-              <p className="__row textsize-small"><Button to="/contact">Nous contacter</Button></p>
             )}
           </ListItem>
         ))}

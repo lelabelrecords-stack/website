@@ -24,7 +24,7 @@ export default function Radio() {
               <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
               <p className="__row">
-                <Button href={slot.link} target="_blank" rel="noopener noreferrer">Accéder à nos émissions</Button>
+                <Button href={slot.link} target="_blank" rel="noopener noreferrer">Écouter sur {slot.label}</Button>
               </p>
             </ListItem>
           ))}
@@ -41,6 +41,11 @@ export default function Radio() {
               <p className="list-date">Épisode #{ep.n}</p>
               <h3 className="__row">{ep.label}</h3>
               <p className="__row textsize-regular-lh-small">{ep.place}</p>
+              {ep.link && (
+                <p className="__row textsize-small">
+                  <Button href={ep.link} target="_blank" rel="noopener noreferrer">Écouter l'épisode</Button>
+                </p>
+              )}
             </ListItem>
           ))}
         </ul>

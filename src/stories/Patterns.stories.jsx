@@ -37,11 +37,12 @@ export const FilActus = () => (
 export const CarteProduit = () => (
   <div className="flex-container">
     <div className="col-25 col-50-sp">
-      <Cover label="EP" href="https://lelabelrecords.bandcamp.com/" ariaLabel="Vision — écouter" />
+      <Cover label="Montevideo" href="https://lelabelrecords.bandcamp.com/" ariaLabel="Vision / Montevideo — écouter" />
       <p className="____row"><strong>Vision</strong> / Montevideo</p>
-      <p className="___row textsize-small">16 octobre 2026</p>
+      <p className="___row textsize-small">EP · 16 octobre 2026</p>
       <ul className="___row release-links">
         <li><Button href="https://lelabelrecords.bandcamp.com/" target="_blank" rel="noopener noreferrer">Écouter</Button></li>
+        <li><Button href="https://www.youtube.com/watch?v=Mn_pscQeAzg" target="_blank" rel="noopener noreferrer">Clip</Button></li>
       </ul>
     </div>
   </div>

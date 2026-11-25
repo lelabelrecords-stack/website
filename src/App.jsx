@@ -30,12 +30,13 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const { pathname } = useLocation()
   return (
     <>
       <a className="skip-link" href="#main">Aller au contenu</a>
       <ScrollToTop />
       <Header />
-      <div id="main-container" className="flex-container is-flex-wrap-nowrap is-break-tablet">
+      <div id="main-container" className={`flex-container is-flex-wrap-nowrap is-break-tablet${pathname === '/' ? ' is-home' : ''}`}>
         <aside id="main-side" aria-label="Coordonnées du label">
           <Logo />
           <p className="is-writing-mode-vertical is-writing-mode-break-tablet">
