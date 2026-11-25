@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { within, userEvent, expect } from 'storybook/test'
 import Tab from './Tab.jsx'
 
 export default {
@@ -12,7 +13,7 @@ export default {
   }
 }
 
-export const Groupe = () => {
+const GroupeDemo = () => {
   const [t, setT] = useState('actus')
   return (
     <div>
@@ -24,4 +25,15 @@ export const Groupe = () => {
       <p className="__row textsize-small" id="tab-panel" role="tabpanel">Onglet actif : <strong>{t}</strong></p>
     </div>
   )
+}
+
+export const Groupe = {
+  render: () => <GroupeDemo />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const eventsTab = canvas.getByRole('tab', { name: 'Événements' })
+    await userEvent.click(eventsTab)
+    await expect(eventsTab).toHaveAttribute('aria-selected', 'true')
+    await expect(canvas.getByRole('tabpanel')).toHaveTextContent('events')
+  }
 }

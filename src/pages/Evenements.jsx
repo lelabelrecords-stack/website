@@ -3,7 +3,7 @@ import Hero from '../components/ui/Hero.jsx'
 import Lead from '../components/ui/Lead.jsx'
 import ListItem from '../components/ui/ListItem.jsx'
 import Button from '../components/ui/Button.jsx'
-import { usePageMeta } from '../seo.js'
+import { usePageMeta, useJsonLd } from '../seo.js'
 import { evenements, formatDate } from '../data.js'
 
 export default function Evenements() {
@@ -13,6 +13,24 @@ export default function Evenements() {
     if (!a.date) return 1
     if (!b.date) return -1
     return a.date.localeCompare(b.date)
+  })
+  useJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Événements du Le Label Records',
+    itemListElement: sorted.map((e, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Event',
+        name: e.title,
+        startDate: e.date || undefined,
+        endDate: e.dateEnd || undefined,
+        location: { '@type': 'Place', name: e.lieu, address: { '@type': 'PostalAddress', addressLocality: e.ville, addressCountry: 'FR' } },
+        organizer: { '@type': 'MusicGroup', name: 'Le Label Records', url: 'https://le-label.org' },
+        url: e.link || 'https://le-label.org/evenements'
+      }
+    }))
   })
 
   return (

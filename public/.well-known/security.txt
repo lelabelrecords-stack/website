@@ -1,0 +1,4 @@
+Contact: mailto:le.label.contact@gmail.com
+Expires: 2027-12-31T23:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://le-label.org/.well-known/security.txt

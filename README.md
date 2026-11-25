@@ -68,6 +68,20 @@ https://lelabelrecords-stack.github.io/website/
 Le contrat écrit du DS (`src/pages/DesignSystem.jsx`) est **dev-only** : `npm run dev` → http://localhost:5173/design-system.
 Il n'est pas embarqué dans le build de production (ni dans robots.txt/sitemap).
 
+## CI, qualité & sécurité
+
+- **GitHub Actions** : `deploy.yml` (miroir GitLab) + `storybook-pages.yml` (DS Storybook → GitHub Pages, noindex).
+- **GitLab CI** (`.gitlab-ci.yml`, branche `main`) : `build` → `audit` (npm audit bloquant, 0 vulnérabilité grâce aux overrides glob/minimatch) → `budget` (`scripts/budget.mjs` : JS ≤ 100 Ko gzip, CSS ≤ 45 Ko, dist ≤ 512 Ko) → `validate` (fichiers attendus dans dist/) → `ds-tests` (Storybook test-runner + playwright, inclut le play test de Tab) → `lighthouse` (budgets `lighthouse-budget.json` : 0 font externe, 0 third-party, poids total).
+- **Sécurité** : `public/.well-known/security.txt` (RFC 9116), CSP/HSTS/nosniff dans `_headers`, `npm audit` en CI, Dependabot (`.github/dependabot.yml`, hebdo).
+- **Protection de `main`** (à activer côté dashboard GitHub : Settings → Branches → Add rule sur `main` : « Do not allow force pushes » + « Require a pull request before merging » si vous passez en PR ; sinon gardez le push direct mais cochez au minimum l'interdiction du force-push). Templates : `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/`.
+- **Rollback** : Cloudflare Pages garde l'historique (projet → Deployments → Revert) ; releases taguées (`v1.0.0`, voir CHANGELOG.md).
+
+## Options non retenues (à rediscuter)
+
+- **Cloudflare Web Analytics** (sans cookie, gratuit, RGPD-ok) si besoin de stats.
+- **PWA** (manifest + mini service worker) pour l'offline — à peser côté écolo.
+- **Kit presse** téléchargeable (zip de logos SVG).
+
 ## Structure
 
 ```

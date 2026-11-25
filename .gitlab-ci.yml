@@ -1,9 +1,12 @@
 stages:
   - build
   - validate
+  - test
+  - perf
 
 variables:
   NODE_IMAGE: "node:20-alpine"
+  NODE_IMAGE_FULL: "node:20-bookworm"
   BUILD_OUTPUT_DIR: "dist"
   PRODUCTION_BRANCH: "main"
   CF_PAGES_PROJECT_NAME: "website"
@@ -18,6 +21,22 @@ build:
     paths:
       - $BUILD_OUTPUT_DIR/
 
+audit:
+  stage: validate
+  image: $NODE_IMAGE
+  script:
+    - npm ci --no-audit --no-fund
+    # aucune vulnérabilité (même dev) ne doit passer
+    - npm audit --audit-level=low
+
+budget:
+  stage: validate
+  image: $NODE_IMAGE
+  needs:
+    - build
+  script:
+    - node scripts/budget.mjs
+
 validate:
   stage: validate
   image: $NODE_IMAGE
@@ -29,4 +48,34 @@ validate:
     - test -f "$BUILD_OUTPUT_DIR/index.html"
     - test -f "$BUILD_OUTPUT_DIR/favicon.svg"
     - test -f "$BUILD_OUTPUT_DIR/_redirects"
+    - test -f "$BUILD_OUTPUT_DIR/.well-known/security.txt"
+    - test -f "$BUILD_OUTPUT_DIR/assets/og-image.png"
     - 'echo "dist/ OK - deploiement natif Cloudflare Pages (projet $CF_PAGES_PROJECT_NAME, branche $PRODUCTION_BRANCH, output $BUILD_OUTPUT_DIR)."'
+
+ds-tests:
+  stage: test
+  image: $NODE_IMAGE_FULL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $PRODUCTION_BRANCH
+  script:
+    - npm ci --no-audit --no-fund
+    - npx playwright install --with-deps chromium
+    - npm run test:storybook
+
+lighthouse:
+  stage: perf
+  image: $NODE_IMAGE_FULL
+  needs:
+    - build
+  rules:
+    - if: $CI_COMMIT_BRANCH == $PRODUCTION_BRANCH
+  script:
+    - npm ci --no-audit --no-fund
+    - npx @puppeteer/browsers install chrome-headless-shell@stable
+    - export CHROME_PATH="$(npx @puppeteer/browsers install chrome-headless-shell@stable --path 2>/dev/null | tail -1)/chrome-headless-shell-linux64/chrome-headless-shell"
+    - node scripts/serve-dist.mjs dist 8080 &
+    - sleep 1
+    - npx lighthouse http://127.0.0.1:8080/ --only-categories=performance,accessibility,best-practices,seo --budget-path=lighthouse-budget.json --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=lh-report.json --quiet
+  artifacts:
+    paths:
+      - lh-report.json
