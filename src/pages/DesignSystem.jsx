@@ -66,7 +66,7 @@ export default function DesignSystem() {
 
   return (
     <>
-      <Hero title="Design system" sub="Contrat interne du site Le Label Records — v1.0 (page noindex)." />
+      <Hero title="Design system" sub="Contrat interne — visible uniquement en dev (npm run dev), non embarqué en prod : le DS public vit sur Storybook." />
 
       <nav aria-label="Sommaire du design system" className="_row">
         <ul className="release-links">
@@ -326,7 +326,7 @@ export default function DesignSystem() {
         <Code>{'<Cover label="EP" href="https://…" ariaLabel="Vision — écouter" />\n<Cover label="Single" />'}</Code>
 
         <h3 className="_row">Logo</h3>
-        <p className="__row"><Logo /></p>
+        <div className="__row" style={{ maxWidth: '8.33333rem' }}><Logo /></div>
         <PropsTable rows={[
           ['className', 'string', 'taille (ex. header-logo)'],
           ['label', 'string', 'aria-label (role="img")']
@@ -435,7 +435,7 @@ export default function DesignSystem() {
           <ListItem>2. Partial <code>src/styles/components/x.scss</code> + <code>@use</code> dans <code>main.scss</code>.</ListItem>
           <ListItem>3. Primitive <code>src/components/ui/X.jsx</code> (props explicites, états ARIA, aucune classe magique).</ListItem>
           <ListItem>4. Story dans <code>src/components/ui/ui.stories.jsx</code> + documentation dans cette page (rôle, props, états, a11y, règles).</ListItem>
-          <ListItem>5. Vérifier : <code>npm run build</code> + <code>npm run build-storybook</code> + rendu SSR des 11 routes (1 <code>h1.hero-title</code> par page).</ListItem>
+          <ListItem>5. Vérifier : <code>npm run build</code> (le DS ne doit PAS apparaître dans le bundle prod) + <code>npm run build-storybook</code> + rendu SSR des routes (1 <code>h1.hero-title</code> par page).</ListItem>
         </ol>
       </section>
     </>

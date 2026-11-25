@@ -44,7 +44,12 @@ export const Carte = () => (
   </div>
 )
 
-export const Logotype = () => <Logo />
+export const Logotype = () => (
+  <div style={{ maxWidth: 160 }}>
+    <Logo />
+    <p className="____row textsize-small">Logo masque CSS — suit var(--accent), donc le thème.</p>
+  </div>
+)
 
 export const HeroEtLead = () => (
   <>

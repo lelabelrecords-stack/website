@@ -54,7 +54,7 @@ export default function App() {
             <Route path="/radio" element={<Radio />} />
             <Route path="/a-propos" element={<APropos />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/design-system" element={<DesignSystem />} />
+            {import.meta.env.DEV && <Route path="/design-system" element={<DesignSystem />} />}
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="*" element={<NotFound />} />
           </Routes>
