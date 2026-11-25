@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, NavLink } from 'react-router-dom'
 import Button from './Button.jsx'
 import Label from './Label.jsx'
 import Tab from './Tab.jsx'
@@ -73,3 +73,36 @@ const ThemeMonoStory = () => {
 }
 
 export const ThemeMono = { render: () => <ThemeMonoStory /> }
+
+export const BoutonActif = () => (
+  <nav className="site-nav" aria-label="Démo état actif">
+    <ul style={{ display: 'flex', gap: '10px' }}>
+      <li><NavLink to="/" end className="button">Accueil (actif, rempli)</NavLink></li>
+      <li><NavLink to="/contact" className="button">Contact</NavLink></li>
+    </ul>
+  </nav>
+)
+
+export const HeroSansSub = () => <Hero title="Sorties" />
+
+export const CarteSansLien = () => (
+  <div style={{ maxWidth: 240 }}>
+    <Cover label="Single" />
+    <p className="____row textsize-small"><strong>Brawn</strong> / Montevideo</p>
+  </div>
+)
+
+export const Jetons = () => (
+  <div>
+    <p><strong>Couleurs</strong></p>
+    <p>
+      <span className="label label--filled">--accent #DB0000</span>{' '}
+      <span className="label">thème mono #343434</span>{' '}
+      <span className="label">--bg #FFFFFF</span>
+    </p>
+    <p className="__row"><strong>Espacement</strong> : .row 50px · ._row 25 · .__row 12.5 · .___row 8.3 · .____row 6.25 · ._____row 5</p>
+    <p><strong>Typo</strong> : hero clamp(3.5–12rem) 900 · lead clamp(1.5–2.5rem) 900 · regular 1rem · small 0.833rem</p>
+    <p><strong>Breakpoints</strong> : 767 / 1023 / 1280 / 1700 px · gouttière 25px (12.5px mobile)</p>
+    <p><strong>Divers</strong> : filet $bw 1px · radius 0 · z 40/50/60/100 · $dur 0.2s</p>
+  </div>
+)

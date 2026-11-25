@@ -35,3 +35,13 @@
 .ds-table th {
   font-weight: 700;
 }
+
+// Bloc de code d'exemple (usage d'une primitive)
+.ds-code {
+  border: $bw solid var(--accent);
+  padding: 1rem;
+  font-size: $fs-small;
+  line-height: $lh-small;
+  overflow-x: auto;
+  white-space: pre;
+}

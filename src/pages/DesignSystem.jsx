@@ -34,6 +34,10 @@ function Regles({ faire, eviter }) {
   )
 }
 
+function Code({ children }) {
+  return <pre className="ds-code __row"><code>{children}</code></pre>
+}
+
 const TOC = [
   ['ds-principes', 'Principes'],
   ['ds-couleur', 'Couleur'],
@@ -41,8 +45,10 @@ const TOC = [
   ['ds-grille', 'Grille & espacements'],
   ['ds-visuels', 'Visuels'],
   ['ds-motion', 'Motion'],
+  ['ds-tokens', 'Tokens (référence)'],
   ['ds-composants', 'Composants'],
   ['ds-patterns', 'Patterns'],
+  ['ds-voix', 'Voix & contenu'],
   ['ds-a11y', 'Accessibilité'],
   ['ds-eco', 'Écoconception & perf'],
   ['ds-storybook', 'Vitrine Storybook'],
@@ -208,6 +214,29 @@ export default function DesignSystem() {
 
       <hr className="_row" />
 
+      <section aria-labelledby="ds-tokens" id="ds-tokens">
+        <h2 id="ds-tokens">Tokens — référence complète</h2>
+        <p className="_row textsize-small">Source unique : <code>src/styles/tokens.scss</code>. Toute valeur répétée y naît, nulle part ailleurs.</p>
+        <PropsTable
+          rows={[
+            ['--accent / --bg / --on-accent', 'CSS vars', '#DB0000 / #FFFFFF / #FFFFFF — thème mono #343434 via html[data-theme]'],
+            ['$font / $font-black', 'font-family', 'Archivo (fallback système) / Archivo Variable 900 pour le display'],
+            ['$sp / $tablet / $pc-small / $pc-large', 'breakpoints', '767 / 1023 / 1280 / 1700 px'],
+            ['$gut', '25px (12.5px ≤ $sp)', 'gouttière de la grille'],
+            ['$cols', 'liste 10…100', 'génère .col-10…100 + suffixes de breakpoints'],
+            ['$spaces', 'map 6 paliers', 'génère .row (50px) … ._____row (5px) en padding-top'],
+            ['$fs-hero / $fs-lead / $fs-regular / $fs-marquee / $fs-small', 'clamp / rem', 'échelle typographique (voir Typographie)'],
+            ['$lh-regular / $lh-small', 'rem', '1.667rem / 1.25rem'],
+            ['$bw', '1px', 'unique épaisseur de filet (bordures, hr invisible, focus 2px)'],
+            ['$radius', '0', 'aucun arrondi, partout'],
+            ['$z-header / $z-menu / $z-actions / $z-skip', '40 / 50 / 60 / 100', 'ordre des couches'],
+            ['$dur', '0.2s', 'unique durée de transition']
+          ]}
+        />
+      </section>
+
+      <hr className="_row" />
+
       <section aria-labelledby="ds-composants" id="ds-composants">
         <h2 id="ds-composants">Composants (ui/)</h2>
         <p className="_row textsize-small">Chaque composant a un partial SCSS dédié (<code>styles/components/*.scss</code>) et une story Storybook.</p>
@@ -218,6 +247,7 @@ export default function DesignSystem() {
           ['sub', 'node (optionnel)', 'sous-titre hero-sub']
         ]} />
         <Regles faire="un <Hero> par page, en premier dans #main." eviter="jamais de deuxième h1, jamais de h1 hors <Hero>." />
+        <Code>{'<Hero title="Sorties" />\n<Hero title={<>Le Label<br />Records</>} sub="Label indépendant — Nîmes, France" />'}</Code>
 
         <h3 className="_row">Lead</h3>
         <PropsTable rows={[
@@ -225,6 +255,7 @@ export default function DesignSystem() {
           ['children', 'node', 'chapô de la page/section']
         ]} />
         <p className="__row"><Lead>Exemple vivant de Lead.</Lead></p>
+        <Code>{'<Lead className="_row">Le roster du label.</Lead>'}</Code>
 
         <h3 className="_row">Button</h3>
         <p className="__row">
@@ -244,6 +275,7 @@ export default function DesignSystem() {
           faire="toute action/lien de navigation passe par <Button>."
           eviter={'aucune ancre <code>className="button"</code> écrite à la main, aucun border-radius.'}
         />
+        <Code>{'<Button to="/contact">Contact</Button>\n<Button href="https://lelabelrecords.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</Button>'}</Code>
 
         <h3 className="_row">Label</h3>
         <p className="__row"><Label>concert</Label> <Label filled>release</Label></p>
@@ -261,6 +293,7 @@ export default function DesignSystem() {
         <p className="__row textsize-small" id="ds-panel" role="tabpanel">
           Onglet actif : <strong>{tab}</strong> — naviguez au clavier avec les flèches ← → ↑ ↓ (roving tabindex dans la primitive).
         </p>
+        <Code>{'<div className="tabs" role="tablist" aria-label="Catégories">\n  <Tab selected={t === \'actus\'} controls="panel" onClick={() => setT(\'actus\')}>Actus</Tab>\n</div>'}</Code>
         <PropsTable rows={[
           ['selected', 'bool', 'aria-selected + tabIndex 0 (les autres -1)'],
           ['onClick', 'fn', 'sélection (activation automatique aussi via les flèches)'],
@@ -272,6 +305,7 @@ export default function DesignSystem() {
           <ListItem>Exemple d'élément de liste (filet 1px haut, dernier élément filet bas).</ListItem>
         </ul>
         <PropsTable rows={[['className', 'string', 'grille ex. col-50 col-100-sp']]} />
+        <Code>{'<ul className="_row">\n  <ListItem className="col-50 col-100-sp">…</ListItem>\n</ul>'}</Code>
 
         <h3 className="_row">Cover (carte produit)</h3>
         <div className="flex-container __row">
@@ -289,6 +323,7 @@ export default function DesignSystem() {
           ['href', 'string (optionnel)', 'rend la carte cliquable (hover fill)'],
           ['ariaLabel', 'string', 'obligatoire si href (la carte n\'a pas de texte visible)']
         ]} />
+        <Code>{'<Cover label="EP" href="https://…" ariaLabel="Vision — écouter" />\n<Cover label="Single" />'}</Code>
 
         <h3 className="_row">Logo</h3>
         <p className="__row"><Logo /></p>
@@ -296,10 +331,12 @@ export default function DesignSystem() {
           ['className', 'string', 'taille (ex. header-logo)'],
           ['label', 'string', 'aria-label (role="img")']
         ]} />
+        <Code>{'<Logo />\n<Logo className="header-logo" />'}</Code>
 
         <h3 className="_row">Marquee</h3>
         <Marquee text="Exemple de marquee · Le Label Records" />
         <PropsTable rows={[['text', 'string', 'contenu répété 2× pour la boucle, aria-hidden="true"']]} />
+        <Code>{'<Marquee text="K0RROBOR · Montevideo · Le Label² · Nîmes" />'}</Code>
 
         <h3 className="_row">Header</h3>
         <p className="__row textsize-small">
@@ -325,6 +362,20 @@ export default function DesignSystem() {
           <ListItem><strong>Navigation</strong> : bouton Menu → dialog plein écran (voir Header) ; page active = remplie (<code>aria-current="page"</code>).</ListItem>
           <ListItem><strong>Fil d'actus</strong> : <code>ListItem</code> en 2 colonnes (<code>col-50 col-100-sp</code>), ligne <code>.list-date</code> = date — <code>&lt;Label&gt;</code> — <code>&lt;Button&gt;</code> inline.</ListItem>
           <ListItem><strong>Carte produit</strong> : <code>Cover</code> 2:3 + métadonnées (titre/artiste/date) + <code>.release-links</code>.</ListItem>
+        </ul>
+      </section>
+
+      <hr className="_row" />
+
+      <section aria-labelledby="ds-voix" id="ds-voix">
+        <h2 id="ds-voix">Voix &amp; contenu</h2>
+        <ul className="_row">
+          <ListItem><strong>Ton</strong> : direct, humain, sans jargon marketing — on parle aux artistes et au public comme en vrai.</ListItem>
+          <ListItem><strong>Intitulés d'action explicites</strong> : « Accéder à nos émissions », « Appliquer le #343434 », « Envoyer une démo » — jamais « cliquez ici ».</ListItem>
+          <ListItem><strong>Catégories</strong> : toujours préfixées d'un # (rendu par <code>&lt;Label&gt;</code>), jamais déguisées en boutons.</ListItem>
+          <ListItem><strong>Dates</strong> : format fr-FR, « À venir » sans date ; tri chronologique inverse, les sans-date en dernier.</ListItem>
+          <ListItem><strong>Contenu éditable</strong> : tout vient des JSON de <code>data/</code> (filtrés par <code>visible()</code>), jamais en dur dans les pages.</ListItem>
+          <ListItem><strong>Liens descriptifs</strong> : le texte du lien dit l'action, jamais d'URL nue.</ListItem>
         </ul>
       </section>
 
