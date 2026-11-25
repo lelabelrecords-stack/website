@@ -12,7 +12,7 @@
     "gen:og-image": "node scripts/gen-og-image.mjs",
     "test:budget": "node scripts/budget.mjs",
     "test:lh": "node scripts/serve-dist.mjs dist 8080 & sleep 1; npx lighthouse http://127.0.0.1:8080/ --only-categories=performance,accessibility,best-practices,seo --budget-path=lighthouse-budget.json --chrome-flags=\"--headless=new --no-sandbox --disable-dev-shm-usage\" --output=json --output-path=lh-report.json --quiet; RC=$?; kill %1 2>/dev/null; exit $RC",
-    "test:storybook": "npm run build-storybook && (node scripts/serve-dist.mjs storybook-static 6006 & sleep 2; npx test-storybook --url http://127.0.0.1:6006; RC=$?; kill %1 2>/dev/null; exit $RC)"
+    "test:storybook": "vitest run"
   },
   "dependencies": {
     "react": "^19.3.1",
@@ -23,15 +23,18 @@
     "@puppeteer/browsers": "^2.13.2",
     "@storybook/addon-a11y": "^10.6.9",
     "@storybook/addon-docs": "^10.6.9",
+    "@storybook/addon-vitest": "^10.6.9",
     "@storybook/react-vite": "^10.6.9",
-    "@storybook/test-runner": "^0.26.1",
     "@vitejs/plugin-react": "^5.2.0",
+    "@vitest/browser": "^5.1.2",
+    "@vitest/browser-playwright": "^5.1.2",
     "lighthouse": "^12.8.2",
     "playwright": "^1.65.1",
     "sass": "^1.108.2",
     "sharp": "^0.35.5",
     "storybook": "^10.6.9",
-    "vite": "^7.3.8"
+    "vite": "^7.3.8",
+    "vitest": "^5.1.2"
   },
   "overrides": {
     "glob": "^14.0.6",

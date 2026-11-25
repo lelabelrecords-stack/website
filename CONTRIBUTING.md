@@ -18,7 +18,7 @@ Contenu éditable : uniquement `data/*.json` (jamais en dur dans les pages).
 npm run build            # build site
 npm run test:budget      # poids (JS ≤ 100 Ko gzip, dist ≤ 512 Ko…)
 npm run build-storybook  # build DS
-npm run test:storybook   # tests Storybook (test-runner + playwright) — en CI
+npm run test:storybook   # tests Storybook (addon-vitest + playwright) — en CI
 ```
 
 + rendu SSR des routes (1 `h1.hero-title` par page) et checklist a11y (clavier, focus, contrastes, reduced-motion).

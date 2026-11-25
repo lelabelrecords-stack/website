@@ -414,7 +414,7 @@ export default function DesignSystem() {
           <ListItem><strong>Compression</strong> gzip/brotli automatique au niveau de l'edge Cloudflare Pages ; assets minifiés (Vite) ; <code>print.css</code> dédié (RWEB_0031).</ListItem>
           <ListItem><strong>Budget de poids</strong> (build prod) : JS ≈ 95 Ko gzip, CSS ≈ 39 Ko gzip (police incluse), HTML ≈ 1 Ko ; dist ≈ 460 Ko.</ListItem>
           <ListItem><strong>Sécurité</strong> : <code>_headers</code> — CSP strict, HSTS, nosniff, frame-ancestors 'none' ; <code>security.txt</code> (RFC 9116) ; <code>npm audit</code> bloquant en CI (0 vulnérabilité).</ListItem>
-          <ListItem><strong>CI bloquante</strong> : budgets de poids (<code>scripts/budget.mjs</code>), tests Storybook (test-runner + play), Lighthouse + budgets (<code>lighthouse-budget.json</code> : 0 font externe, 0 third-party).</ListItem>
+          <ListItem><strong>CI bloquante</strong> : budgets de poids (<code>scripts/budget.mjs</code>), tests Storybook (addon-vitest + play), Lighthouse + budgets (<code>lighthouse-budget.json</code> : 0 font externe, 0 third-party).</ListItem>
         </ul>
       </section>
 
