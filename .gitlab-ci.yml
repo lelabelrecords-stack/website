@@ -63,7 +63,7 @@ ds-tests:
     - npm ci --no-audit --no-fund
     - npx playwright install-deps chromium > /dev/null
     - npx playwright install chromium
-    - BIN="$(find "$HOME/.cache/ms-playwright" \\( -name chrome-headless-shell -o -name chrome \\) -type f | head -1)"
+    - BIN="$(find "$HOME/.cache/ms-playwright" -type f -name 'chrome*' | head -1)"
     - if ldd "$BIN" 2>/dev/null | grep -q 'not found'; then echo "libs manquantes:"; ldd "$BIN" | grep 'not found'; exit 1; fi
     - npm run test:storybook
 
@@ -78,7 +78,7 @@ lighthouse:
     - npm ci --no-audit --no-fund
     - npx playwright install-deps chromium > /dev/null
     - npx playwright install chromium > /dev/null
-    - BIN="$(find "$HOME/.cache/ms-playwright" \\( -name chrome-headless-shell -o -name chrome \\) -type f | head -1)"
+    - BIN="$(find "$HOME/.cache/ms-playwright" -type f -name 'chrome*' | head -1)"
     - if ldd "$BIN" 2>/dev/null | grep -q 'not found'; then echo "libs manquantes:"; ldd "$BIN" | grep 'not found'; exit 1; fi
     - npm run test:lh
   artifacts:
