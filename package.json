@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static && cp storybook-public/robots.txt storybook-static/robots.txt && rm -f storybook-static/_headers && sed -i 's|<meta name=\"viewport\"|<meta name=\"robots\" content=\"noindex, nofollow\" /><meta name=\"viewport\"|' storybook-static/index.html storybook-static/iframe.html"
   },
   "dependencies": {
     "react": "^19.3.1",
@@ -14,8 +16,11 @@
     "react-router-dom": "^7.18.6"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^10.6.9",
+    "@storybook/react-vite": "^10.6.9",
     "@vitejs/plugin-react": "^5.2.0",
     "sass": "^1.108.2",
+    "storybook": "^10.6.9",
     "vite": "^7.3.8"
   }
 }

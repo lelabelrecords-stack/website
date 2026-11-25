@@ -55,6 +55,18 @@ npm run dev     # http://localhost:5173
 npm run build   # build de production dans dist/
 ```
 
+## Design system — Storybook (vitrine des composants)
+
+```bash
+npm run storybook        # dev : http://localhost:6006 (addon a11y actif)
+npm run build-storybook  # build statique dans storybook-static/ (noindex)
+```
+
+Stories : `src/components/ui/ui.stories.jsx` (Button, Label, Tab, Cover, Logo, Hero, Lead, ListItem, Marquee + thème mono).
+Déploiement : workflow `.github/workflows/storybook-pages.yml` → GitHub Pages, hors du domaine principal :
+https://lelabelrecords-stack.github.io/website/
+Le contrat écrit du DS reste la page interne `/design-system` du site (noindex).
+
 ## Structure
 
 ```

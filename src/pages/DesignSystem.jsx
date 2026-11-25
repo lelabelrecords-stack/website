@@ -203,7 +203,22 @@ export default function DesignSystem() {
           <ListItem>2. Partial <code>src/styles/components/x.scss</code> + <code>@use</code> dans <code>main.scss</code>.</ListItem>
           <ListItem>3. Primitive <code>src/components/ui/X.jsx</code> (props explicites, états ARIA, aucune classe magique).</ListItem>
           <ListItem>4. Documenter ici + vérifier : <code>npm run build</code> puis rendu SSR des 11 routes (1 <code>h1.hero-title</code> par page).</ListItem>
+          <ListItem>5. Ajouter la story correspondante dans <code>src/components/ui/ui.stories.jsx</code> (Storybook).</ListItem>
         </ol>
+      </section>
+
+      <hr className="_row" />
+
+      <section aria-labelledby="ds-storybook">
+        <h2 id="ds-storybook">Vitrine Storybook</h2>
+        <p className="_row textsize-regular-lh-small">
+          Les primitives <code>ui/</code> sont servies en stories isolées (Storybook 10 + addon a11y) sur
+          GitHub Pages, hors du domaine principal (noindex) :
+          <a href="https://lelabelrecords-stack.github.io/website/">lelabelrecords-stack.github.io/website</a>.
+          Local : <code>npm run storybook</code> → http://localhost:6006 · build :
+          <code>npm run build-storybook</code> → <code>storybook-static/</code> (déployé par
+          <code>.github/workflows/storybook-pages.yml</code>).
+        </p>
       </section>
     </>
   )
