@@ -61,7 +61,8 @@ ds-tests:
     - if: $CI_COMMIT_BRANCH == $PRODUCTION_BRANCH
   script:
     - npm ci --no-audit --no-fund
-    - npx playwright install --with-deps chromium
+    - apt-get update -qq && apt-get install -y -qq libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2 libpango-1.0-0 libcairo2 libxfixes3 libx11-xcb1 libxcb1 libxext6 > /dev/null
+    - npx playwright install chromium
     - npm run test:storybook
 
 lighthouse:
@@ -76,9 +77,10 @@ lighthouse:
     - apt-get update -qq && apt-get install -y -qq libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2 libpango-1.0-0 libcairo2 > /dev/null
     - npx @puppeteer/browsers install chrome@stable --path /tmp/chrome-cache > /dev/null
     - export CHROME_PATH="$(find /tmp/chrome-cache -name chrome -type f | head -1)"
+    - test -n "$CHROME_PATH" || (echo "CHROME_PATH vide" && exit 1)
     - node scripts/serve-dist.mjs dist 8080 &
     - sleep 1
-    - npx lighthouse http://127.0.0.1:8080/ --only-categories=performance,accessibility,best-practices,seo --budget-path=lighthouse-budget.json --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=lh-report.json --quiet
+    - npx lighthouse http://127.0.0.1:8080/ --only-categories=performance,accessibility,best-practices,seo --budget-path=lighthouse-budget.json --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" --output=json --output-path=lh-report.json --quiet
   artifacts:
     paths:
       - lh-report.json
