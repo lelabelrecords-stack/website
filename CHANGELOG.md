@@ -10,6 +10,8 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 
 ### Corrigé
 - `public/print.css` : règles encapsulées dans `@media print`, masquage renforcé (menu plein écran `.site-nav`, images `img`).
+- CI `ds-tests` (vitest navigateur) : `optimizeDeps.include` de `react/jsx-dev-runtime` / `react/jsx-runtime` dans `vitest.config.mjs` pour éviter le rechargement Vite en cours de run (« Failed to fetch dynamically imported module »).
+- CI `lighthouse` : Chromium lancé par Playwright + Lighthouse connecté via `flags.port` (`scripts/lighthouse-run.mjs`, `npm run test:lh`) — chrome-launcher ne parvenait pas à récupérer le port de debug sur le runner k8s.
 
 ## [1.0.0] — 2026-11-25
 
