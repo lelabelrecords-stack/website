@@ -62,7 +62,7 @@ npm run storybook        # dev : http://localhost:6006 (addon a11y actif)
 npm run build-storybook  # build statique dans storybook-static/ (noindex)
 ```
 
-Stories : `src/components/ui/ui.stories.jsx` (Button, Label, Tab, Cover, Logo, Hero, Lead, ListItem, Marquee + thème mono + jetons).
+Stories : `src/stories/Introduction.mdx`, `src/stories/Fondations.stories.jsx`, `src/stories/Patterns.stories.jsx` + `src/components/ui/*.stories.jsx` (une story par primitive, autodocs + contrôles + panneau a11y). Arborescence : 0. Introduction → 1. Fondations → 2. Composants/* → 3. Patterns.
 Déploiement : workflow `.github/workflows/storybook-pages.yml` → GitHub Pages, hors du domaine principal :
 https://lelabelrecords-stack.github.io/website/
 Le contrat écrit du DS (`src/pages/DesignSystem.jsx`) est **dev-only** : `npm run dev` → http://localhost:5173/design-system.
