@@ -28,9 +28,9 @@ export const Bienvenue = () => (
 
     <h2 className="_row">Liens</h2>
     <ul className="__row">
-      <ListItem><strong>Site</strong> : <a href="https://le-label.org">le-label.org</a> (aperçu : <a href="https://website-1zw.pages.dev">website-1zw.pages.dev</a>)<</ListItem>
-      <ListItem><strong>Contrat écrit du DS</strong> : <code>npm run dev</code> → http://localhost:5173/design-system (dev-only, non embarqué en prod)<</ListItem>
-      <ListItem><strong>Ce Storybook</strong> : GitHub Pages (noindex) ; local : <code>npm run storybook</code> → http://localhost:6006<</ListItem>
+      <ListItem><strong>Site</strong> : <a href="https://le-label.org">le-label.org</a> (aperçu : <a href="https://website-1zw.pages.dev">website-1zw.pages.dev</a>)</ListItem>
+      <ListItem><strong>Contrat écrit du DS</strong> : <code>npm run dev</code> → http://localhost:5173/design-system (dev-only, non embarqué en prod)</ListItem>
+      <ListItem><strong>Ce Storybook</strong> : GitHub Pages (noindex) ; local : <code>npm run storybook</code> → http://localhost:6006</ListItem>
     </ul>
 
     <h2 className="_row">Sommaire</h2>
