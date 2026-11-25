@@ -67,6 +67,11 @@ export default function DesignSystem() {
   return (
     <>
       <Hero title="Design system" sub="Contrat interne — visible uniquement en dev (npm run dev), non embarqué en prod : le DS public vit sur Storybook." />
+      <p className="_row textsize-regular-lh-small">
+        <strong>Le Label Records</strong> : label indépendant à Nîmes, co-dirigé par Christophe et Roxane —
+        ce DS existe pour que le site reste cohérent, accessible (WCAG AA) et économe (0 raster, 1 police inlinée, 0 traceur)
+        au fil des ajouts. Une seule source de vérité : tokens → partials → primitives ui/ → Storybook.
+      </p>
 
       <nav aria-label="Sommaire du design system" className="_row">
         <ul className="release-links">
