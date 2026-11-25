@@ -4,8 +4,8 @@ import lighthouse from 'lighthouse'
 
 const url = process.argv[2] || 'http://127.0.0.1:8080/'
 
-const browser = await chromium.launch({ args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] })
-const port = new URL(browser.wsEndpoint()).port
+const server = await chromium.launchServer({ args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] })
+const port = new URL(server.wsEndpoint()).port
 let code = 1
 try {
   const runnerResult = await lighthouse(url, {
@@ -32,6 +32,6 @@ try {
 } catch (err) {
   console.error('Lighthouse a échoué:', err.message)
 } finally {
-  await browser.close()
+  await server.close()
 }
 process.exit(code)
