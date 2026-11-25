@@ -3,6 +3,7 @@ import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
 import { playwright } from '@vitest/browser-playwright'
 
 export default defineConfig({
+  esbuild: { jsx: 'automatic' },
   plugins: [storybookTest({ configDir: '.storybook' })],
   test: {
     browser: {

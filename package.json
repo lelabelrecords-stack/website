@@ -11,7 +11,7 @@
     "build-storybook": "storybook build -o storybook-static && cp storybook-public/robots.txt storybook-static/robots.txt && rm -f storybook-static/_headers && sed -i 's|<meta name=\"viewport\"|<meta name=\"robots\" content=\"noindex, nofollow\" /><meta name=\"viewport\"|' storybook-static/index.html storybook-static/iframe.html",
     "gen:og-image": "node scripts/gen-og-image.mjs",
     "test:budget": "node scripts/budget.mjs",
-    "test:lh": "node scripts/serve-dist.mjs dist 8080 & sleep 1; npx lighthouse http://127.0.0.1:8080/ --only-categories=performance,accessibility,best-practices,seo --budget-path=lighthouse-budget.json --chrome-flags=\"--headless=new --no-sandbox --disable-dev-shm-usage\" --output=json --output-path=lh-report.json --quiet; RC=$?; kill %1 2>/dev/null; exit $RC",
+    "test:lh": "node scripts/serve-dist.mjs dist 8080 & sleep 1; npx lighthouse http://127.0.0.1:8080/ --only-categories=performance,accessibility,best-practices,seo --budget-path=lighthouse-budget.json --chrome-flags=\"--no-sandbox --disable-dev-shm-usage --disable-gpu\" --output=json --output-path=lh-report.json --quiet; RC=$?; kill %1 2>/dev/null; exit $RC",
     "test:storybook": "vitest run"
   },
   "dependencies": {
