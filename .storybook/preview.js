@@ -9,10 +9,8 @@ export const parameters = {
   options: {
     storySort: {
       order: [
-        'Le Label Records/Welcome',
-        'Le Label Records/Fondations',
-        'Le Label Records/Composants',
-        'Le Label Records/Patterns'
+        'Le Label Records',
+        ['Welcome', 'Fondations', 'Composants', 'Patterns']
       ]
     }
   }
