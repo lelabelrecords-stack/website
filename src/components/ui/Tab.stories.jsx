@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Tab from './Tab.jsx'
 
 export default {
-  title: '2. Composants/Tab',
+  title: 'Le Label Records/Composants/Tab',
   component: Tab,
   tags: ['autodocs'],
   argTypes: {

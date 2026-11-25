@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import Button from './Button.jsx'
 
 export default {
-  title: '2. Composants/Button',
+  title: 'Le Label Records/Composants/Button',
   component: Button,
   tags: ['autodocs'],
   argTypes: {

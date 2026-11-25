@@ -1,7 +1,7 @@
 import Lead from './Lead.jsx'
 
 export default {
-  title: '2. Composants/Lead',
+  title: 'Le Label Records/Composants/Lead',
   component: Lead,
   tags: ['autodocs'],
   argTypes: {

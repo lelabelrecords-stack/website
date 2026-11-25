@@ -5,7 +5,7 @@ import Label from '../components/ui/Label.jsx'
 import Button from '../components/ui/Button.jsx'
 import Cover from '../components/ui/Cover.jsx'
 
-export default { title: '3. Patterns' }
+export default { title: 'Le Label Records/Patterns' }
 
 export const PageType = () => (
   <>

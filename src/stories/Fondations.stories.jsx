@@ -1,6 +1,6 @@
 import Marquee from '../components/ui/Marquee.jsx'
 
-export default { title: '1. Fondations' }
+export default { title: 'Le Label Records/Fondations' }
 
 export const Couleur = () => (
   <div className="flex-container">

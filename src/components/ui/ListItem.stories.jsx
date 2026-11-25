@@ -1,7 +1,7 @@
 import ListItem from './ListItem.jsx'
 
 export default {
-  title: '2. Composants/ListItem',
+  title: 'Le Label Records/Composants/ListItem',
   component: ListItem,
   tags: ['autodocs'],
   argTypes: {

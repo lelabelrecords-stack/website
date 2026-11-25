@@ -1,7 +1,7 @@
 import Hero from './Hero.jsx'
 
 export default {
-  title: '2. Composants/Hero',
+  title: 'Le Label Records/Composants/Hero',
   component: Hero,
   tags: ['autodocs'],
   argTypes: {

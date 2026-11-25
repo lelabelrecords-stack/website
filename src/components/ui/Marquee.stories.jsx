@@ -1,7 +1,7 @@
 import Marquee from './Marquee.jsx'
 
 export default {
-  title: '2. Composants/Marquee',
+  title: 'Le Label Records/Composants/Marquee',
   component: Marquee,
   tags: ['autodocs'],
   argTypes: {

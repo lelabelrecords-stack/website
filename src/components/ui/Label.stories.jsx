@@ -1,7 +1,7 @@
 import Label from './Label.jsx'
 
 export default {
-  title: '2. Composants/Label',
+  title: 'Le Label Records/Composants/Label',
   component: Label,
   tags: ['autodocs'],
   argTypes: {

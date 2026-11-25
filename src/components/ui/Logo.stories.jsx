@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Logo from './Logo.jsx'
 
 export default {
-  title: '2. Composants/Logo',
+  title: 'Le Label Records/Composants/Logo',
   component: Logo,
   tags: ['autodocs'],
   argTypes: {

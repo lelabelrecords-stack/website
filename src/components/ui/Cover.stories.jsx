@@ -1,7 +1,7 @@
 import Cover from './Cover.jsx'
 
 export default {
-  title: '2. Composants/Cover',
+  title: 'Le Label Records/Composants/Cover',
   component: Cover,
   tags: ['autodocs'],
   argTypes: {
