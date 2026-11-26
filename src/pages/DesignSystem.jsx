@@ -221,7 +221,7 @@ export default function DesignSystem() {
             ['$spaces', 'map 6 paliers', 'génère .row (50px) … ._____row (5px) en padding-top'],
             ['$fs-hero / $fs-h2 / $fs-lead / $fs-regular / $fs-marquee / $fs-card-title / $fs-small', 'clamp / rem', 'échelle typographique (voir Typographie)'],
             ['$lh-regular / $lh-small', 'rem', '1.667rem / 1.25rem'],
-            ['$bw', '1px', 'unique épaisseur de filet (bordures de listes/cadres, focus 2px) — aucun <hr> dans le site'],
+            ['$bw', '1px', 'unique épaisseur de filet (cadres : Cover, boutons, pastille ; focus 2px) — aucun <hr>, aucun filet de liste'],
             ['$radius', '0', 'aucun arrondi, partout'],
             ['$z-header / $z-menu / $z-actions / $z-skip', '40 / 50 / 60 / 100', 'ordre des couches'],
             ['$dur', '0.2s', 'unique durée de transition']
@@ -296,7 +296,7 @@ export default function DesignSystem() {
 
         <h3 className="_row">ListItem</h3>
         <ul className="__row">
-          <ListItem>Exemple d'élément de liste (filet 1px haut, dernier élément filet bas).</ListItem>
+          <ListItem>Exemple d'élément de liste — aucun filet : le padding seul sépare les éléments (règle « sans limite visuelle », comme pour les blocs).</ListItem>
         </ul>
         <PropsTable rows={[['className', 'string', 'grille ex. col-50 col-100-sp']]} />
         <Code>{'<ul className="_row">\n  <ListItem className="col-50 col-100-sp">…</ListItem>\n</ul>'}</Code>

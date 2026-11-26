@@ -30,6 +30,7 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - Tous les `<hr>` supprimés (pages, DS, stories ; règle retirée de `layout.scss`) : la séparation des blocs se fait uniquement par l'espacement vertical — classes `$spaces` posées sur le bloc suivant (ex. `section._row`). Règle documentée dans le DS (Grille & espacements, Patterns « Page type ») + story Fondations/Espacement.
 - Intitulé des cartes produit plus gros : nouvelle classe `.release-title` (token `$fs-card-title` 1.25rem, graisse 900, capitales) dans `cover.scss`, utilisée par `ReleaseCard` — documentée dans le DS (Typographie, Composants/Cover, Patterns « Carte produit ») et les stories (Cover, Patterns).
 - Le DS public (Storybook, noindex) est référencé depuis le site : lien discret « Design system ↗ » dans `.footer-bottom` (`Footer.jsx`, URL `design_system_url` dans `data/config.json`) ; les liens sociaux du footer ouvrent désormais en nouvel onglet (↗ automatique, cohérence règle liens externes).
+- Listes (`ListItem`) : filets supprimés (`border-top` / `border-bottom` retirés de `list.scss`) — les éléments se séparent par le padding seul, conformément à la règle « sans limite visuelle » (aucun filet de liste, comme aucun `<hr>`). DS (ListItem, $bw) + story + CHANGELOG à jour. Note : à l’impression, `print.css` garde un filet noir 1px sur `.list-item` pour la lisibilité papier.
 
 ## [1.0.0] — 2026-11-25
 

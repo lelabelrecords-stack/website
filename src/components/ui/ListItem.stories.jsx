@@ -13,7 +13,7 @@ export default {
 export const Defaut = {
   render: () => (
     <ul>
-      <ListItem>Premier élément (filet 1px)</ListItem>
+      <ListItem>Premier élément (aucun filet : le padding seul sépare)</ListItem>
       <ListItem>Deuxième élément</ListItem>
     </ul>
   )

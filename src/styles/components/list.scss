@@ -1,13 +1,9 @@
 @use '../tokens' as *;
 
 // Listes (news, événements) — compactes pour remonter vite aux cartes
+// Règle « sans limite visuelle » : aucun filet (ni haut ni bas) — le padding seul sépare les éléments
 .list-item {
   padding: 0.52083rem 0;
-  border-top: $bw solid var(--accent);
-}
-
-.list-item:last-child {
-  border-bottom: $bw solid var(--accent);
 }
 
 .list-date {
