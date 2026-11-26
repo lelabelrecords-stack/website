@@ -52,6 +52,9 @@ validate:
     - test -f "$BUILD_OUTPUT_DIR/_redirects"
     - test -f "$BUILD_OUTPUT_DIR/.well-known/security.txt"
     - test -f "$BUILD_OUTPUT_DIR/assets/og-image.png"
+    - test -f "$BUILD_OUTPUT_DIR/vcard/index.html"
+    - test -f "$BUILD_OUTPUT_DIR/vcard/christophe-bonnici.vcf"
+    - test -f "$BUILD_OUTPUT_DIR/vcard/roxane-gire.vcf"
     - 'echo "dist/ OK - deploiement natif Cloudflare Pages (projet $CF_PAGES_PROJECT_NAME, branche $PRODUCTION_BRANCH, output $BUILD_OUTPUT_DIR)."'
 
 ds-tests:

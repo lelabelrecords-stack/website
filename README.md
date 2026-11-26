@@ -93,6 +93,7 @@ Il n'est pas embarqué dans le build de production (ni dans robots.txt/sitemap).
 │   ├─ assets/                  # logo contour-rouge.svg (+ variante blanche) : seul visuel du site
 │   ├─ favicon.svg
 │   └─ _redirects               # SPA Cloudflare Pages
+│   └── vcard/                   # cartes de visite statiques servies sur /vcard/ (copiées depuis lelabelrecords-stack/vcard, branche vibe/vcard-c8485d ; polices inlinées en data URI — contrat 0 fichier font dans dist/)
 ├── src/
 │   ├─ components/              # Header (nav responsive), Footer, ReleaseCard
 │   ├─ pages/                   # Accueil, Artistes, Sorties, Événements, News, Radio (Le Label²), À propos, Contact, 404

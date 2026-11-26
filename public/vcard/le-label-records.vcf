@@ -1,0 +1,22 @@
+BEGIN:VCARD
+VERSION:4.0
+UID:urn:uuid:de017270-2f21-44c0-9ff8-7fb0dfbadc48
+FN:Le Label Records
+N:Records;Le Label;;;
+ORG:Le Label Records
+ROLE:Label indépendant
+CATEGORIES:Label indépendant,Musique
+EMAIL;TYPE=work;PREF=1:le.label.contact@gmail.com
+EMAIL;TYPE=work;PREF=2;X-PURPOSE=Démos:lelabel@le-label.org
+ADR;TYPE=work:;;8 rue Nationale;Nîmes;;30000;France
+URL:https://le-label.org
+URL:https://github.com/lelabelrecords-stack/vcard
+SOCIALPROFILE;TYPE=bandcamp:https://lelabelrecords.bandcamp.com/
+SOCIALPROFILE;TYPE=linktree:https://linktr.ee/le.label
+SOCIALPROFILE;TYPE=youtube:https://www.youtube.com/watch?v=Mn_pscQeAzg
+NOTE:Label indépendant basé à Nîmes (8 rue Nationale, 30000 Nîmes, Fra
+ nce), co-dirigé par Christophe et Roxane. 100 % des royalties nettes de d
+ istribution vont aux groupes. Émission radio « Le Label² ». Dépôt Gi
+ tHub : https://github.com/lelabelrecords-stack/vcard
+REV:2026-11-24T13:14:04Z
+END:VCARD
