@@ -9,6 +9,7 @@ import Cover from '../components/ui/Cover.jsx'
 import Logo from '../components/ui/Logo.jsx'
 import ListItem from '../components/ui/ListItem.jsx'
 import Marquee from '../components/ui/Marquee.jsx'
+import { config } from '../data.js'
 
 function PropsTable({ rows }) {
   return (
@@ -345,7 +346,7 @@ export default function DesignSystem() {
         </p>
 
         <h3 className="_row">Footer</h3>
-        <p className="__row textsize-small">Fond plein accent, texte on-accent, <strong>compact</strong> : padding 2.08333rem (1.5rem ≤ 767px), deux colonnes équilibrées — nav du site en lignes resserrées (<code>.footer-nav ul</code> flex wrap, gap 5px 20px) à gauche, 3 lignes à droite (<code>.footer-info</code> : « nom — baseline » / adresse · email / réseaux depuis <code>config.social</code>), puis <code>.footer-bottom</code> (© + mention éco). Focus ring adapté (<code>#footer :focus-visible</code>). Masqué à l’impression (<code>print.css</code>).</p>
+        <p className="__row textsize-small">Fond plein accent, texte on-accent, <strong>compact</strong> : padding 2.08333rem (1.5rem ≤ 767px), deux colonnes équilibrées — nav du site en lignes resserrées (<code>.footer-nav ul</code> flex wrap, gap 5px 20px) à gauche, 3 lignes à droite (<code>.footer-info</code> : « nom — baseline » / adresse · email / réseaux depuis <code>config.social</code>), puis <code>.footer-bottom</code> (© + mention éco + lien discret « Design system ↗ » vers le Storybook public). Focus ring adapté (<code>#footer :focus-visible</code>). Masqué à l’impression (<code>print.css</code>).</p>
       </section>
 
       <section aria-labelledby="ds-patterns" id="ds-patterns" className="_row">
@@ -412,7 +413,8 @@ export default function DesignSystem() {
         <p className="_row textsize-regular-lh-small">
           Les primitives <code>ui/</code> sont servies en stories isolées (Storybook 10 + addon a11y + pages docs auto)
           sur GitHub Pages, hors du domaine principal (noindex) :
-          <a href="https://lelabelrecords-stack.github.io/website/">lelabelrecords-stack.github.io/website</a>.
+          <a href={config.design_system_url} target="_blank" rel="noopener noreferrer">lelabelrecords-stack.github.io/website</a>
+          — référencée depuis le pied de page du site (lien discret « Design system ↗ » dans <code>.footer-bottom</code>, URL dans <code>config.design_system_url</code>).
           Local : <code>npm run storybook</code> → http://localhost:6006 · build :
           <code>npm run build-storybook</code> → <code>storybook-static/</code> (déployé par
           <code>.github/workflows/storybook-pages.yml</code>).

@@ -29,6 +29,7 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - `h2` retravaillé : titre de section en display — graisse 900 `$font-black`, capitales, nouveau token `$fs-h2` clamp(1.5–2.5rem), lh 1.1. Mise en évidence 100 % typographique, sans filet.
 - Tous les `<hr>` supprimés (pages, DS, stories ; règle retirée de `layout.scss`) : la séparation des blocs se fait uniquement par l'espacement vertical — classes `$spaces` posées sur le bloc suivant (ex. `section._row`). Règle documentée dans le DS (Grille & espacements, Patterns « Page type ») + story Fondations/Espacement.
 - Intitulé des cartes produit plus gros : nouvelle classe `.release-title` (token `$fs-card-title` 1.25rem, graisse 900, capitales) dans `cover.scss`, utilisée par `ReleaseCard` — documentée dans le DS (Typographie, Composants/Cover, Patterns « Carte produit ») et les stories (Cover, Patterns).
+- Le DS public (Storybook, noindex) est référencé depuis le site : lien discret « Design system ↗ » dans `.footer-bottom` (`Footer.jsx`, URL `design_system_url` dans `data/config.json`) ; les liens sociaux du footer ouvrent désormais en nouvel onglet (↗ automatique, cohérence règle liens externes).
 
 ## [1.0.0] — 2026-11-25
 
