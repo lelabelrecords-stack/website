@@ -81,22 +81,18 @@ export default function DesignSystem() {
         </ul>
       </nav>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-principes" id="ds-principes">
+      <section aria-labelledby="ds-principes" id="ds-principes" className="_row">
         <h2 id="ds-principes">Principes</h2>
         <ul className="_row">
           <ListItem><strong>Clarté</strong> — un seul <code>h1</code> par page, texte en couleur d'accent sur fond uni, chaque élément a un rôle évident.</ListItem>
           <ListItem><strong>Cohérence</strong> — tout passe par les tokens et les primitives <code>ui/</code> ; aucune valeur en dur dans une page.</ListItem>
-          <ListItem><strong>Hiérarchie</strong> — la typographie fait le tri : hero 900 géant, lead 900 fluide, corps 400, métadonnées small.</ListItem>
+          <ListItem><strong>Hiérarchie</strong> — la typographie fait le tri : hero 900 géant, h2 900 capitales, lead 900 fluide, corps 400, métadonnées small.</ListItem>
           <ListItem><strong>Accessibilité</strong> — WCAG AA : contraste mesuré, focus visible, clavier complet, ARIA sémantique, reduced-motion.</ListItem>
           <ListItem><strong>Écoconception</strong> — 0 image raster, 1 police inlinée, 0 traceur, poids mini, compression edge.</ListItem>
         </ul>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-couleur" id="ds-couleur">
+      <section aria-labelledby="ds-couleur" id="ds-couleur" className="_row">
         <h2 id="ds-couleur">Couleur</h2>
         <div className="flex-container _row">
           <div className="col-25 col-50-sp">
@@ -130,9 +126,7 @@ export default function DesignSystem() {
         />
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-typo" id="ds-typo">
+      <section aria-labelledby="ds-typo" id="ds-typo" className="_row">
         <h2 id="ds-typo">Typographie</h2>
         <p className="_row textsize-small">
           Une seule police : <strong>Archivo Variable</strong> (graisses 100–900, 1 woff2 latin inliné en data URI dans le CSS).
@@ -142,6 +136,8 @@ export default function DesignSystem() {
           rows={[
             ['$fs-hero', 'clamp(3.5rem, 14vw, 12rem)', 'h1.hero-title — 1 par page, via <Hero>'],
             ['$fs-lead', 'clamp(1.5rem, 3.2vw, 2.5rem)', 'chapô, via <Lead> (graisse 900, lh 1.15)'],
+            ['$fs-h2', 'clamp(1.5rem, 3.2vw, 2.5rem)', 'h2 — titre de section : graisse 900 $font-black, capitales, lh 1.1 (mise en évidence 100 % typographique, sans filet)'],
+            ['$fs-card-title', '1.25rem', 'intitulé des cartes produit (.release-title : 900, capitales)'],
             ['$fs-regular', '1rem', 'corps de texte (lh $lh-regular 1.667)'],
             ['$fs-marquee', '1.25rem', 'bandeau défilant (graisse 900, capitales)'],
             ['$fs-small', '0.83333rem', 'métadonnées (0.667rem ≤ 767px), lh $lh-small 1.25']
@@ -149,7 +145,7 @@ export default function DesignSystem() {
         />
         <p className="hero-title _row">Hero title</p>
         <Lead className="__row">Exemple de lead — graisse 900, taille fluide.</Lead>
-        <h2 className="__row">h2 — titre de section</h2>
+        <h2 className="__row">h2 — titre de section (900, capitales)</h2>
         <h3 className="__row">h3 — sous-section</h3>
         <p className="__row">Paragraphe standard (Archivo 400, 1rem / 1.667).</p>
         <p className="__row textsize-regular-lh-small">textsize-regular-lh-small (1rem / 1.25).</p>
@@ -160,9 +156,7 @@ export default function DesignSystem() {
         />
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-grille" id="ds-grille">
+      <section aria-labelledby="ds-grille" id="ds-grille" className="_row">
         <h2 id="ds-grille">Grille &amp; espacements</h2>
         <div className="flex-container _row">
           {[25, 25, 25, 25].map((c, i) => (
@@ -177,18 +171,16 @@ export default function DesignSystem() {
             ['Colonnes', '.col-10…100', 'largeur en % + suffixes -pc-small (≤1280), -tablet (≤1023), -sp (≤767), -pc-large (≥1700)'],
             ['Breakpoints', '$sp 767 · $tablet 1023 · $pc-small 1280 · $pc-large 1700', 'toujours via les tokens, jamais de media query en dur'],
             ['Spacers $spaces', '.row 50 · ._row 25 · .__row 12.5 · .___row 8.3 · .____row 6.25 · ._____row 5 px', 'rythme vertical unique (padding-top)'],
-            ['<hr>', 'espaceur invisible', 'border 0, height 0 — aucun filet, l\'espacement vient de la classe spacer associée']
+            ['Séparation des blocs', 'jamais de <hr>', 'aucun filet horizontal : l\'espacement vertical suffit, via la classe spacer posée sur le bloc suivant (ex. section._row)']
           ]}
         />
         <Regles
-          faire="espacer exclusivement avec les classes de $spaces, poser la grille avec .flex-container + .col-*."
-          eviter="aucun margin/padding custom en px, aucun <hr> visible, aucune grille parallèle."
+          faire="espacer exclusivement avec les classes de $spaces posées sur le bloc suivant (section._row…), poser la grille avec .flex-container + .col-*."
+          eviter="aucun margin/padding custom en px, aucun <hr> du tout (ni filet ni espaceur), aucune grille parallèle."
         />
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-visuels" id="ds-visuels">
+      <section aria-labelledby="ds-visuels" id="ds-visuels" className="_row">
         <h2 id="ds-visuels">Visuels</h2>
         <ul className="_row">
           <ListItem><strong>Zéro image raster</strong> : le logo est un masque CSS (<code>.logo-svg</code>, suit var(--accent)), les pochettes sont des blocs typographiques (<code>Cover</code>).</ListItem>
@@ -202,9 +194,7 @@ export default function DesignSystem() {
         />
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-motion" id="ds-motion">
+      <section aria-labelledby="ds-motion" id="ds-motion" className="_row">
         <h2 id="ds-motion">Motion</h2>
         <ul className="_row">
           <ListItem><strong>$dur = 0.2s</strong> : unique durée de transition (skip-link, hover).</ListItem>
@@ -217,9 +207,7 @@ export default function DesignSystem() {
         />
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-tokens" id="ds-tokens">
+      <section aria-labelledby="ds-tokens" id="ds-tokens" className="_row">
         <h2 id="ds-tokens">Tokens — référence complète</h2>
         <p className="_row textsize-small">Source unique : <code>src/styles/tokens.scss</code>. Toute valeur répétée y naît, nulle part ailleurs.</p>
         <PropsTable
@@ -230,9 +218,9 @@ export default function DesignSystem() {
             ['$gut', '25px (12.5px ≤ $sp)', 'gouttière de la grille'],
             ['$cols', 'liste 10…100', 'génère .col-10…100 + suffixes de breakpoints'],
             ['$spaces', 'map 6 paliers', 'génère .row (50px) … ._____row (5px) en padding-top'],
-            ['$fs-hero / $fs-lead / $fs-regular / $fs-marquee / $fs-small', 'clamp / rem', 'échelle typographique (voir Typographie)'],
+            ['$fs-hero / $fs-h2 / $fs-lead / $fs-regular / $fs-marquee / $fs-card-title / $fs-small', 'clamp / rem', 'échelle typographique (voir Typographie)'],
             ['$lh-regular / $lh-small', 'rem', '1.667rem / 1.25rem'],
-            ['$bw', '1px', 'unique épaisseur de filet (bordures, hr invisible, focus 2px)'],
+            ['$bw', '1px', 'unique épaisseur de filet (bordures de listes/cadres, focus 2px) — aucun <hr> dans le site'],
             ['$radius', '0', 'aucun arrondi, partout'],
             ['$z-header / $z-menu / $z-actions / $z-skip', '40 / 50 / 60 / 100', 'ordre des couches'],
             ['$dur', '0.2s', 'unique durée de transition']
@@ -240,9 +228,7 @@ export default function DesignSystem() {
         />
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-composants" id="ds-composants">
+      <section aria-labelledby="ds-composants" id="ds-composants" className="_row">
         <h2 id="ds-composants">Composants (ui/)</h2>
         <p className="_row textsize-small">Chaque composant a un partial SCSS dédié (<code>styles/components/*.scss</code>) et une story Storybook.</p>
 
@@ -318,12 +304,12 @@ export default function DesignSystem() {
         <div className="flex-container __row">
           <div className="col-25 col-50-sp">
             <Cover label="Montevideo" href="https://lelabelrecords.bandcamp.com/" ariaLabel="Vision / Montevideo — écouter" />
-            <p className="____row textsize-small"><strong>Vision</strong> / Montevideo</p>
+            <p className="____row release-title"><strong>Vision</strong> / Montevideo</p>
             <p className="____row textsize-small">EP · 16 octobre 2026</p>
           </div>
           <div className="col-25 col-50-sp">
-            <Cover label="K0RROBOR" />
-            <p className="____row textsize-small"><strong>EP1</strong> / K0RROBOR</p>
+            <Cover label="KØRROBOR" />
+            <p className="____row release-title"><strong>EP1</strong> / KØRROBOR</p>
             <p className="____row textsize-small">EP · 18 décembre 2026</p>
           </div>
         </div>
@@ -332,7 +318,7 @@ export default function DesignSystem() {
           ['href', 'string (optionnel)', 'rend la carte cliquable (hover fill)'],
           ['ariaLabel', 'string', 'obligatoire si href (la carte n\'a pas de texte visible)']
         ]} />
-        <Code>{'<Cover label="Montevideo" href="https://…" ariaLabel="Vision / Montevideo — écouter" />\n<Cover label="K0RROBOR" />'}</Code>
+        <Code>{'<Cover label="Montevideo" href="https://…" ariaLabel="Vision / Montevideo — écouter" />\n<Cover label="KØRROBOR" />'}</Code>
 
         <h3 className="_row">Logo</h3>
         <div className="__row" style={{ maxWidth: '8.33333rem' }}><Logo /></div>
@@ -345,7 +331,7 @@ export default function DesignSystem() {
         <h3 className="_row">Marquee</h3>
         <Marquee text="Exemple de marquee · Le Label Records" />
         <PropsTable rows={[['text', 'string', 'contenu répété 2× pour la boucle, aria-hidden="true"']]} />
-        <Code>{'<Marquee text="K0RROBOR · Montevideo · Le Label² · Nîmes" />'}</Code>
+        <Code>{'<Marquee text="KØRROBOR · Montevideo · Le Label² · Nîmes" />'}</Code>
 
         <h3 className="_row">Header</h3>
         <p className="__row textsize-small">
@@ -362,15 +348,13 @@ export default function DesignSystem() {
         <p className="__row textsize-small">Fond plein accent, texte on-accent, <strong>compact</strong> : padding 2.08333rem (1.5rem ≤ 767px), deux colonnes équilibrées — nav du site en lignes resserrées (<code>.footer-nav ul</code> flex wrap, gap 5px 20px) à gauche, 3 lignes à droite (<code>.footer-info</code> : « nom — baseline » / adresse · email / réseaux depuis <code>config.social</code>), puis <code>.footer-bottom</code> (© + mention éco). Focus ring adapté (<code>#footer :focus-visible</code>). Masqué à l’impression (<code>print.css</code>).</p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-patterns" id="ds-patterns">
+      <section aria-labelledby="ds-patterns" id="ds-patterns" className="_row">
         <h2 id="ds-patterns">Patterns</h2>
         <ul className="_row">
-          <ListItem><strong>Page type</strong> : <code>&lt;Hero&gt;</code> → <code>&lt;Lead&gt;</code> → sections <code>h2</code> séparées par <code>&lt;hr className="_row" /&gt;</code> (espaceur invisible).</ListItem>
+          <ListItem><strong>Page type</strong> : <code>&lt;Hero&gt;</code> → <code>&lt;Lead&gt;</code> → sections <code>h2</code> séparées par l’espacement seul : classe spacer sur la section suivante (ex. <code>&lt;section className="_row"&gt;</code>) — jamais de <code>&lt;hr&gt;</code>.</ListItem>
           <ListItem><strong>Navigation</strong> : bouton Menu → dialog plein écran (voir Header) ; page active = remplie (<code>aria-current="page"</code>).</ListItem>
           <ListItem><strong>Fil d'actus</strong> : <code>ListItem</code> en 2 colonnes (<code>col-50 col-100-sp</code>), ligne <code>.list-date</code> = date — <code>&lt;Label&gt;</code> — <code>&lt;Button&gt;</code> inline. Jamais d'événement passé dans le fil (helper <code>upcomingEvents</code>) et jamais de bouton sans lien (actu sans <code>link</code> = pas de bouton).</ListItem>
-          <ListItem><strong>Carte produit</strong> : <code>Cover</code> 2:3 (pastille = artiste) + métadonnées (titre/artiste, « type · date ») + <code>.release-links</code> en <code>&lt;Button&gt;</code>.</ListItem>
+          <ListItem><strong>Carte produit</strong> : <code>Cover</code> 2:3 (pastille = artiste) + intitulé <code>.release-title</code> (« titre / artiste », 900 capitales $fs-card-title 1.25rem) + méta « type · date » + <code>.release-links</code> en <code>&lt;Button&gt;</code>.</ListItem>
           <ListItem><strong>Accueil</strong> : <code>&lt;Hero&gt;</code> avec <code>actions</code> (CTA) → marquee → fil d'actus (onglets, <code>flex-wrap</code> donc jamais de débordement mobile) → 3 dernières sorties → bloc radio en 3 colonnes (<code>col-33</code>). Le logo latéral reste visible partout, y compris sur l'accueil (coexiste avec le h1 du hero) ; au scroll, le header affiche en plus la marque compacte.</ListItem>
           <ListItem><strong>Événements</strong> : sections « Prochains » / « Passés » (<code>upcomingEvents</code> / <code>pastEvents</code>) ; libellé de lien explicite via <code>eventLinkLabel</code> (« Billetterie » pour un concert, « Infos » sinon, <code>linkLabel</code> pour surcharger).</ListItem>
           <ListItem><strong>Radio</strong> : bouton « Écouter sur &lt;diffuseur&gt; » par antenne ; épisode avec <code>link</code> → bouton « Écouter l'épisode ».</ListItem>
@@ -378,9 +362,7 @@ export default function DesignSystem() {
         </ul>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-voix" id="ds-voix">
+      <section aria-labelledby="ds-voix" id="ds-voix" className="_row">
         <h2 id="ds-voix">Voix &amp; contenu</h2>
         <ul className="_row">
           <ListItem><strong>Ton</strong> : direct, humain, sans jargon marketing — on parle aux artistes et au public comme en vrai.</ListItem>
@@ -393,9 +375,7 @@ export default function DesignSystem() {
         </ul>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-a11y" id="ds-a11y">
+      <section aria-labelledby="ds-a11y" id="ds-a11y" className="_row">
         <h2 id="ds-a11y">Accessibilité (checklist WCAG AA)</h2>
         <ul className="_row">
           <ListItem>Landmarks : <code>header / nav aria-label / main#main / aside aria-label / footer</code> + skip-link « Aller au contenu » vers <code>#main tabIndex={-1}</code>.</ListItem>
@@ -412,9 +392,7 @@ export default function DesignSystem() {
         </ul>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-eco" id="ds-eco">
+      <section aria-labelledby="ds-eco" id="ds-eco" className="_row">
         <h2 id="ds-eco">Écoconception &amp; perf</h2>
         <ul className="_row">
           <ListItem><strong>Zéro image raster</strong> : logo SVG en masque CSS (suit le thème), pochettes typographiques, SVG minifiés (svgo).</ListItem>
@@ -429,9 +407,7 @@ export default function DesignSystem() {
         </ul>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-storybook" id="ds-storybook">
+      <section aria-labelledby="ds-storybook" id="ds-storybook" className="_row">
         <h2 id="ds-storybook">Vitrine Storybook</h2>
         <p className="_row textsize-regular-lh-small">
           Les primitives <code>ui/</code> sont servies en stories isolées (Storybook 10 + addon a11y + pages docs auto)
@@ -443,9 +419,7 @@ export default function DesignSystem() {
         </p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ds-guide" id="ds-guide">
+      <section aria-labelledby="ds-guide" id="ds-guide" className="_row">
         <h2 id="ds-guide">Ajouter un composant</h2>
         <ol className="_row">
           <ListItem>1. Token dans <code>tokens.scss</code> si valeur réutilisable (couleur, taille, espace, z-index…).</ListItem>

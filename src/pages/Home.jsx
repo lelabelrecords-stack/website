@@ -107,9 +107,7 @@ export default function Home() {
         <p className="_row"><Button to="/sorties">Toutes les sorties</Button></p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="home-radio">
+      <section aria-labelledby="home-radio" className="_row">
         <h2 id="home-radio">{config.radio.name} — à la radio</h2>
         <p className="_row textsize-regular-lh-small">{config.radio.tagline}</p>
         <ul className="flex-container _row">

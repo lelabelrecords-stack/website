@@ -14,7 +14,7 @@ export default function ReleaseCard({ release }) {
         ariaLabel={`${artist} — ${title} : écouter`}
       />
       <div className="__row textsize-regular-lh-small">
-        <p className="____row"><strong>{title}</strong> / {artist}</p>
+        <p className="____row release-title"><strong>{title}</strong> / {artist}</p>
         <p className="____row textsize-small">{type} · {formatDate(date) || 'À venir'}</p>
         {note && <p className="____row">{note}</p>}
         <ul className="____row release-links">

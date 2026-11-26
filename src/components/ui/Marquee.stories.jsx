@@ -9,4 +9,4 @@ export default {
   }
 }
 
-export const Defaut = { args: { text: 'K0RROBOR · Montevideo · Le Label² · Nîmes' } }
+export const Defaut = { args: { text: 'KØRROBOR · Montevideo · Le Label² · Nîmes' } }

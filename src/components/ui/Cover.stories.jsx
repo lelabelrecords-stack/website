@@ -16,17 +16,17 @@ export const AvecLien = {
   render: (args) => (
     <div style={{ maxWidth: 240 }}>
       <Cover {...args} />
-      <p className="____row textsize-small"><strong>Vision</strong> / Montevideo</p>
+      <p className="____row release-title"><strong>Vision</strong> / Montevideo</p>
       <p className="____row textsize-small">EP · 16 octobre 2026</p>
     </div>
   )
 }
 export const SansLien = {
-  args: { label: 'K0RROBOR' },
+  args: { label: 'KØRROBOR' },
   render: (args) => (
     <div style={{ maxWidth: 240 }}>
       <Cover {...args} />
-      <p className="____row textsize-small"><strong>EP1</strong> / K0RROBOR</p>
+      <p className="____row release-title"><strong>EP1</strong> / KØRROBOR</p>
       <p className="____row textsize-small">EP · 18 décembre 2026</p>
     </div>
   )

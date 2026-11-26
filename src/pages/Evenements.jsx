@@ -59,7 +59,6 @@ export default function Evenements() {
 
       {past.length > 0 && (
         <>
-          <hr className="_row" />
           <h2 className="_row">Événements passés</h2>
           <ul className="_row">
             {past.map(renderEvent)}

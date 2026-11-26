@@ -10,7 +10,7 @@ function releasesOf(artist) {
 }
 
 export default function Artistes() {
-  usePageMeta('Artistes — Le Label Records', 'Le roster du Le Label Records : Montevideo (post-punk, Nîmes), K0RROBOR (trio instrumental, Nîmes), Teknotrokids.')
+  usePageMeta('Artistes — Le Label Records', 'Le roster du Le Label Records : Montevideo (post-punk, Nîmes), KØRROBOR (trio instrumental, Nîmes), Teknotrokids.')
   return (
     <>
       <Hero title="Artistes" />
@@ -20,8 +20,7 @@ export default function Artistes() {
         const rel = releasesOf(a)
         return (
           <section key={a.id} aria-labelledby={`artiste-${a.id}`}>
-            <hr className="_row" />
-            <div className="flex-container">
+            <div className="flex-container _row">
               <div className="col-33 col-50-tablet col-100-sp">
                 <h3 id={`artiste-${a.id}`}>{a.name}</h3>
                 <p className="__row">

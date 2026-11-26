@@ -25,6 +25,11 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - CI `lighthouse` : binaire Chromium (téléchargé par Playwright) lancé en direct avec `--remote-debugging-port=0`, port CDP lu sur stderr, puis Lighthouse connecté via `flags.port` (`scripts/lighthouse-run.mjs`, `npm run test:lh`) — chrome-launcher / `launchServer` ne donnaient pas de vrai port CDP sur le runner k8s.
 - CI jobs navigateur : `npx playwright install-deps chromium` (liste officielle des libs système) + garde-fou `ldd` sur le binaire — `libXfixes.so.3` manquait sur un runner k8s avec la liste apt manuelle.
 
+- Nom d'artiste corrigé : **KØRROBOR** (Ø) partout où il est affiché (data, pages, stories) — ids (`k0rrobor`, `k0rrobor-ep1`) et URL Bandcamp inchangés.
+- `h2` retravaillé : titre de section en display — graisse 900 `$font-black`, capitales, nouveau token `$fs-h2` clamp(1.5–2.5rem), lh 1.1. Mise en évidence 100 % typographique, sans filet.
+- Tous les `<hr>` supprimés (pages, DS, stories ; règle retirée de `layout.scss`) : la séparation des blocs se fait uniquement par l'espacement vertical — classes `$spaces` posées sur le bloc suivant (ex. `section._row`). Règle documentée dans le DS (Grille & espacements, Patterns « Page type ») + story Fondations/Espacement.
+- Intitulé des cartes produit plus gros : nouvelle classe `.release-title` (token `$fs-card-title` 1.25rem, graisse 900, capitales) dans `cover.scss`, utilisée par `ReleaseCard` — documentée dans le DS (Typographie, Composants/Cover, Patterns « Carte produit ») et les stories (Cover, Patterns).
+
 ## [1.0.0] — 2026-11-25
 
 ### Ajouté

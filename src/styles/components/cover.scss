@@ -54,6 +54,16 @@
   line-height: $lh-small;
 }
 
+// Intitulé d'une carte produit (titre / artiste) — plus gros que le corps : 900, capitales
+.release-title {
+  font-family: $font-black;
+  font-weight: 900;
+  font-size: $fs-card-title;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
 @media (max-width: $sp) {
   .image-label {
     font-size: 0.66667rem;

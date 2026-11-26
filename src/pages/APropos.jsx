@@ -15,9 +15,7 @@ export default function APropos() {
         <p className="_row">{config.description}</p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="apropos-accompagnement">
+      <section aria-labelledby="apropos-accompagnement" className="_row">
         <h3 id="apropos-accompagnement">Accompagnement</h3>
         <p className="_row">
           On accompagne chaque groupe de près et sur la durée, avec des humains : un interlocuteur
@@ -27,9 +25,7 @@ export default function APropos() {
         </p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="apropos-adresse">
+      <section aria-labelledby="apropos-adresse" className="_row">
         <h3 id="apropos-adresse">Adresse</h3>
         <p className="_row">{config.address}</p>
         <p className="__row textsize-small">

@@ -17,9 +17,7 @@ export default function Contact() {
         <p className="__row textsize-small">{config.email}</p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="contact-demos">
+      <section aria-labelledby="contact-demos" className="_row">
         <h3 id="contact-demos">Envoyer une démo</h3>
         <p className="_row">
           <Button
@@ -35,16 +33,12 @@ export default function Contact() {
         </p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="contact-adresse">
+      <section aria-labelledby="contact-adresse" className="_row">
         <h3 id="contact-adresse">Adresse</h3>
         <p className="_row">{config.address}</p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="contact-reseaux">
+      <section aria-labelledby="contact-reseaux" className="_row">
         <h3 id="contact-reseaux">Réseaux</h3>
         <ul className="_row release-links">
           {Object.entries(config.social).map(([key, url]) => (

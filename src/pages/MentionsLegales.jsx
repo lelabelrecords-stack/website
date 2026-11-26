@@ -26,9 +26,7 @@ export default function MentionsLegales() {
         </p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ml-hebergement">
+      <section aria-labelledby="ml-hebergement" className="_row">
         <h2 id="ml-hebergement">Hébergement</h2>
         <p className="_row">
           Site statique hébergé par Cloudflare Pages (Cloudflare, Inc., 101 Townsend Street,
@@ -37,9 +35,7 @@ export default function MentionsLegales() {
         </p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ml-propriete">
+      <section aria-labelledby="ml-propriete" className="_row">
         <h2 id="ml-propriete">Propriété intellectuelle</h2>
         <p className="_row">
           L'ensemble des contenus (textes, logo, visuels, pochettes) est © {config.label_name} et
@@ -49,9 +45,7 @@ export default function MentionsLegales() {
         </p>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ml-donnees">
+      <section aria-labelledby="ml-donnees" className="_row">
         <h2 id="ml-donnees">Données personnelles &amp; confidentialité</h2>
         <ul className="_row">
           <ListItem>Aucun cookie, aucun traceur, aucune mesure d'audience.</ListItem>
@@ -70,9 +64,7 @@ export default function MentionsLegales() {
         </ul>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="ml-credits">
+      <section aria-labelledby="ml-credits" className="_row">
         <h2 id="ml-credits">Crédits</h2>
         <p className="_row">
           Site écoconçu : aucune image raster, polices auto-hébergées, aucun traceur. <Link to="/">Retour à l'accueil</Link>

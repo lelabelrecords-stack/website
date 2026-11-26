@@ -14,9 +14,7 @@ export default function Radio() {
       <Hero title={radio.name} />
       <Lead className="_row">{radio.tagline}</Lead>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="radio-slots">
+      <section aria-labelledby="radio-slots" className="_row">
         <h3 id="radio-slots">À l'antenne</h3>
         <ul className="_row">
           {radio.slots.map((slot) => (
@@ -31,9 +29,7 @@ export default function Radio() {
         </ul>
       </section>
 
-      <hr className="_row" />
-
-      <section aria-labelledby="radio-episodes">
+      <section aria-labelledby="radio-episodes" className="_row">
         <h3 id="radio-episodes">Épisodes</h3>
         <ul className="_row">
           {radio.episodes.map((ep) => (

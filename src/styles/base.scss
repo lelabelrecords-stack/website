@@ -144,8 +144,15 @@ h1 {
   font-size: 1.25rem;
 }
 
+// h2 = titre de section : mise en évidence 100 % typographique (graisse 900, capitales),
+// jamais de filet ni de fond — la taille et la graisse font le tri
 h2 {
-  font-size: $fs-regular;
+  font-family: $font-black;
+  font-weight: 900;
+  font-size: $fs-h2;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 h3 {

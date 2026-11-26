@@ -15,7 +15,8 @@ export const Typographie = () => (
   <>
     <p className="hero-title">Hero title</p>
     <p className="lead _row">Lead — graisse 900, clamp(1.5rem, 3.2vw, 2.5rem)</p>
-    <h2 className="_row">h2 — section</h2>
+    <h2 className="_row">h2 — section : 900, capitales, clamp(1.5–2.5rem)</h2>
+    <p className="__row release-title">.release-title — intitulé de carte (900, capitales, 1.25rem)</p>
     <p className="__row">Paragraphe standard — Archivo 400, 1rem / 1.667.</p>
     <p className="__row textsize-small">textsize-small — 0.833rem / 1.25 (0.667rem ≤ 767px).</p>
   </>
@@ -37,14 +38,14 @@ export const Espacement = () => (
     <div className="___row ds-box">.___row — 8.3px</div>
     <div className="____row ds-box">.____row — 6.25px</div>
     <div className="_____row ds-box">._____row — 5px</div>
-    <p className="___row textsize-small">&lt;hr&gt; = espaceur invisible (aucun filet)</p>
+    <p className="___row textsize-small">Jamais de &lt;hr&gt; : la séparation des blocs se fait par ces classes seules, posées sur le bloc suivant.</p>
   </div>
 )
 
 export const Motion = () => (
   <>
     <p className="__row textsize-small">$dur 0.2s · marquee 28s (pause au survol, arrêt si prefers-reduced-motion) · scroll smooth sauf reduced-motion.</p>
-    <Marquee text="K0RROBOR · Montevideo · Le Label² · Nîmes" />
+    <Marquee text="KØRROBOR · Montevideo · Le Label² · Nîmes" />
   </>
 )
 
