@@ -139,6 +139,7 @@ export default function DesignSystem() {
             ['$fs-lead', 'clamp(1.5rem, 3.2vw, 2.5rem)', 'chapô, via <Lead> (graisse 900, lh 1.15)'],
             ['$fs-h2', 'clamp(1.5rem, 3.2vw, 2.5rem)', 'h2 — titre de section : graisse 900 $font-black, capitales, lh 1.1 (mise en évidence 100 % typographique, sans filet)'],
             ['$fs-card-title', '1.25rem', 'intitulé des cartes produit (.release-title : 900, capitales)'],
+            ['$fs-image-label', 'clamp(1rem, 2.2vw, 1.75rem)', 'pastille Cover (.image-label : 900, capitales, ellipsis si trop long)'],
             ['$fs-regular', '1rem', 'corps de texte (lh $lh-regular 1.667)'],
             ['$fs-marquee', '1.25rem', 'bandeau défilant (graisse 900, capitales)'],
             ['$fs-small', '0.83333rem', 'métadonnées (0.667rem ≤ 767px), lh $lh-small 1.25']
@@ -186,7 +187,7 @@ export default function DesignSystem() {
         <ul className="_row">
           <ListItem><strong>Zéro image raster</strong> : le logo est un masque CSS (<code>.logo-svg</code>, suit var(--accent)), les pochettes sont des blocs typographiques (<code>Cover</code>).</ListItem>
           <ListItem><strong>Proportions</strong> : <code>.image-container</code> = 3:2 (bannière), <code>.is-product</code> = 2:3 (carte). Contour 1px <code>.cover--red</code>, rempli au survol/focus (<code>.hover-image</code>).</ListItem>
-          <ListItem><strong>Pastille</strong> : <code>.image-label</code> centrée sur le visuel (type de sortie), ellipsis ≤ 767px.</ListItem>
+          <ListItem><strong>Pastille</strong> : <code>.image-label</code> centrée sur le visuel = nom de l'artiste, en display (<code>$fs-image-label</code> clamp(1–1.75rem), graisse 900, capitales), ellipsis si dépassement (max-width 92 %).</ListItem>
           <ListItem><strong>SVG</strong> : minifiés (svgo), auto-hébergés, <code>stroke: currentColor</code> quand ils servent de masque.</ListItem>
         </ul>
         <Regles
@@ -219,7 +220,7 @@ export default function DesignSystem() {
             ['$gut', '25px (12.5px ≤ $sp)', 'gouttière de la grille'],
             ['$cols', 'liste 10…100', 'génère .col-10…100 + suffixes de breakpoints'],
             ['$spaces', 'map 6 paliers', 'génère .row (50px) … ._____row (5px) en padding-top'],
-            ['$fs-hero / $fs-h2 / $fs-lead / $fs-regular / $fs-marquee / $fs-card-title / $fs-small', 'clamp / rem', 'échelle typographique (voir Typographie)'],
+            ['$fs-hero / $fs-h2 / $fs-lead / $fs-regular / $fs-marquee / $fs-card-title / $fs-image-label / $fs-small', 'clamp / rem', 'échelle typographique (voir Typographie)'],
             ['$lh-regular / $lh-small', 'rem', '1.667rem / 1.25rem'],
             ['$bw', '1px', 'unique épaisseur de filet (cadres : Cover, boutons, pastille ; focus 2px) — aucun <hr>, aucun filet de liste'],
             ['$radius', '0', 'aucun arrondi, partout'],
@@ -296,7 +297,7 @@ export default function DesignSystem() {
 
         <h3 className="_row">ListItem</h3>
         <ul className="__row">
-          <ListItem>Exemple d'élément de liste — aucun filet : le padding seul sépare les éléments (règle « sans limite visuelle », comme pour les blocs).</ListItem>
+          <ListItem>Exemple d'élément de liste — croisillon « + » en tête (<code>.list-item > :first-child::before</code>), aucun filet : le padding et le marqueur séparent les éléments (règle « sans limite visuelle »).</ListItem>
         </ul>
         <PropsTable rows={[['className', 'string', 'grille ex. col-50 col-100-sp']]} />
         <Code>{'<ul className="_row">\n  <ListItem className="col-50 col-100-sp">…</ListItem>\n</ul>'}</Code>

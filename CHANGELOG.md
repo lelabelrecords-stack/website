@@ -31,6 +31,8 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - Intitulé des cartes produit plus gros : nouvelle classe `.release-title` (token `$fs-card-title` 1.25rem, graisse 900, capitales) dans `cover.scss`, utilisée par `ReleaseCard` — documentée dans le DS (Typographie, Composants/Cover, Patterns « Carte produit ») et les stories (Cover, Patterns).
 - Le DS public (Storybook, noindex) est référencé depuis le site : lien discret « Design system ↗ » dans `.footer-bottom` (`Footer.jsx`, URL `design_system_url` dans `data/config.json`) ; les liens sociaux du footer ouvrent désormais en nouvel onglet (↗ automatique, cohérence règle liens externes).
 - Listes (`ListItem`) : filets supprimés (`border-top` / `border-bottom` retirés de `list.scss`) — les éléments se séparent par le padding seul, conformément à la règle « sans limite visuelle » (aucun filet de liste, comme aucun `<hr>`). DS (ListItem, $bw) + story + CHANGELOG à jour. Note : à l’impression, `print.css` garde un filet noir 1px sur `.list-item` pour la lisibilité papier.
+- Pastille `Cover` (`.image-label`) beaucoup plus grosse : nouveau token `$fs-image-label` clamp(1rem, 2.2vw, 1.75rem) + graisse 900 `$font-black` + capitales ; ellipsis si dépassement (max-width 92 %) à toutes tailles, l’ancien override mobile 0.667rem est supprimé. DS (Visuels, Typographie, tokens) + story Cover à jour.
+- `ListItem` : croisillon « + » (900) en tête de chaque élément (`.list-item > :first-child::before`) pour distinguer les items en colonnes/lignes, toujours sans filet. DS + story ListItem à jour.
 
 ## [1.0.0] — 2026-11-25
 

@@ -28,7 +28,7 @@
   color: var(--on-accent);
 }
 
-// Pastille centrée sur le visuel (type de sortie)
+// Pastille centrée sur le visuel = nom de l'artiste — taille display dédiée, bien visible
 .image-label {
   position: absolute;
   top: 50%;
@@ -42,8 +42,14 @@
   border: solid $bw var(--accent);
   border-radius: $radius;
   white-space: nowrap;
-  font-size: $fs-small;
+  font-family: $font-black;
+  font-weight: 900;
+  font-size: $fs-image-label;
   line-height: 1;
+  text-transform: uppercase;
+  max-width: 92%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .release-links {
@@ -64,12 +70,3 @@
   letter-spacing: -0.01em;
 }
 
-@media (max-width: $sp) {
-  .image-label {
-    font-size: 0.66667rem;
-    padding: 0.25rem 0.75rem 0.33333rem;
-    max-width: 90%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}

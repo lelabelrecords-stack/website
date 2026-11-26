@@ -5,7 +5,7 @@ export default {
   component: Cover,
   tags: ['autodocs'],
   argTypes: {
-    label: { control: 'text', description: 'Pastille centrée = nom de l\'artiste (le type EP/Single/LP est en métadonnée « type · date »)' },
+    label: { control: 'text', description: 'Pastille centrée = nom de l\'artiste, en display ($fs-image-label, 900 capitales) — le type EP/Single/LP reste en métadonnée « type · date »' },
     href: { control: 'text', description: 'Rend la carte cliquable (rempli au survol)' },
     ariaLabel: { control: 'text', description: 'Obligatoire si href' }
   }

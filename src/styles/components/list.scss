@@ -6,6 +6,14 @@
   padding: 0.52083rem 0;
 }
 
+// Croisillon « + » (900) en tête de chaque élément : distingue les items en colonnes/lignes, toujours sans filet
+.list-item > :first-child::before {
+  content: '+';
+  margin-right: 0.41667rem;
+  font-family: $font-black;
+  font-weight: 900;
+}
+
 .list-date {
   font-size: $fs-small;
   line-height: $lh-small;

@@ -13,7 +13,7 @@ export default {
 export const Defaut = {
   render: () => (
     <ul>
-      <ListItem>Premier élément (aucun filet : le padding seul sépare)</ListItem>
+      <ListItem>Premier élément (croisillon « + » en tête, aucun filet)</ListItem>
       <ListItem>Deuxième élément</ListItem>
     </ul>
   )
