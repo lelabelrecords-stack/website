@@ -14,11 +14,11 @@
 }
 
 // Bouton lien externe : la flèche ↗ (règle globale a[target='_blank']::after) passe
-// dans le coin interne supérieur gauche du bouton (dans la zone de padding, sans toucher au texte)
+// dans le coin interne supérieur droit du bouton (dans la zone de padding, sans toucher au texte)
 .button[target='_blank']::after {
   position: absolute;
   top: 0.2rem;
-  left: 0.3rem;
+  right: 0.3rem;
   margin-left: 0;
   font-size: 0.7em;
 }

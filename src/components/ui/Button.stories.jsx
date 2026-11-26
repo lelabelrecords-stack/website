@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     to: { control: 'text', description: 'Lien interne (Link react-router)' },
-    href: { control: 'text', description: 'Lien externe (ajouter target="_blank" rel="noopener noreferrer") — la flèche ↗ passe alors dans le coin interne supérieur gauche du bouton' },
+    href: { control: 'text', description: 'Lien externe (ajouter target="_blank" rel="noopener noreferrer") — la flèche ↗ passe alors dans le coin interne supérieur droit du bouton' },
     children: { control: 'text', description: 'Intitulé — toujours explicite' }
   }
 }
