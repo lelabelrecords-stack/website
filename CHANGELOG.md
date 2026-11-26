@@ -17,7 +17,7 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - Actus sans lien : plus de bouton « Nous contacter » (Home + News).
 - Accueil : CTA dans le hero via la nouvelle prop `actions` de `<Hero>` (« Voir les sorties », « Écouter le dernier épisode »), 3 dernières sorties seulement, bloc radio en 3 colonnes. Le logo latéral reste finalement visible sur l'accueil (règle `.is-home` retirée après retour utilisateur).
 - `ReleaseCard` : pastille `Cover` = nom de l'artiste (type « EP · date » en métadonnée), liens d'écoute en `<Button>` (cohérence DS).
-- Liens externes : marqueur ↗ automatique (`a[target='_blank']::after` dans base.scss).
+- Liens externes : marqueur ↗ automatique (`a[target='_blank']::after` dans base.scss). Sur `<Button>`, la flèche est placée dans le coin interne supérieur gauche (`button.scss`).
 - Bouton thème : « Passer en mono / rouge » (pastille de la couleur cible) au lieu de « Appliquer le #… ».
 - Contact : adresse démo temporairement sur `le.label.contact@gmail.com` tant que `lelabel@le-label.org` n'est pas actif (transfert de domaine en cours — à remettre + Email Routing/SPF/DKIM/DMARC ensuite).
 - Footer compact et équilibré : padding réduit (2.08333rem, 1.5rem mobile), colonne infos en 3 lignes (`.footer-info`), nav en lignes resserrées — documenté dans le DS.

@@ -276,7 +276,7 @@ export default function DesignSystem() {
         <p className="__row textsize-small">
           États : contour 1px → rempli au survol/focus ; actif = rempli via <code>aria-current</code> / <code>aria-selected</code>.
           Cible ≈ 32px de haut (≥ 24px WCAG 2.5.8). Couleurs 100 % var(--*).
-          Tout lien externe (<code>target="_blank"</code>) affiche automatiquement <strong>↗</strong> (règle globale <code>a[target='_blank']::after</code> dans base.scss — y compris sur <code>.button</code>).
+          Tout lien externe (<code>target="_blank"</code>) affiche automatiquement <strong>↗</strong> : en ligne après le texte pour un lien inline (règle globale <code>a[target='_blank']::after</code> dans base.scss), et dans le <strong>coin interne supérieur gauche</strong> sur un <code>&lt;Button&gt;</code> (<code>.button[target='_blank']::after</code> positionné absolu dans button.scss).
         </p>
         <Regles
           faire="toute action/lien de navigation passe par <Button> — y compris dans .release-links des cartes produit."
