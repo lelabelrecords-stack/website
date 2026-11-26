@@ -33,9 +33,6 @@
       ul.contacts a:hover { text-decoration: underline; }
       .button { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 50px; padding: 0 25px; border: 1px solid var(--red); border-radius: 0; background: var(--red); color: var(--white); font: inherit; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; margin-top: 20px; }
       .button:hover { text-decoration: underline; }
-      .button--ghost { background: var(--white); color: var(--red); margin-top: 10px; }
-      .card-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; }
-      .card-foot a { color: inherit; }
     </style>
   </head>
   <body>
@@ -60,83 +57,7 @@
         <li>8 rue Nationale, 30000 Nîmes</li>
         <li>Le Label² à la radio : <a href="https://www.rayvox.org/podcastFilter?e=70&t=&l=1">Rayvox</a> (un lundi par mois, 20h, en direct) · <a href="https://raje.fr/programmes/le-label2">Raje Radio</a> (mar. 20h · 102.5 / 90.3 FM) · <a href="https://radioallianceplus.fr/show/le-label-au-carre/">Radio Alliance+</a> (jeu. 19h · 103.2 FM + DAB+)</li>
       </ul>
-      <button class="button" id="add" type="button">Ajouter aux contacts — .vcf</button>
-      <a class="button button--ghost" href="christophe-bonnici.vcf" download="christophe-bonnici.vcf">Télécharger la vCard (.vcf)</a>
-      <div class="card-foot">
-        <a href="https://le-label.org">le-label.org</a>
-      </div>
+      <a class="button" href="christophe-bonnici.vcf" download="christophe-bonnici.vcf">Ajouter à mes contacts</a>
     </main>
-    <script>
-      const SLUG = "christophe-bonnici";
-      const LINES = [
-        "BEGIN:VCARD",
-        "VERSION:4.0",
-        "UID:urn:uuid:399993ac-3b79-4282-955d-543d02efde93",
-        "FN:Christophe Bonnici",
-        "N:Bonnici;Christophe;;;",
-        "ORG:Le Label Records",
-        "TITLE:Co-fondateur",
-        "EMAIL;TYPE=work:lelabel@le-label.org",
-        "TEL;TYPE=CELL,VOICE:+33620501407",
-        "ADR;TYPE=work:;;8 rue Nationale;Nîmes;;30000;France",
-        "URL:https://le-label.org",
-        "SOCIALPROFILE;TYPE=linktree:https://linktr.ee/le.label",
-        "SOCIALPROFILE;TYPE=bandcamp:https://lelabelrecords.bandcamp.com/",
-        "NOTE:ᖇᗴᑕᗝᖇᗪᔕ ᒪᗩᗷᗴᒪ Ꭵᑎ ᑎîᗰᗴᔕ « ᒪᗩ ᗰᑌᔕᎥɊᑌᗴ ᑎ’ᗴᔕ丅 ᑭᗩᔕ ᔕᎥᗠᑭᒪᗰᗴᑎ丅 ᑌᑎᗴ ᕼᎥᔕ丅ᗝᎥᖇᗴ ᗪᗴ ᔕᗝᑎᔕ\, ᑕ’ᗴᔕ丅 ᗩᐯᗩᑎ丅 丅ᗝᑌ丅 ᑌᑎᗴ ᗩᐯᗴᑎᗝᑌᖇᗴ ᑭᖇᗝᖴᗝᑎᗠéᗰᗴᑎ丅 ᕼᑌᗠᗩᎥᑎᗴ » Le Label² à la radio : Rayvox (un lundi par mois\, 20h\, en direct) · Raje Radio (mar. 20h · 102.5 FM Nîmes / 90.3 FM Avignon) · Radio Alliance+ (jeu. 19h · 103.2 FM Nîmes + DAB+)"
-      ];
-
-      function fold(line) {
-        const bytes = new TextEncoder().encode(line);
-        if (bytes.length <= 75) return [line];
-        const out = [];
-        let start = 0, first = true;
-        while (start < bytes.length) {
-          const limit = first ? 75 : 74;
-          let end = Math.min(start + limit, bytes.length);
-          while (end < bytes.length && end > start && (bytes[end] & 0xC0) === 0x80) end--;
-          const chunk = new TextDecoder().decode(bytes.subarray(start, end));
-          out.push(first ? chunk : " " + chunk);
-          first = false;
-          start = end;
-        }
-        return out;
-      }
-
-      async function photoData() {
-        const img = document.getElementById("photo");
-        if (!img || !img.dataset.ok) return null;
-        try {
-          const res = await fetch(img.getAttribute("src"));
-          if (!res.ok) return null;
-          const buf = new Uint8Array(await res.arrayBuffer());
-          let bin = "";
-          for (let i = 0; i < buf.length; i += 8192) bin += String.fromCharCode.apply(null, buf.subarray(i, i + 8192));
-          const type = img.getAttribute("src").endsWith(".png") ? "PNG" : "JPEG";
-          return { type: type, b64: btoa(bin) };
-        } catch (e) {
-          return null;
-        }
-      }
-
-      document.getElementById("add").addEventListener("click", async () => {
-        const lines = LINES.slice();
-        const ph = await photoData();
-        if (ph) {
-          lines.push("PHOTO;TYPE=" + ph.type + ";ENCODING=b:" + ph.b64);
-        }
-        lines.push("REV:2026-11-26T17:38:37Z");
-        lines.push("END:VCARD");
-        const folded = [];
-        for (const ln of lines) folded.push(...fold(ln));
-        const blob = new Blob([folded.join("\r\n") + "\r\n"], { type: "text/vcard;charset=utf-8" });
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = SLUG + ".vcf";
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-        a.remove();
-      });
-    </script>
   </body>
 </html>

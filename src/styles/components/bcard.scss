@@ -1,0 +1,103 @@
+@use '../tokens' as *;
+
+// BusinessCard — carte de visite digitale (servie aussi en statique sur /vcard/).
+// Contrat DS : 1px $bw, radius 0, couleurs 100 % var(--*).
+
+.bcard {
+  border: $bw solid var(--accent);
+  padding: 20px;
+  max-width: 420px;
+  background: var(--bg);
+  color: var(--accent);
+}
+
+.bcard__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.bcard__logo {
+  width: 56px;
+  height: auto;
+  display: block;
+}
+
+.bcard__brand {
+  margin: 0;
+  text-align: right;
+  font-weight: 700;
+  font-size: $fs-small;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+.bcard__photo {
+  margin: 20px 0;
+  border: $bw solid var(--accent);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.bcard__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bcard__name {
+  margin: 0 0 6px;
+  font-family: $font-black;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.bcard__role {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: $fs-small;
+}
+
+.bcard__verbatim {
+  margin: 12px 0 0;
+  font-weight: 500;
+}
+
+.bcard__contacts {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: $fs-regular;
+
+  li {
+    padding: 10px 0;
+    border-top: $bw solid var(--accent);
+    overflow-wrap: anywhere;
+
+    &:last-child {
+      border-bottom: $bw solid var(--accent);
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.bcard__cta {
+  margin-top: 20px;
+  width: 100%;
+}

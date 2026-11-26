@@ -5,6 +5,8 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 ## [Unreleased]
 
 ### Ajouté
+- Carte de visite digitale dans le DS : composant `ui/BusinessCard` (+ partial `bcard.scss`, story Storybook « Composants/BusinessCard », section dans `/design-system`) — une carte par personne (photo `/vcard/<slug>.jpg`, tél, verbatim, émission Le Label² sur Rayvox / Raje Radio / Radio Alliance+), CTA « Ajouter à mes contacts » → `/vcard/<slug>.vcf` (téléchargement, `PHOTO` embarquée en base64 brut RFC 6350).
+- Cartes statiques servies sur `/vcard/` (`public/vcard/`, copiées depuis le dépôt `vcard`) avec `Content-Type: text/vcard; charset=utf-8` via `_headers` (encodage correct au téléchargement).
 - Contrat écoconception documenté dans le DS (page `/design-system` en dev + Storybook → Fondations → « Écoconception ») : RWEB_0031 (`print.css` : chrome et images masqués à l'impression, noir sur blanc) et RWEB_0076 (brotli edge Cloudflare sur tout le texte, police inlinée en data URI → 0 requête font).
 - Garde-fou CI RWEB_0076 : `scripts/budget.mjs` échoue si un fichier police (`.woff2/.woff/.ttf/.otf/.eot`) est présent dans `dist/`.
 

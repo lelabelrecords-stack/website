@@ -9,6 +9,8 @@ import Cover from '../components/ui/Cover.jsx'
 import Logo from '../components/ui/Logo.jsx'
 import ListItem from '../components/ui/ListItem.jsx'
 import Marquee from '../components/ui/Marquee.jsx'
+import BusinessCard from '../components/ui/BusinessCard.jsx'
+import vcards from '../../data/vcards.json'
 import { config } from '../data.js'
 
 function PropsTable({ rows }) {
@@ -327,6 +329,26 @@ export default function DesignSystem() {
         </ul>
         <PropsTable rows={[['className', 'string', 'grille ex. col-50 col-100-sp']]} />
         <Code>{'<ul className="_row">\n  <ListItem className="col-50 col-100-sp">…</ListItem>\n</ul>'}</Code>
+
+        <h3 className="_row">BusinessCard (carte de visite)</h3>
+        <div className="__row" style={{ display: 'flex', flexWrap: 'wrap', gap: '25px' }}>
+          {vcards.people.map((person) => (
+            <BusinessCard key={person.slug} person={person} />
+          ))}
+        </div>
+        <PropsTable rows={[
+          ['person', 'objet', 'entrée de data/vcards.json : slug, first, last, fn, title, email, tel, telE164 — photo servie sur /vcard/<slug>.jpg, vCard sur /vcard/<slug>.vcf']
+        ]} />
+        <p className="__row textsize-small">
+          Carte de visite digitale du label : contour 1px, photo carrée, nom en display, rôle, verbatim, contacts (email, tél, adresse, émission Le Label² sur Rayvox / Raje Radio / Radio Alliance+).
+          CTA unique « Ajouter à mes contacts » = téléchargement du .vcf statique servi sur <code>/vcard/</code> (UTF-8 via <code>_headers</code>, <code>PHOTO</code> embarquée en base64 brut RFC 6350).
+          Les pages statiques <code>/vcard/</code> (index + 2 cartes, copiées depuis le dépôt <code>vcard</code>) reprennent la même mise en page en HTML autonome.
+        </p>
+        <Regles
+          faire="une carte par personne, CTA unique « Ajouter à mes contacts » pointant vers /vcard/<slug>.vcf."
+          eviter={'pas de second bouton « télécharger » (doublon), pas de lien de pied de carte, pas de génération côté client (le .vcf statique embarque déjà la photo).'}
+        />
+        <Code>{'<BusinessCard person={vcards.people[0]} />\n<BusinessCard person={vcards.people[1]} />'}</Code>
 
         <h3 className="_row">Cover (carte produit)</h3>
         <div className="flex-container __row">

@@ -1,0 +1,25 @@
+{
+  "verbatim": "ᖇᗴᑕᗝᖇᗪᔕ ᒪᗩᗷᗴᒪ Ꭵᑎ ᑎîᗰᗴᔕ « ᒪᗩ ᗰᑌᔕᎥɊᑌᗴ ᑎ’ᗴᔕ丅 ᑭᗩᔕ ᔕᎥᗠᑭᒪᗰᗴᑎ丅 ᑌᑎᗴ ᕼᎥᔕ丅ᗝᎥᖇᗴ ᗪᗴ ᔕᗝᑎᔕ, ᑕ’ᗴᔕ丅 ᗩᐯᗩᑎ丅 丅ᗝᑌ丅 ᑌᑎᗴ ᗩᐯᗴᑎᗝᑌᖇᗴ ᑭᖇᗝᖴᗝᑎᗠéᗰᗴᑎ丅 ᕼᑌᗠᗩᎥᑎᗴ »",
+  "people": [
+    {
+      "slug": "christophe-bonnici",
+      "first": "Christophe",
+      "last": "Bonnici",
+      "fn": "Christophe Bonnici",
+      "title": "Co-fondateur",
+      "email": "lelabel@le-label.org",
+      "tel": "06 20 50 14 07",
+      "telE164": "+33620501407"
+    },
+    {
+      "slug": "roxane-gire",
+      "first": "Roxane",
+      "last": "Gire",
+      "fn": "Roxane Gire",
+      "title": "Co-fondatrice",
+      "email": "lelabel@le-label.org",
+      "tel": "06 99 04 47 01",
+      "telE164": "+33699044701"
+    }
+  ]
+}
