@@ -7,18 +7,18 @@ ORG:Le Label Records
 TITLE:Co-fondateur
 EMAIL;TYPE=work:lelabel@le-label.org
 TEL;TYPE=CELL,VOICE:+33620501407
-ADR;TYPE=work:;;8 rue Nationale;Nîmes;;30000;France
+ADR;CHARSET=UTF-8;TYPE=work:;;8 rue Nationale;Nîmes;;30000;France
 URL:https://le-label.org
 SOCIALPROFILE;TYPE=linktree:https://linktr.ee/le.label
 SOCIALPROFILE;TYPE=bandcamp:https://lelabelrecords.bandcamp.com/
-NOTE:ᖇᗴᑕᗝᖇᗪᔕ ᒪᗩᗷᗴᒪ Ꭵᑎ ᑎîᗰᗴᔕ « ᒪᗩ 
- ᗰᑌᔕᎥɊᑌᗴ ᑎ’ᗴᔕ丅 ᑭᗩᔕ ᔕᎥᗠᑭᒪᗰᗴᑎ丅
-  ᑌᑎᗴ ᕼᎥᔕ丅ᗝᎥᖇᗴ ᗪᗴ ᔕᗝᑎᔕ\, ᑕ’ᗴᔕ丅 
- ᗩᐯᗩᑎ丅 丅ᗝᑌ丅 ᑌᑎᗴ ᗩᐯᗴᑎᗝᑌᖇᗴ ᑭᖇᗝ
- ᖴᗝᑎᗠéᗰᗴᑎ丅 ᕼᑌᗠᗩᎥᑎᗴ » Le Label² à la radio
-  : Rayvox (un lundi par mois\, 20h\, en direct) · Raje Radio (mar. 20h ·
-  102.5 FM Nîmes / 90.3 FM Avignon) · Radio Alliance+ (jeu. 19h · 103.2 
- FM Nîmes + DAB+)
+NOTE;CHARSET=UTF-8:ᖇᗴᑕᗝᖇᗪᔕ ᒪᗩᗷᗴᒪ Ꭵᑎ ᑎîᗰᗴ
+ ᔕ « ᒪᗩ ᗰᑌᔕᎥɊᑌᗴ ᑎ’ᗴᔕ丅 ᑭᗩᔕ ᔕᎥᗠᑭ
+ ᒪᗴᗰᗴᑎ丅 ᑌᑎᗴ ᕼᎥᔕ丅ᗝᎥᖇᗴ ᗪᗴ ᔕᗝᑎᔕ\
+ , ᑕ’ᗴᔕ丅 ᗩᐯᗩᑎ丅 丅ᗝᑌ丅 ᑌᑎᗴ ᗩᐯᗴᑎ丅
+ ᑌᖇᗴ ᑭᖇᗝᖴᗝᑎᗠéᗰᗴᑎ丅 ᕼᑌᗠᗩᎥᑎᗴ. » Le
+  Label² à la radio : Rayvox (un lundi par mois\, 20h\, en direct) · Raj
+ e Radio (mar. 20h · 102.5 FM Nîmes / 90.3 FM Avignon) · Radio Alliance+
+  (jeu. 19h · 103.2 FM Nîmes + DAB+)
 PHOTO;TYPE=JPEG;ENCODING=b:/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUG
  BgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2w
  BDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQk
@@ -1309,5 +1309,5 @@ PHOTO;TYPE=JPEG;ENCODING=b:/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUG
  wTk59ulSkjcxTddwAP8AMVHSLJ2jlhj4zXAZKNpALqTBGRlsFgQcZH9qd5bKG9IBH9aIBluQcY
  PfilaPKk84PcmpTd6DsEn0A9+tOCnBUfe46jpTiuQQxwG4+leRWbG0A8dew9qilNrwRs7RnC8H
  FL6vp8foUR4NoBbAIGeuRSbwefRzzy1AQpa72X//2Q==
-REV:2026-11-26T17:58:45Z
+REV:2026-11-26T18:14:09Z
 END:VCARD

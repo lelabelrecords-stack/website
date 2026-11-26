@@ -8,20 +8,20 @@ ROLE:Label indépendant
 CATEGORIES:Label indépendant,Musique
 EMAIL;TYPE=work;PREF=1:le.label.contact@gmail.com
 EMAIL;TYPE=work;PREF=2;X-PURPOSE=Démos:lelabel@le-label.org
-ADR;TYPE=work:;;8 rue Nationale;Nîmes;;30000;France
+ADR;CHARSET=UTF-8;TYPE=work:;;8 rue Nationale;Nîmes;;30000;France
 URL:https://le-label.org
 URL:https://github.com/lelabelrecords-stack/vcard
 SOCIALPROFILE;TYPE=bandcamp:https://lelabelrecords.bandcamp.com/
 SOCIALPROFILE;TYPE=linktree:https://linktr.ee/le.label
 SOCIALPROFILE;TYPE=youtube:https://www.youtube.com/watch?v=Mn_pscQeAzg
-NOTE:ᖇᗴᑕᗝᖇᗪᔕ ᒪᗩᗷᗴᒪ Ꭵᑎ ᑎîᗰᗴᔕ « ᒪᗩ 
- ᗰᑌᔕᎥɊᑌᗴ ᑎ’ᗴᔕ丅 ᑭᗩᔕ ᔕᎥᗠᑭᒪᗰᗴᑎ丅
-  ᑌᑎᗴ ᕼᎥᔕ丅ᗝᎥᖇᗴ ᗪᗴ ᔕᗝᑎᔕ\, ᑕ’ᗴᔕ丅 
- ᗩᐯᗩᑎ丅 丅ᗝᑌ丅 ᑌᑎᗴ ᗩᐯᗴᑎᗝᑌᖇᗴ ᑭᖇᗝ
- ᖴᗝᑎᗠéᗰᗴᑎ丅 ᕼᑌᗠᗩᎥᑎᗴ » Le Label² à la radio
-  : Rayvox (un lundi par mois\, 20h\, en direct) · Raje Radio (mar. 20h ·
-  102.5 FM Nîmes / 90.3 FM Avignon) · Radio Alliance+ (jeu. 19h · 103.2 
- FM Nîmes + DAB+) Dépôt GitHub : https://github.com/lelabelrecords-stack
- /vcard
-REV:2026-11-26T12:30:00Z
+NOTE;CHARSET=UTF-8:ᖇᗴᑕᗝᖇᗪᔕ ᒪᗩᗷᗴᒪ Ꭵᑎ ᑎîᗰᗴ
+ ᔕ « ᒪᗩ ᗰᑌᔕᎥɊᑌᗴ ᑎ’ᗴᔕ丅 ᑭᗩᔕ ᔕᎥᗠᑭ
+ ᒪᗴᗰᗴᑎ丅 ᑌᑎᗴ ᕼᎥᔕ丅ᗝᎥᖇᗴ ᗪᗴ ᔕᗝᑎᔕ\
+ , ᑕ’ᗴᔕ丅 ᗩᐯᗩᑎ丅 丅ᗝᑌ丅 ᑌᑎᗴ ᗩᐯᗴᑎ丅
+ ᑌᖇᗴ ᑭᖇᗝᖴᗝᑎᗠéᗰᗴᑎ丅 ᕼᑌᗠᗩᎥᑎᗴ. » Le
+  Label² à la radio : Rayvox (un lundi par mois\, 20h\, en direct) · Raj
+ e Radio (mar. 20h · 102.5 FM Nîmes / 90.3 FM Avignon) · Radio Alliance+
+  (jeu. 19h · 103.2 FM Nîmes + DAB+) Dépôt GitHub : https://github.com/
+ lelabelrecords-stack/vcard
+REV:2026-11-26T18:30:00Z
 END:VCARD
