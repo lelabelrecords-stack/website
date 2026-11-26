@@ -45,6 +45,7 @@ const TOC = [
   ['ds-typo', 'Typographie'],
   ['ds-grille', 'Grille & espacements'],
   ['ds-visuels', 'Visuels'],
+  ['ds-marque', 'Marque (logo)'],
   ['ds-motion', 'Motion'],
   ['ds-tokens', 'Tokens (référence)'],
   ['ds-composants', 'Composants'],
@@ -193,6 +194,31 @@ export default function DesignSystem() {
         <Regles
           faire="tout visuel est un composant (Cover, Logo) ou un SVG vectoriel auto-hébergé."
           eviter="aucune photo/JPG/PNG, aucun SVG externe, aucun <img> sans alternative textuelle équivalente."
+        />
+      </section>
+
+      <section aria-labelledby="ds-marque" id="ds-marque" className="_row">
+        <h2 id="ds-marque">Marque (logo)</h2>
+        <ul className="_row">
+          <ListItem><strong>Charte graphique = ce DS</strong> : couleurs, typo, grille et logo y sont documentés ; les sources du logo se téléchargent ici.</ListItem>
+          <ListItem><strong>Fichiers sources</strong> (auto-hébergés, SVG minifiés, attribut <code>download</code>) : <a href="/assets/logo-contour-rouge.svg" download>logo-contour-rouge.svg</a> (contour, <code>stroke: currentColor</code> → se recolore en CSS) · <a href="/assets/logo-contour-rouge-blanc.svg" download>logo-contour-rouge-blanc.svg</a> (blanc <code>#fff</code>, pour fond plein accent).</ListItem>
+          <ListItem><strong>Variantes</strong> : rouge <code>#DB0000</code> sur blanc (défaut) · mono <code>#343434</code> (thème <code>data-theme</code>) · blanc sur fond accent (<code>.logo-svg--on-accent</code>). Dans le site, <code>&lt;Logo&gt;</code> suit <code>var(--accent)</code> via masque CSS.</ListItem>
+          <ListItem><strong>Ratio</strong> : <code>viewBox 571.799 × 763.875</code>, toujours conservé (<code>aspect-ratio</code> dans logo.scss) — jamais de déformation.</ListItem>
+          <ListItem><strong>Éco</strong> : SVG uniquement, aucun PNG/JPG (contrat 0 raster). Un kit presse PNG reste une option documentée non retenue (README).</ListItem>
+        </ul>
+        <div className="flex-container _row">
+          <div className="col-25 col-50-sp">
+            <div className="ds-box"><div style={{ maxWidth: '6.66667rem', margin: '0 auto' }}><Logo /></div></div>
+            <p className="____row textsize-small">Rouge sur blanc (défaut)</p>
+          </div>
+          <div className="col-25 col-50-sp">
+            <div className="ds-box" style={{ backgroundColor: 'var(--accent)' }}><div style={{ maxWidth: '6.66667rem', margin: '0 auto' }}><Logo className="logo-svg--on-accent" label="Le Label Records — blanc sur fond accent" /></div></div>
+            <p className="____row textsize-small">Blanc sur fond accent (.logo-svg--on-accent)</p>
+          </div>
+        </div>
+        <Regles
+          faire="dans le site : <Logo> uniquement. En externe (presse, partenaires) : télécharger les SVG ci-dessus, sur fond uni, ratio conservé."
+          eviter="aucune recoloration hors var(--accent)/#fff, aucune déformation, ombre, arrondi, rotation ou contour modifié — et aucun PNG/JPG."
         />
       </section>
 
@@ -347,7 +373,7 @@ export default function DesignSystem() {
         </p>
 
         <h3 className="_row">Footer</h3>
-        <p className="__row textsize-small">Fond plein accent, texte on-accent, <strong>compact</strong> : padding 2.08333rem (1.5rem ≤ 767px), deux colonnes équilibrées — nav du site en lignes resserrées (<code>.footer-nav ul</code> flex wrap, gap 5px 20px) à gauche, 3 lignes à droite (<code>.footer-info</code> : « nom — baseline » / adresse · email / réseaux depuis <code>config.social</code>), puis <code>.footer-bottom</code> (© + mention éco + lien discret « Design system ↗ » vers le Storybook public). Focus ring adapté (<code>#footer :focus-visible</code>). Masqué à l’impression (<code>print.css</code>).</p>
+        <p className="__row textsize-small">Fond plein accent, texte on-accent, <strong>compact</strong> : padding 2.08333rem (1.5rem ≤ 767px), deux colonnes équilibrées — nav du site en lignes resserrées (<code>.footer-nav ul</code> flex wrap, gap 5px 20px) à gauche, 3 lignes à droite (<code>.footer-info</code> : « nom — baseline » / adresse · email / liens externes depuis <code>config.social</code> + « Design system ↗ » depuis <code>config.design_system_url</code> — au même niveau que les autres liens), puis <code>.footer-bottom</code> (© + mention éco seulement). Focus ring adapté (<code>#footer :focus-visible</code>). Masqué à l’impression (<code>print.css</code>).</p>
       </section>
 
       <section aria-labelledby="ds-patterns" id="ds-patterns" className="_row">
@@ -415,7 +441,7 @@ export default function DesignSystem() {
           Les primitives <code>ui/</code> sont servies en stories isolées (Storybook 10 + addon a11y + pages docs auto)
           sur GitHub Pages, hors du domaine principal (noindex) :
           <a href={config.design_system_url} target="_blank" rel="noopener noreferrer">lelabelrecords-stack.github.io/website</a>
-          — référencée depuis le pied de page du site (lien discret « Design system ↗ » dans <code>.footer-bottom</code>, URL dans <code>config.design_system_url</code>).
+          — référencée depuis le pied de page du site, au même niveau que les liens externes (ligne <code>.footer-info</code>, URL dans <code>config.design_system_url</code>).
           Local : <code>npm run storybook</code> → http://localhost:6006 · build :
           <code>npm run build-storybook</code> → <code>storybook-static/</code> (déployé par
           <code>.github/workflows/storybook-pages.yml</code>).

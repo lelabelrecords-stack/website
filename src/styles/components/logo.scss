@@ -10,6 +10,11 @@
   mask: url('/assets/logo-contour-rouge.svg') center / contain no-repeat;
 }
 
+// Variante blanche : logo sur fond plein accent (footer, og:image)
+.logo-svg--on-accent {
+  background-color: var(--on-accent);
+}
+
 @media (max-width: $tablet) {
   #main-side .logo-svg {
     width: 4.16667rem;

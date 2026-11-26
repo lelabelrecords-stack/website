@@ -36,6 +36,10 @@ export default function Footer() {
                 </a>
               </span>
             ))}
+            {' · '}
+            <a href={config.design_system_url} target="_blank" rel="noopener noreferrer">
+              Design system
+            </a>
           </p>
         </div>
       </div>
@@ -43,11 +47,6 @@ export default function Footer() {
         <p>
           © {year} {config.label_name} — Site écoconçu : aucun traceur, aucune image lourde,
           polices auto-hébergées.
-        </p>
-        <p className="_____row">
-          <a href={config.design_system_url} target="_blank" rel="noopener noreferrer">
-            Design system
-          </a>
         </p>
       </div>
     </footer>

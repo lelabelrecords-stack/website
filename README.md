@@ -68,6 +68,8 @@ https://lelabelrecords-stack.github.io/website/
 Le contrat écrit du DS (`src/pages/DesignSystem.jsx`) est **dev-only** : `npm run dev` → http://localhost:5173/design-system.
 Il n'est pas embarqué dans le build de production (ni dans robots.txt/sitemap).
 
+**Charte graphique (logo)** : documentée dans le DS — section « Marque (logo) » de `/design-system` (dev) et story `Composants/Logo` (Storybook). Les SVG sources sont téléchargeables (attribut `download`) : `public/assets/logo-contour-rouge.svg` (contour, `stroke: currentColor`) + `logo-contour-rouge-blanc.svg` (blanc `#fff` sur fond accent). Variantes : rouge `#DB0000` / mono `#343434` (thème) / blanc sur accent (`.logo-svg--on-accent`). Règles : ratio `571.799 × 763.875` jamais déformé, fond uni, aucune recoloration hors `var(--accent)`/`#fff`, aucun PNG/JPG (contrat 0 raster).
+
 ## CI, qualité & sécurité
 
 - **GitHub Actions** : `deploy.yml` (miroir GitLab) + `storybook-pages.yml` (DS Storybook → GitHub Pages, noindex).
