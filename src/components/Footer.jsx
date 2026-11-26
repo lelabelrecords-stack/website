@@ -22,12 +22,10 @@ export default function Footer() {
             </ul>
           </nav>
         </div>
-        <div className="col-50 col-100-sp">
-          <p><strong>{config.label_name}</strong></p>
-          <p className="textsize-small">{config.baseline}</p>
-          <p className="textsize-small">{config.address}</p>
+        <div className="col-50 col-100-sp footer-info">
+          <p><strong>{config.label_name}</strong> — {config.baseline}</p>
           <p className="textsize-small">
-            <a href={`mailto:${config.email}`}>{config.email}</a>
+            {config.address} · <a href={`mailto:${config.email}`}>{config.email}</a>
           </p>
           <p className="textsize-small">
             {Object.entries(config.social).map(([key, url], i) => (

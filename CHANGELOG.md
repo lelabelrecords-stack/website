@@ -20,6 +20,7 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - Liens externes : marqueur ↗ automatique (`a[target='_blank']::after` dans base.scss).
 - Bouton thème : « Passer en mono / rouge » (pastille de la couleur cible) au lieu de « Appliquer le #… ».
 - Contact : adresse démo temporairement sur `le.label.contact@gmail.com` tant que `lelabel@le-label.org` n'est pas actif (transfert de domaine en cours — à remettre + Email Routing/SPF/DKIM/DMARC ensuite).
+- Footer compact et équilibré : padding réduit (2.08333rem, 1.5rem mobile), colonne infos en 3 lignes (`.footer-info`), nav en lignes resserrées — documenté dans le DS.
 - CI `ds-tests` (vitest navigateur) : `optimizeDeps.include` de `react/jsx-dev-runtime` / `react/jsx-runtime` dans `vitest.config.mjs` pour éviter le rechargement Vite en cours de run (« Failed to fetch dynamically imported module »).
 - CI `lighthouse` : binaire Chromium (téléchargé par Playwright) lancé en direct avec `--remote-debugging-port=0`, port CDP lu sur stderr, puis Lighthouse connecté via `flags.port` (`scripts/lighthouse-run.mjs`, `npm run test:lh`) — chrome-launcher / `launchServer` ne donnaient pas de vrai port CDP sur le runner k8s.
 - CI jobs navigateur : `npx playwright install-deps chromium` (liste officielle des libs système) + garde-fou `ldd` sur le binaire — `libXfixes.so.3` manquait sur un runner k8s avec la liste apt manuelle.

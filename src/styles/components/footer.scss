@@ -3,8 +3,8 @@
 #footer {
   background-color: var(--accent);
   color: var(--on-accent);
-  margin-top: 4.16667rem;
-  padding: 4.16667rem 3.33333rem 2.08333rem;
+  margin-top: 2.08333rem;
+  padding: 2.08333rem 3.33333rem 1.5rem;
 }
 
 #footer a {
@@ -22,13 +22,19 @@
   gap: 5px 20px;
 }
 
+// Colonne infos compacte : 3 lignes max, interligne resserré (équilibre avec la nav à gauche)
+#footer .footer-info p + p {
+  margin-top: 0.41667rem;
+}
+
 #footer .footer-bottom {
+  margin-top: 1.5rem;
   font-size: $fs-small;
   line-height: $lh-small;
 }
 
 @media (max-width: $sp) {
   #footer {
-    padding: 2.08333rem 2.08333rem 1.5rem;
+    padding: 1.5rem 2.08333rem 1rem;
   }
 }

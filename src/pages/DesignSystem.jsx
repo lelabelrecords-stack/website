@@ -359,7 +359,7 @@ export default function DesignSystem() {
         </p>
 
         <h3 className="_row">Footer</h3>
-        <p className="__row textsize-small">Fond plein accent, texte on-accent : nav du site, réseaux (depuis <code>config.social</code>), mention écolo. Focus ring adapté (<code>#footer :focus-visible</code>).</p>
+        <p className="__row textsize-small">Fond plein accent, texte on-accent, <strong>compact</strong> : padding 2.08333rem (1.5rem ≤ 767px), deux colonnes équilibrées — nav du site en lignes resserrées (<code>.footer-nav ul</code> flex wrap, gap 5px 20px) à gauche, 3 lignes à droite (<code>.footer-info</code> : « nom — baseline » / adresse · email / réseaux depuis <code>config.social</code>), puis <code>.footer-bottom</code> (© + mention éco). Focus ring adapté (<code>#footer :focus-visible</code>). Masqué à l’impression (<code>print.css</code>).</p>
       </section>
 
       <hr className="_row" />
