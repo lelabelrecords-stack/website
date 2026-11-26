@@ -17,8 +17,3 @@
   }
 }
 
-// Accueil : le h1 du hero porte déjà le nom — le grand logo latéral est masqué (évite le doublon visuel).
-// visibility (pas display:none) : le header lit getBoundingClientRect() du logo pour .is-scrolled.
-.is-home #main-side .logo-svg {
-  visibility: hidden;
-}

@@ -15,7 +15,7 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - Événements : sections « Prochains » / « Passés » (`upcomingEvents`/`pastEvents` dans `data.js`), plus d'événement passé dans le fil d'actus de l'accueil ; libellés de lien explicites (`eventLinkLabel` : « Billetterie » pour un concert, « Infos » sinon) ; JSON-LD limité aux prochains.
 - Radio : bouton « Écouter sur <diffuseur> » par antenne ; chaque épisode a un `link` (config.json) → bouton « Écouter l'épisode ».
 - Actus sans lien : plus de bouton « Nous contacter » (Home + News).
-- Accueil : CTA dans le hero via la nouvelle prop `actions` de `<Hero>` (« Voir les sorties », « Écouter le dernier épisode »), 3 dernières sorties seulement, bloc radio en 3 colonnes, logo latéral masqué (`.is-home`) pour éviter le doublon avec le h1.
+- Accueil : CTA dans le hero via la nouvelle prop `actions` de `<Hero>` (« Voir les sorties », « Écouter le dernier épisode »), 3 dernières sorties seulement, bloc radio en 3 colonnes. Le logo latéral reste finalement visible sur l'accueil (règle `.is-home` retirée après retour utilisateur).
 - `ReleaseCard` : pastille `Cover` = nom de l'artiste (type « EP · date » en métadonnée), liens d'écoute en `<Button>` (cohérence DS).
 - Liens externes : marqueur ↗ automatique (`a[target='_blank']::after` dans base.scss).
 - Bouton thème : « Passer en mono / rouge » (pastille de la couleur cible) au lieu de « Appliquer le #… ».
