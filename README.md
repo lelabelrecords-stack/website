@@ -33,7 +33,9 @@ Vérification : [Actions GitHub](https://github.com/lelabelrecords-stack/website
 
 ## Modifier le contenu
 
-Tout le contenu est dans `data/` — éditer les JSON, commit, push sur `main`, le site se met à jour automatiquement :
+**Source de vérité éditoriale : Notion.** Le CMS vit dans l'espace Notion « Le Label » → page **« CMS — le-label.org »** (9 bases : Config, Liens sociaux, Radio — Antenne, Radio — Épisodes, Artistes, Presse, Sorties, Événements, News). Workflow : on édite dans Notion, on passe l'**État** à « Publié », et `scripts/sync-notion.mjs` (tourné en CI avant le build, ou en local avec `npm run sync:notion`) régénère les `data/*.json` — le site se met à jour au déploiement suivant. Les lignes « Brouillon » partent dans `data/drafts.json` (non embarquées), « Masqué » = embarquées avec `hidden: true`. Les IDs des bases sont dans `notion.databases.json` (non secret) ; le token de l'intégration interne Notion est dans la variable CI masquée `NOTION_TOKEN` (jamais commité). Voir aussi la doc sur la page CMS dans Notion.
+
+En secours / édition technique directe, tout le contenu reste dans `data/` — éditer les JSON, commit, push sur `main`, le site se met à jour automatiquement :
 
 ```
 data/

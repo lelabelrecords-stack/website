@@ -1,0 +1,56 @@
+{
+  "_comment": "Bases Notion du CMS (page parent 'CMS — le-label.org' sous 'Le Label'). IDs non secrets. Le token de l'intégration interne va dans la variable CI NOTION_TOKEN (jamais commité).",
+  "parent_page": "42500a61-9ad3-81b3-92b6-fa28598e2562",
+  "databases": {
+    "config": {
+      "database_id": "42500a619ad3811aa9e2c18a256c47ca",
+      "data_source": "collection://42500a61-9ad3-81fc-a2ca-000b7a59e2e6",
+      "json": "data/config.json"
+    },
+    "social": {
+      "database_id": "42500a619ad3815d9b7df92f9754ffaf",
+      "data_source": "collection://42500a61-9ad3-81eb-acd2-000b9d24e23e",
+      "json": "data/config.json#social"
+    },
+    "radio_slots": {
+      "database_id": "42500a619ad381d88e10eafbb309ddc6",
+      "data_source": "collection://42500a61-9ad3-8190-8d74-000bc08b7a0d",
+      "json": "data/config.json#radio.slots"
+    },
+    "radio_episodes": {
+      "database_id": "42500a619ad381f7a693e06e095e42d3",
+      "data_source": "collection://42500a61-9ad3-81fb-bfbf-000b25288ffb",
+      "json": "data/config.json#radio.episodes"
+    },
+    "artistes": {
+      "database_id": "42500a619ad381ba9056fbe747cfe9d4",
+      "data_source": "collection://42500a61-9ad3-81b3-9cb3-000b70bb4c70",
+      "json": "data/artistes.json"
+    },
+    "presse": {
+      "database_id": "42500a619ad381b7a369d3a93b793cc3",
+      "data_source": "collection://42500a61-9ad3-81fd-b861-000b856c1bf5",
+      "json": "data/artistes.json[].presse"
+    },
+    "sorties": {
+      "database_id": "42500a619ad3818185a7c3be0747c015",
+      "data_source": "collection://42500a61-9ad3-81bb-bd80-000b41960754",
+      "json": "data/sorties.json"
+    },
+    "evenements": {
+      "database_id": "42500a619ad3814292bdc9e3e9df54ec",
+      "data_source": "collection://42500a61-9ad3-8131-b792-000bd3ddc736",
+      "json": "data/evenements.json"
+    },
+    "news": {
+      "database_id": "42500a619ad381b9aecfd2d3d03ed397",
+      "data_source": "collection://42500a61-9ad3-819a-a213-000bc7c27c87",
+      "json": "data/news.json"
+    }
+  },
+  "etat": {
+    "publie": "Publié",
+    "masque": "Masqué",
+    "brouillon": "Brouillon"
+  }
+}
