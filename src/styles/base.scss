@@ -155,7 +155,18 @@ h2 {
   letter-spacing: -0.01em;
 }
 
+// Hiérarchie des titres H1 > H2 > H3 > H4 > corps, tailles strictement décroissantes :
+// h1 = .hero-title (display géant, via <Hero>) ; h2 = section (900 capitales $fs-h2) ;
+// h3 = sous-section (900, $fs-h3, sans capitales pour rester sous le h2) ; h4 = 700 au niveau du corps
 h3 {
+  font-family: $font-black;
+  font-weight: 900;
+  font-size: $fs-h3;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h4 {
   font-size: $fs-regular;
 }
 

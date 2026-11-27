@@ -47,6 +47,8 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - `/radio` : le bloc « À l'antenne » (Rayvox, Raje Radio, Radio Alliance +) passe en **3 colonnes** (`flex-container` + `col-33 col-100-sp` sur chaque `ListItem`, identique au bloc radio de l'accueil ; pleine largeur ≤ 767px). DS (pattern Radio) à jour.
 - `/radio` : la liste des **épisodes** passe aussi en 3 colonnes (`flex-container` + `col-33 col-100-sp`).
 
+- Hiérarchie des titres retravaillée H1 > H2 > H3 > H4 > corps (tailles strictement décroissantes, sans saut de niveau) : nouveau token `$fs-h3` 1.25rem, `h3` en display (graisse 900 `$font-black`, lh 1.15, **sans capitales** pour rester sous le h2 capitales), `h4` explicite (700, 1rem). Les h3 des slots radio (accueil + /radio) perdent leur classe `textsize-regular-lh-small` pour suivre le nouveau h3. DS (Typographie, tokens, principe Hiérarchie, checklist a11y) + story Fondations/Typographie à jour.
+
 ## [1.0.0] — 2026-11-25
 
 ### Ajouté

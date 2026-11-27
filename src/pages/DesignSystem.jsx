@@ -90,7 +90,7 @@ export default function DesignSystem() {
         <ul className="_row">
           <ListItem><strong>Clarté</strong> — un seul <code>h1</code> par page, texte en couleur d'accent sur fond uni, chaque élément a un rôle évident.</ListItem>
           <ListItem><strong>Cohérence</strong> — tout passe par les tokens et les primitives <code>ui/</code> ; aucune valeur en dur dans une page.</ListItem>
-          <ListItem><strong>Hiérarchie</strong> — la typographie fait le tri : hero 900 géant, h2 900 capitales, lead 900 fluide, corps 400, métadonnées small.</ListItem>
+          <ListItem><strong>Hiérarchie</strong> — la typographie fait le tri, niveaux h1→h4 sans saut : hero 900 géant (h1), h2 900 capitales ($fs-h2), h3 900 $fs-h3 1.25rem, h4 700, lead 900 fluide, corps 400, métadonnées small.</ListItem>
           <ListItem><strong>Accessibilité</strong> — WCAG AA : contraste mesuré, focus visible, clavier complet, ARIA sémantique, reduced-motion.</ListItem>
           <ListItem><strong>Écoconception</strong> — 0 image raster, 1 police inlinée, 0 traceur, poids mini, compression edge.</ListItem>
         </ul>
@@ -141,6 +141,7 @@ export default function DesignSystem() {
             ['$fs-hero', 'clamp(3.5rem, 14vw, 12rem)', 'h1.hero-title — 1 par page, via <Hero>'],
             ['$fs-lead', 'clamp(1.5rem, 3.2vw, 2.5rem)', 'chapô, via <Lead> (graisse 900, lh 1.15)'],
             ['$fs-h2', 'clamp(1.5rem, 3.2vw, 2.5rem)', 'h2 — titre de section : graisse 900 $font-black, capitales, lh 1.1 (mise en évidence 100 % typographique, sans filet)'],
+            ['$fs-h3', '1.25rem', 'h3 — sous-section : graisse 900 $font-black, lh 1.15, sans capitales (reste sous le h2) ; h4 = 700 au niveau du corps'],
             ['$fs-card-title', '1.25rem', 'intitulé des cartes produit (.release-title : 900, capitales)'],
             ['$fs-image-label', 'clamp(1rem, 2.2vw, 1.75rem)', 'pastille Cover (.image-label : 900, capitales, ellipsis si trop long)'],
             ['$fs-regular', '1rem', 'corps de texte (lh $lh-regular 1.667)'],
@@ -151,13 +152,14 @@ export default function DesignSystem() {
         <p className="hero-title _row">Hero title</p>
         <Lead className="__row">Exemple de lead — graisse 900, taille fluide.</Lead>
         <h2 className="__row">h2 — titre de section (900, capitales)</h2>
-        <h3 className="__row">h3 — sous-section</h3>
+        <h3 className="__row">h3 — sous-section (900, 1.25rem)</h3>
+        <h4 className="__row">h4 — dernier niveau de titre (700, 1rem)</h4>
         <p className="__row">Paragraphe standard (Archivo 400, 1rem / 1.667).</p>
         <p className="__row textsize-regular-lh-small">textsize-regular-lh-small (1rem / 1.25).</p>
         <p className="__row textsize-small">textsize-small (0.833rem / 1.25, 0.667rem sur mobile).</p>
         <Regles
           faire="choisir la taille dans l'échelle $fs-* et la graisse selon le rôle (900 = display uniquement)."
-          eviter="aucune taille hors échelle, aucun font-size en dur, aucune deuxième police."
+          eviter="aucune taille hors échelle, aucun font-size en dur, aucune deuxième police, aucun saut de niveau h1→h2→h3→h4."
         />
       </section>
 
@@ -248,7 +250,7 @@ export default function DesignSystem() {
             ['$gut', '25px (12.5px ≤ $sp)', 'gouttière de la grille'],
             ['$cols', 'liste 10…100', 'génère .col-10…100 + suffixes de breakpoints'],
             ['$spaces', 'map 6 paliers', 'génère .row (50px) … ._____row (5px) en padding-top'],
-            ['$fs-hero / $fs-h2 / $fs-lead / $fs-regular / $fs-marquee / $fs-card-title / $fs-image-label / $fs-small', 'clamp / rem', 'échelle typographique (voir Typographie)'],
+            ['$fs-hero / $fs-h2 / $fs-h3 / $fs-lead / $fs-regular / $fs-marquee / $fs-card-title / $fs-image-label / $fs-small', 'clamp / rem', 'échelle typographique (voir Typographie)'],
             ['$lh-regular / $lh-small', 'rem', '1.667rem / 1.25rem'],
             ['$bw', '1px', 'unique épaisseur de filet (cadres : Cover, boutons, pastille ; focus 2px) — aucun <hr>, aucun filet de liste'],
             ['$radius', '0', 'aucun arrondi, partout'],
@@ -429,7 +431,7 @@ export default function DesignSystem() {
         <h2 id="ds-a11y">Accessibilité (checklist WCAG AA)</h2>
         <ul className="_row">
           <ListItem>Landmarks : <code>header / nav aria-label / main#main / aside aria-label / footer</code> + skip-link « Aller au contenu » vers <code>#main tabIndex={-1}</code>.</ListItem>
-          <ListItem>1 seul <code>h1.hero-title</code> par page ; sections nommées (<code>aria-labelledby</code>).</ListItem>
+          <ListItem>1 seul <code>h1.hero-title</code> par page ; sections nommées (<code>aria-labelledby</code>). ; hiérarchie h1→h4 respectée, sans saut de niveau.</ListItem>
           <ListItem><code>:focus-visible</code> partout (outline 2px, couleur adaptée dans le footer) ; cibles ≥ 24px.</ListItem>
           <ListItem>Contraste : accent/bg 5.23:1 (AA), mono/bg 12.45:1 (AAA).</ListItem>
           <ListItem>Clavier complet : menu (focus 1<sup>er</sup> lien, Échap, retour du focus, <code>inert</code> derrière), onglets (roving tabindex + flèches), tous les liens atteignables.</ListItem>

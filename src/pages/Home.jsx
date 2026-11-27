@@ -113,7 +113,7 @@ export default function Home() {
         <ul className="flex-container _row">
           {config.radio.slots.map((slot) => (
             <ListItem key={slot.label} className="col-33 col-100-sp">
-              <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
+              <h3><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
               <p className="__row">
                 <Button href={slot.link} target="_blank" rel="noopener noreferrer">Écouter</Button>

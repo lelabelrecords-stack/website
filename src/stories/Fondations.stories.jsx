@@ -16,6 +16,8 @@ export const Typographie = () => (
     <p className="hero-title">Hero title</p>
     <p className="lead _row">Lead — graisse 900, clamp(1.5rem, 3.2vw, 2.5rem)</p>
     <h2 className="_row">h2 — section : 900, capitales, clamp(1.5–2.5rem)</h2>
+    <h3 className="__row">h3 — sous-section : 900, 1.25rem</h3>
+    <h4 className="__row">h4 — dernier niveau : 700, 1rem</h4>
     <p className="__row release-title">.release-title — intitulé de carte (900, capitales, 1.25rem)</p>
     <p className="__row">Paragraphe standard — Archivo 400, 1rem / 1.667.</p>
     <p className="__row textsize-small">textsize-small — 0.833rem / 1.25 (0.667rem ≤ 767px).</p>
