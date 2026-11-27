@@ -31,9 +31,9 @@ export default function Radio() {
 
       <section aria-labelledby="radio-episodes" className="_row">
         <h3 id="radio-episodes">Épisodes</h3>
-        <ul className="_row">
+        <ul className="flex-container _row">
           {radio.episodes.map((ep) => (
-            <ListItem key={ep.n}>
+            <ListItem key={ep.n} className="col-33 col-100-sp">
               <p className="list-date">Épisode #{ep.n}</p>
               <h3 className="__row">{ep.label}</h3>
               <p className="__row textsize-regular-lh-small">{ep.place}</p>
