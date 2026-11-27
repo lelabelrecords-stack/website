@@ -49,6 +49,8 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 
 - Hiérarchie des titres retravaillée H1 > H2 > H3 > H4 > corps (tailles strictement décroissantes, sans saut de niveau) : nouveau token `$fs-h3` 1.25rem, `h3` en display (graisse 900 `$font-black`, lh 1.15, **sans capitales** pour rester sous le h2 capitales), `h4` explicite (700, 1rem). Les h3 des slots radio (accueil + /radio) perdent leur classe `textsize-regular-lh-small` pour suivre le nouveau h3. DS (Typographie, tokens, principe Hiérarchie, checklist a11y) + story Fondations/Typographie à jour.
 
+- Accueil : le fil d'actus (`#news-feed`) passe en **3 colonnes** (`col-33 col-100-sp`, pleine largeur ≤ 767px) au lieu de 2. DS (pattern Fil d'actus) + story Patterns/FilActus à jour.
+
 ## [1.0.0] — 2026-11-25
 
 ### Ajouté

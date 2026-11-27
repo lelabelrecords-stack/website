@@ -82,7 +82,7 @@ export default function Home() {
         </div>
         <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-label="Actualités filtrées">
           {filtered.map(({ kind, date, item, cta }) => (
-            <ListItem className="col-50 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
+            <ListItem className="col-33 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">
                 {formatDate(date) || 'À venir'} — <Label>{kind === 'news' ? 'Actu' : item.type}</Label>{' '}
                 {cta && (
