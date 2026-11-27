@@ -80,7 +80,8 @@ export default function Home() {
             </Tab>
           ))}
         </div>
-        <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-label="Actualités filtrées">
+        <h3 id="news-feed-title" className="_row">Fil d’actus</h3>
+        <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-labelledby="news-feed-title">
           {filtered.map(({ kind, date, item, cta }) => (
             <ListItem className="col-33 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">

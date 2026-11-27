@@ -19,7 +19,9 @@ export const PageType = () => (
 )
 
 export const FilActus = () => (
-  <ul className="flex-container _row">
+  <>
+    <h3 className="_row">Fil d’actus</h3>
+    <ul className="flex-container _row">
     <ListItem className="col-33 col-100-sp">
       <p className="list-date">18 décembre 2026 — <Label>Actu</Label> <Button href="https://lelabelrecords.bandcamp.com/" target="_blank" rel="noopener noreferrer">En savoir plus</Button></p>
       <h3 className="___row">EP1 de KØRROBOR — le 18 décembre</h3>
@@ -30,7 +32,8 @@ export const FilActus = () => (
       <h3 className="___row">EP « Vision » de Montevideo — sorti</h3>
       <p className="___row textsize-regular-lh-small">Disponible sur Le Label et Bandcamp.</p>
     </ListItem>
-  </ul>
+    </ul>
+  </>
 )
 
 export const CarteProduit = () => (
