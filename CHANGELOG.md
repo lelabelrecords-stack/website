@@ -44,6 +44,8 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - Ligne `.list-date` (date/catégorie des actus et événements) passée en **italique** ; le `Label` et le `<Button>` inline restent droits (`.list-date .label, .list-date .button { font-style: normal }`). DS (Patterns) à jour.
 - Croisillon `ListItem` encore plus visible : `font-size: 1.5em` (était 1.25em). DS à jour.
 
+- `/radio` : le bloc « À l'antenne » (Rayvox, Raje Radio, Radio Alliance +) passe en **3 colonnes** (`flex-container` + `col-33 col-100-sp` sur chaque `ListItem`, identique au bloc radio de l'accueil ; pleine largeur ≤ 767px). DS (pattern Radio) à jour.
+
 ## [1.0.0] — 2026-11-25
 
 ### Ajouté

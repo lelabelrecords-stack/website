@@ -16,9 +16,9 @@ export default function Radio() {
 
       <section aria-labelledby="radio-slots" className="_row">
         <h3 id="radio-slots">À l'antenne</h3>
-        <ul className="_row">
+        <ul className="flex-container _row">
           {radio.slots.map((slot) => (
-            <ListItem key={slot.label}>
+            <ListItem key={slot.label} className="col-33 col-100-sp">
               <h3 className="textsize-regular-lh-small"><strong>{slot.label}</strong></h3>
               <p className="__row textsize-regular-lh-small">{slot.detail}</p>
               <p className="__row">

@@ -407,7 +407,7 @@ export default function DesignSystem() {
           <ListItem><strong>Carte produit</strong> : <code>Cover</code> 2:3 (pastille = artiste) + intitulé <code>.release-title</code> (« titre / artiste », 900 capitales $fs-card-title 1.25rem) + méta « type · date » + <code>.release-links</code> en <code>&lt;Button&gt;</code>.</ListItem>
           <ListItem><strong>Accueil</strong> : <code>&lt;Hero&gt;</code> avec <code>actions</code> (CTA) → marquee → fil d'actus (onglets, <code>flex-wrap</code> donc jamais de débordement mobile) → 3 dernières sorties → bloc radio en 3 colonnes (<code>col-33</code>). Le logo latéral reste visible partout, y compris sur l'accueil (coexiste avec le h1 du hero) ; au scroll, le header affiche en plus la marque compacte.</ListItem>
           <ListItem><strong>Événements</strong> : sections « Prochains » / « Passés » (<code>upcomingEvents</code> / <code>pastEvents</code>) ; libellé de lien explicite via <code>eventLinkLabel</code> (« Billetterie » pour un concert, « Infos » sinon, <code>linkLabel</code> pour surcharger).</ListItem>
-          <ListItem><strong>Radio</strong> : bouton « Écouter sur &lt;diffuseur&gt; » par antenne ; épisode avec <code>link</code> → bouton « Écouter l'épisode ».</ListItem>
+          <ListItem><strong>Radio</strong> : antennes en 3 colonnes (<code>flex-container</code> + <code>col-33 col-100-sp</code>, comme le bloc radio de l’accueil), bouton « Écouter sur &lt;diffuseur&gt; » par antenne ; épisode avec <code>link</code> → bouton « Écouter l’épisode ».</ListItem>
           <ListItem><strong>Liens externes</strong> : <code>target="_blank"</code> + <code>rel="noopener noreferrer"</code> + ↗ automatique.</ListItem>
         </ul>
       </section>
