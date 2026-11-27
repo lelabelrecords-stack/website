@@ -1,9 +1,11 @@
 @use '../tokens' as *;
 
 // Listes (news, événements) — compactes pour remonter vite aux cartes
-// Règle « sans limite visuelle » : aucun filet (ni haut ni bas) — le padding seul sépare les éléments
+// Règle « sans limite visuelle » : aucun filet (ni haut ni bas) — le padding vertical seul sépare les éléments.
+// Longhands obligatoires : un shorthand `padding` écraserait la gouttière horizontale des .col-* (item collé au bord en colonne)
 .list-item {
-  padding: 0.52083rem 0;
+  padding-top: 0.52083rem;
+  padding-bottom: 0.52083rem;
 }
 
 // Croisillon « + » (900) en tête de chaque élément : distingue les items en colonnes/lignes, toujours sans filet

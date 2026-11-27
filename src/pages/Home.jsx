@@ -19,7 +19,6 @@ const TAB_LABELS = {
 
 export default function Home() {
   const [tab, setTab] = useState('actus')
-  const tabs = ['actus', ...[...new Set(evenements.map((e) => e.type))], 'toutes']
   const feed = [
     ...news.map((n) => ({ kind: 'news', date: n.date, item: n })),
     ...upcomingEvents(evenements).map((e) => ({ kind: 'event', date: e.date, item: e }))
@@ -35,8 +34,13 @@ export default function Home() {
     return b.date.localeCompare(a.date)
   })
 
+  // Onglets = uniquement les catégories qui ont au moins un élément (jamais d'onglet/panneau vide)
+  const tabs = ['actus', ...[...new Set(evenements.map((e) => e.type))], 'toutes'].filter((t) =>
+    t === 'toutes' || feed.some((f) => (t === 'actus' ? f.kind === 'news' : f.kind === 'event' && f.item.type === t))
+  )
+  const activeTab = tabs.includes(tab) ? tab : 'toutes'
   const filtered = feed.filter((f) =>
-    tab === 'toutes' ? true : tab === 'actus' ? f.kind === 'news' : f.kind === 'event' && f.item.type === tab
+    activeTab === 'toutes' ? true : activeTab === 'actus' ? f.kind === 'news' : f.kind === 'event' && f.item.type === activeTab
   )
 
   const marqueeText = [
@@ -75,13 +79,12 @@ export default function Home() {
         <h2 id="home-news">News / Actualités</h2>
         <div className="tabs _row" role="tablist" aria-label="Catégories d'actualités">
           {tabs.map((t) => (
-            <Tab key={t} selected={tab === t} controls="news-feed" onClick={() => setTab(t)}>
+            <Tab key={t} selected={activeTab === t} controls="news-feed" onClick={() => setTab(t)}>
               {TAB_LABELS[t] || t}
             </Tab>
           ))}
         </div>
-        <h3 id="news-feed-title" className="_row">Fil d’actus</h3>
-        <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-labelledby="news-feed-title">
+        <ul className="flex-container _row" id="news-feed" role="tabpanel" aria-label="Actualités filtrées">
           {filtered.map(({ kind, date, item, cta }) => (
             <ListItem className="col-33 col-100-sp" key={`${kind}-${item.title}-${date || 'tba'}`}>
               <p className="list-date">
@@ -99,7 +102,8 @@ export default function Home() {
         </ul>
       </section>
 
-      <section aria-label="Sorties" className="_row">
+      <section aria-labelledby="home-sorties" className="_row">
+        <h2 id="home-sorties">Sorties</h2>
         <div className="flex-container _row">
           {sortedReleases.slice(0, 3).map((s) => (
             <ReleaseCard key={s.id} release={s} />

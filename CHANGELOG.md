@@ -51,7 +51,11 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 
 - Accueil : le fil d'actus (`#news-feed`) passe en **3 colonnes** (`col-33 col-100-sp`, pleine largeur ≤ 767px) au lieu de 2. DS (pattern Fil d'actus) + story Patterns/FilActus à jour.
 
-- Accueil : la rubrique du fil d'actus (`#news-feed`) a maintenant un **titre visible en h3 « Fil d'actus »** (`#news-feed-title`), relié au tabpanel par `aria-labelledby` (au lieu d'un simple `aria-label`) — elle ne se confond plus avec l'onglet « Actus ». DS (patterns Fil d'actus/Accueil, props Tab) + story Patterns/FilActus à jour.
+
+- **Gouttière corrigée** : `.list-item` utilisait un shorthand `padding: .52083rem 0` qui écrasait la gouttière horizontale des `.col-*` (items collés aux bords en colonnes) → passé en `padding-top`/`padding-bottom` (longhands). DS (ListItem) à jour.
+- Accueil : la section **« Sorties » a un titre visible en h2** (`aria-labelledby="home-sorties"`, plus de simple `aria-label`).
+- Accueil : les **onglets du fil d'actus ne s'affichent que pour les catégories non vides** (plus d'onglet/panneau vide ; repli sur « Toutes » si l'onglet actif disparaît). DS (pattern Fil d'actus) à jour.
+- Le h3 « Fil d'actus » ajouté puis retiré à la demande (le tabpanel garde son `aria-label="Actualités filtrées"`).
 
 ## [1.0.0] — 2026-11-25
 

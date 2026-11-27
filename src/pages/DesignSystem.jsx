@@ -322,12 +322,12 @@ export default function DesignSystem() {
         <PropsTable rows={[
           ['selected', 'bool', 'aria-selected + tabIndex 0 (les autres -1)'],
           ['onClick', 'fn', 'sélection (activation automatique aussi via les flèches)'],
-          ['controls', 'id', 'aria-controls → id du tabpanel ; le tabpanel est nommé par un titre visible (ex. aria-labelledby="news-feed-title")']
+          ['controls', 'id', 'aria-controls → id du tabpanel']
         ]} />
 
         <h3 className="_row">ListItem</h3>
         <ul className="__row">
-          <ListItem>Exemple d'élément de liste — croisillon « + » en tête, 1.5em 900 (<code>.list-item > :first-child::before</code>), aucun filet : le padding et le marqueur séparent les éléments (règle « sans limite visuelle »).</ListItem>
+          <ListItem>Exemple d'élément de liste — croisillon « + » en tête, 1.5em 900 (<code>.list-item > :first-child::before</code>), aucun filet : le padding et le marqueur séparent les éléments (règle « sans limite visuelle ») ; en colonne, la gouttière .col-* est préservée (padding vertical en longhands, jamais de shorthand).</ListItem>
         </ul>
         <PropsTable rows={[['className', 'string', 'grille ex. col-50 col-100-sp']]} />
         <Code>{'<ul className="_row">\n  <ListItem className="col-50 col-100-sp">…</ListItem>\n</ul>'}</Code>
@@ -405,9 +405,9 @@ export default function DesignSystem() {
         <ul className="_row">
           <ListItem><strong>Page type</strong> : <code>&lt;Hero&gt;</code> → <code>&lt;Lead&gt;</code> → sections <code>h2</code> séparées par l’espacement seul : classe spacer sur la section suivante (ex. <code>&lt;section className="_row"&gt;</code>) — jamais de <code>&lt;hr&gt;</code>.</ListItem>
           <ListItem><strong>Navigation</strong> : bouton Menu → dialog plein écran (voir Header) ; page active = remplie (<code>aria-current="page"</code>).</ListItem>
-          <ListItem><strong>Fil d'actus</strong> : <code>ListItem</code> en 3 colonnes (<code>col-33 col-100-sp</code>), ligne <code>.list-date</code> en <strong>italique</strong> = date — <code>&lt;Label&gt;</code> — <code>&lt;Button&gt;</code> inline (Label et Button restent droits) ; titre de rubrique visible en h3 (<code>#news-feed-title</code>) relié au tabpanel par <code>aria-labelledby</code>. Jamais d'événement passé dans le fil (helper <code>upcomingEvents</code>) et jamais de bouton sans lien (actu sans <code>link</code> = pas de bouton).</ListItem>
+          <ListItem><strong>Fil d'actus</strong> : <code>ListItem</code> en 3 colonnes (<code>col-33 col-100-sp</code>), ligne <code>.list-date</code> en <strong>italique</strong> = date — <code>&lt;Label&gt;</code> — <code>&lt;Button&gt;</code> inline (Label et Button restent droits) Onglets = uniquement les catégories non vides (jamais d’onglet sans élément). Jamais d’événement passé dans le fil (helper <code>upcomingEvents</code>) et jamais de bouton sans lien (actu sans <code>link</code> = pas de bouton).</ListItem>
           <ListItem><strong>Carte produit</strong> : <code>Cover</code> 2:3 (pastille = artiste) + intitulé <code>.release-title</code> (« titre / artiste », 900 capitales $fs-card-title 1.25rem) + méta « type · date » + <code>.release-links</code> en <code>&lt;Button&gt;</code>.</ListItem>
-          <ListItem><strong>Accueil</strong> : <code>&lt;Hero&gt;</code> avec <code>actions</code> (CTA) → marquee → fil d'actus titré en h3 visible (onglets, <code>flex-wrap</code> donc jamais de débordement mobile) → 3 dernières sorties → bloc radio en 3 colonnes (<code>col-33</code>). Le logo latéral reste visible partout, y compris sur l'accueil (coexiste avec le h1 du hero) ; au scroll, le header affiche en plus la marque compacte.</ListItem>
+          <ListItem><strong>Accueil</strong> : <code>&lt;Hero&gt;</code> avec <code>actions</code> (CTA) → marquee → fil d'actus (onglets, <code>flex-wrap</code> donc jamais de débordement mobile) → section « Sorties » titrée en h2 visible (<code>aria-labelledby="home-sorties"</code>) + 3 dernières sorties → bloc radio en 3 colonnes (<code>col-33</code>). Le logo latéral reste visible partout, y compris sur l'accueil (coexiste avec le h1 du hero) ; au scroll, le header affiche en plus la marque compacte.</ListItem>
           <ListItem><strong>Événements</strong> : sections « Prochains » / « Passés » (<code>upcomingEvents</code> / <code>pastEvents</code>) ; libellé de lien explicite via <code>eventLinkLabel</code> (« Billetterie » pour un concert, « Infos » sinon, <code>linkLabel</code> pour surcharger).</ListItem>
           <ListItem><strong>Radio</strong> : antennes en 3 colonnes (<code>flex-container</code> + <code>col-33 col-100-sp</code>, comme le bloc radio de l’accueil), bouton « Écouter sur &lt;diffuseur&gt; » par antenne ; la liste des épisodes est aussi en 3 colonnes ; épisode avec <code>link</code> → bouton « Écouter l’épisode ».</ListItem>
           <ListItem><strong>Liens externes</strong> : <code>target="_blank"</code> + <code>rel="noopener noreferrer"</code> + ↗ automatique.</ListItem>
