@@ -306,7 +306,7 @@ export default function DesignSystem() {
           ['filled', 'bool', 'version pleine (fond accent)'],
           ['children', 'node', 'texte de l\'étiquette — rendu précédé d\'un # automatique']
         ]} />
-        <Regles faire="pour les catégories/étiquettes." eviter="jamais comme bouton cliquable (pas de onClick sur un Label)." />
+        <Regles faire="pour les catégories/étiquettes ; inline-block + vertical-align: middle, donc toujours aligné avec un <Button> inline sur la même ligne (ex. .list-date)." eviter="jamais comme bouton cliquable (pas de onClick sur un Label)." />
 
         <h3 className="_row">Tab</h3>
         <div className="tabs __row" role="tablist" aria-label="Démo onglets">
@@ -325,7 +325,7 @@ export default function DesignSystem() {
 
         <h3 className="_row">ListItem</h3>
         <ul className="__row">
-          <ListItem>Exemple d'élément de liste — croisillon « + » en tête (<code>.list-item > :first-child::before</code>), aucun filet : le padding et le marqueur séparent les éléments (règle « sans limite visuelle »).</ListItem>
+          <ListItem>Exemple d'élément de liste — croisillon « + » en tête, 1.25em 900 (<code>.list-item > :first-child::before</code>), aucun filet : le padding et le marqueur séparent les éléments (règle « sans limite visuelle »).</ListItem>
         </ul>
         <PropsTable rows={[['className', 'string', 'grille ex. col-50 col-100-sp']]} />
         <Code>{'<ul className="_row">\n  <ListItem className="col-50 col-100-sp">…</ListItem>\n</ul>'}</Code>
@@ -391,7 +391,7 @@ export default function DesignSystem() {
           <code>inert</code>, Échap ferme, focus sur le 1<sup>er</sup> lien puis rendu au bouton Menu).
           Au scroll, le header affiche la marque (<code>.header-brand</code> = logo + « Le Label Records »,
           classe <code>is-scrolled</code> posée par <code>Header.jsx</code> ; nom masqué ≤ 767px).
-          Bouton thème « Passer en mono / rouge » à droite (pastille de la couleur cible, <code>aria-pressed</code>).
+          Bouton thème « Passer en mono / rouge » à droite (pastille = couleur cible via <code>--toggle-target</code>, <code>aria-pressed</code>) ; au survol/focus, fond = couleur cible et texte = <code>var(--on-accent)</code>.
         </p>
 
         <h3 className="_row">Footer</h3>

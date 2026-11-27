@@ -57,14 +57,32 @@
   flex: none;
 }
 
+// Toggle thème : contour, texte et pastille = couleur CIBLE (--toggle-target, var inline posée par Header.jsx)
+.button.theme-toggle {
+  border-color: var(--toggle-target, var(--accent));
+  color: var(--toggle-target, var(--accent));
+}
+
 .theme-toggle .swatch {
   display: inline-block;
   width: 0.8em;
   height: 0.8em;
   margin-right: 0.4em;
-  background-color: var(--accent);
-  border: $bw solid var(--accent);
+  background-color: var(--toggle-target, var(--accent));
+  border: $bw solid var(--toggle-target, var(--accent));
   vertical-align: baseline;
+}
+
+// Au survol/focus : fond = couleur cible, texte = on-accent (contraste OK rouge 5.23:1 / mono 12.45:1)
+.button.theme-toggle:hover,
+.button.theme-toggle:focus-visible {
+  background-color: var(--toggle-target, var(--accent));
+  color: var(--on-accent);
+}
+
+.button.theme-toggle:hover .swatch,
+.button.theme-toggle:focus-visible .swatch {
+  border-color: var(--on-accent);
 }
 
 .button.nav-toggle {

@@ -12,6 +12,8 @@
   margin-right: 0.41667rem;
   font-family: $font-black;
   font-weight: 900;
+  font-size: 1.25em; // bien visible dans la ligne .list-date (texte small)
+  line-height: 1;
 }
 
 .list-date {

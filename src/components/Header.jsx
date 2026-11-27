@@ -110,13 +110,9 @@ export default function Header() {
           aria-pressed={theme === 'mono'}
           aria-label={`Passer au thème ${target.name} (${target.hex})`}
           title={`${target.name} ${target.hex}`}
-          style={{ borderColor: target.hex, color: target.hex }}
+          style={{ '--toggle-target': target.hex }}
         >
-          <span
-            className="swatch"
-            style={{ backgroundColor: target.hex, borderColor: target.hex }}
-            aria-hidden="true"
-          ></span>
+          <span className="swatch" aria-hidden="true"></span>
           {theme === 'rouge' ? 'Passer en mono' : 'Passer en rouge'}
         </button>
         <button

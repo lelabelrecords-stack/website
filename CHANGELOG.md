@@ -37,6 +37,10 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - `ListItem` : croisillon « + » (900) en tête de chaque élément (`.list-item > :first-child::before`) pour distinguer les items en colonnes/lignes, toujours sans filet. DS + story ListItem à jour.
 - **Charte graphique dans le DS** : nouvelle section « Marque (logo) » (`/design-system` dev + TOC) avec les **SVG sources téléchargeables** (`logo-contour-rouge.svg` à `stroke: currentColor`, `logo-contour-rouge-blanc.svg`), les variantes (rouge/mono/blanc sur fond accent via `.logo-svg--on-accent`), le ratio `571.799 × 763.875` et les règles (pas de déformation, pas de recoloration hors `var(--accent)`/`#fff`, aucun PNG/JPG — contrat 0 raster ; kit presse PNG = option non retenue). Story `Logo/SurFondAccent` + `Logo/Telechargement` (liens `download` via import `?url`), README à jour.
 
+- `Label` : ajout de `vertical-align: middle` — l'étiquette est désormais toujours alignée verticalement avec un `<Button>` inline sur la même ligne (ligne `.list-date` : plus de décalage #Actu / « En savoir plus »). DS à jour.
+- Croisillon des `ListItem` rendu plus visible : `font-size: 1.25em` + `line-height: 1` sur `.list-item > :first-child::before`. DS à jour.
+- Toggle de thème : la couleur cible passe par la variable CSS `--toggle-target` (posée en inline par `Header.jsx`) ; au survol/focus, le bouton prend **fond = couleur cible, texte = `var(--on-accent)`** (ex. survol « Passer en mono » → fond #343434 texte blanc ; « Passer en rouge » → fond #DB0000 texte blanc), la pastille garde un filet `on-accent`. Contrastes mesurés OK (5.23:1 / 12.45:1). DS (Header) + CHANGELOG à jour.
+
 ## [1.0.0] — 2026-11-25
 
 ### Ajouté

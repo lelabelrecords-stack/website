@@ -2,6 +2,7 @@
 
 .label {
   display: inline-block;
+  vertical-align: middle; // aligné avec un <Button> inline sur la même ligne (ex. .list-date)
   padding: 0.25rem 0.83333rem;
   border: solid $bw var(--accent);
 }
