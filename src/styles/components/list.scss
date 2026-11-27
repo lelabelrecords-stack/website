@@ -12,13 +12,21 @@
   margin-right: 0.41667rem;
   font-family: $font-black;
   font-weight: 900;
-  font-size: 1.25em; // bien visible dans la ligne .list-date (texte small)
+  font-size: 1.5em; // bien visible dans la ligne .list-date (texte small)
   line-height: 1;
 }
 
+// Ligne de méta (date, catégorie) en italique pour la distinguer du contenu ;
+// le Label et le <Button> inline restent droits (lisibles)
 .list-date {
   font-size: $fs-small;
   line-height: $lh-small;
+  font-style: italic;
+}
+
+.list-date .label,
+.list-date .button {
+  font-style: normal;
 }
 
 // Bouton inline à côté de l'étiquette dans une ligne de date

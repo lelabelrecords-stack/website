@@ -41,6 +41,9 @@ Format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versionnage sé
 - Croisillon des `ListItem` rendu plus visible : `font-size: 1.25em` + `line-height: 1` sur `.list-item > :first-child::before`. DS à jour.
 - Toggle de thème : la couleur cible passe par la variable CSS `--toggle-target` (posée en inline par `Header.jsx`) ; au survol/focus, le bouton prend **fond = couleur cible, texte = `var(--on-accent)`** (ex. survol « Passer en mono » → fond #343434 texte blanc ; « Passer en rouge » → fond #DB0000 texte blanc), la pastille garde un filet `on-accent`. Contrastes mesurés OK (5.23:1 / 12.45:1). DS (Header) + CHANGELOG à jour.
 
+- Ligne `.list-date` (date/catégorie des actus et événements) passée en **italique** ; le `Label` et le `<Button>` inline restent droits (`.list-date .label, .list-date .button { font-style: normal }`). DS (Patterns) à jour.
+- Croisillon `ListItem` encore plus visible : `font-size: 1.5em` (était 1.25em). DS à jour.
+
 ## [1.0.0] — 2026-11-25
 
 ### Ajouté
